@@ -5,7 +5,6 @@ plugins {
   id 'com.katalon.gradle-plugin' version '0.1.2'
 }
 
-group = 'id.coedotz.QAJWorkflow.coedotzmagic'
 version = '1.0.0' 
 description = 'Keywords Tools Testing for Joget Workflow apps'
 
