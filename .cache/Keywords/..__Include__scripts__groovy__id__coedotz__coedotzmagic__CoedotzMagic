@@ -1,0 +1,85 @@
+{
+  "keywordFileContentHash": "97A1BE001E1BFBCB7388F203A048D397",
+  "keywordClasses": [
+    {
+      "name": "id.coedotz.coedotzmagic.CoedotzMagic",
+      "keywordMethods": [
+        {
+          "name": "extractTextFromList",
+          "parameters": [
+            {
+              "name": "targetText",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "java.lang.String",
+                "unresolvedClassName": "String",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            },
+            {
+              "name": "listToSearch",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "java.util.List",
+                "unresolvedClassName": "List",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [
+                  {
+                    "fullClassName": "java.lang.String",
+                    "unresolvedClassName": "String",
+                    "isArray": false,
+                    "isGnericsPlaceHolder": false,
+                    "hasImmutableClassName": false,
+                    "genericsTypes": [],
+                    "errorOnParsing": false
+                  }
+                ],
+                "errorOnParsing": false
+              }
+            }
+          ],
+          "javadoc": "/**\r\n\t * \u003cb\u003eextractTextFromList()\u003c/b\u003e\r\n\t * digunakan untuk melakukan ekstraksi teks dari data list\r\n\t * maksudnya misal, ada service id 50250205_122848263712_INTERNET\r\n\t * nah dia akan melakukan pencarian dengan mencocokan data di list, apakah pada targetText\r\n\t * ada kata yang cocok dengan yang dilist, jika ada nanti akan dioutputkan, jadi nanti dilist ada\r\n\t * data \"internet\" nah nanti outputnya jadi \"internet\" karena di target textnya ada kata \"internet\"\r\n\t *\r\n\t *\u003cbr\u003e\u003cbr\u003e\r\n\t *\r\n\t * Parameter masukannya targetText \u0026 list yang akan digunakan pada ekstrak\r\n\t */"
+        },
+        {
+          "name": "extractText",
+          "parameters": [
+            {
+              "name": "targetText",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "java.lang.String",
+                "unresolvedClassName": "String",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            },
+            {
+              "name": "textIWant",
+              "initialExpression": "",
+              "type": {
+                "fullClassName": "java.lang.String",
+                "unresolvedClassName": "String",
+                "isArray": false,
+                "isGnericsPlaceHolder": false,
+                "hasImmutableClassName": false,
+                "genericsTypes": [],
+                "errorOnParsing": false
+              }
+            }
+          ],
+          "javadoc": "/**\r\n\t * \u003cb\u003eextractText()\u003c/b\u003e\r\n\t * digunakan untuk melakukan ekstraksi teks berdasarkan teks yang kita mau\r\n\t * misal, teks \"COEDOTZ ITA 12 SOFT 4 SKYYLUVIE dan kita mau kata COEDOTZ aja berati nanti outputnya \"COEDOTZ\"\r\n\t * \r\n\t * \u003cbr\u003e\u003cbr\u003e\r\n\t * \r\n\t * Parameter masukannya adalah targetText (kata yang ingin diekstrak) dan\r\n\t * textIWant (Kata yang mau kita ambil)\r\n\t */"
+        }
+      ]
+    }
+  ],
+  "javadocParsed": true
+}
