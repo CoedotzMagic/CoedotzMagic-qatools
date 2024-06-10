@@ -1,7 +1,47 @@
-package id.coedotz.coedotzmagic
+package id.coedotz.qa-jogetworkflow.coedotzmagic
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.util.KeywordUtil
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+
+import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
+import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
+import java.text.SimpleDateFormat as SimpleDateFormat
+import java.util.Calendar as Calendar
+import java.io.File as File
+import groovy.json.JsonSlurper
+import groovy.json.JsonBuilder
+import com.kms.katalon.core.testobject.RequestObject
+import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
+import org.apache.http.client.methods.HttpPost
+import org.apache.http.impl.client.CloseableHttpClient
+import org.apache.http.impl.client.HttpClients
+import org.apache.http.entity.StringEntity
+import java.awt.Robot as Robot
+import java.awt.event.KeyEvent as KeyEvent
+import java.awt.Toolkit as Toolkit
+import java.awt.datatransfer.StringSelection as StringSelection
+import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.JavascriptExecutor
+
 
 /*
  * Created by : Arief Wardhana
@@ -496,27 +536,13 @@ public class CoedotzMagic {
 
 	/**
 	 * <b>takeScreenshot()</b>
-	 * digunakan untuk melakukan screenshot pada saat pengujian
-	 * dia akan mengscreenshot state terakhir dan screenshot isi dari tiket status
+	 * digunakan untuk melakukan screenshot
 	 * 
 	 * <br><br>
-	 * 
-	 * parameter masukannya folderName & ssTicketStatus (Y/N)
+	 *
+	 * Parameter masukannya yaitu folderName & title
 	 */
-	void takeScreenshot(String folderName, String ssTicketStatus) {
-
-		// Inisialisasi String
-		String ticket = null
-
-		// validasi tiket apakah ada apa engga
-		boolean checkTicket = WebUI.verifyElementPresent(findTestObject('Page/Insera/Ticketing/Components/GetValue/Text/txt_ticket_title'), GlobalVariable.VERIFY_TIMEOUT, FailureHandling.OPTIONAL)
-
-		// kondisi jika tiket terlihat
-		if (checkTicket) {
-			'klik title tiket & store id tiket'
-			ticket = WebUI.getText(findTestObject('Page/Insera/Ticketing/Components/GetValue/Text/txt_ticket_title'))
-		}
-
+	void takeScreenshot(String folderName) {
 		'Lokasi folder screenshot'
 		String pathFolderScreenshot = RunConfiguration.getProjectDir() + File.separator + "Screenshot"
 
@@ -533,48 +559,30 @@ public class CoedotzMagic {
 		String timestamp = getCurrentDateTime()
 		timestamp = timestamp.replaceAll(":", ".")
 
-		'Merubah Agar tidak bisa menyimpan file dengan kontaminasi katakter : atau /'
-		if (ticket != null) {
-			'replace karakter'
-			ticket = ticket.replaceAll("[:/]", ".")
+		'set text jadi Screenshot'
+		String title = 'Screenshot '
 
+		'Kondisi jika nama foldernya insera'
+		if (folderName.equalsIgnoreCase("Insera")) {
 			'Melakukan Screenshot untuk bukti pengujian'
-			WebUI.takeScreenshot(((('Screenshot/' + targetFolder) + ticket.substring(0, 8)) + ticket.substring(
-					43)) + ' - ' + timestamp + '.jpg')
+			WebUI.takeScreenshot('Screenshot/' + targetFolder + title + ' - ' + timestamp + '.jpg')
 		} else {
-			'set text jadi Screenshot'
-			ticket = 'Screenshot '
-
 			'Melakukan Screenshot untuk bukti pengujian'
-			WebUI.takeScreenshot('Screenshot/' + targetFolder + ticket + ' - ' + timestamp + '.jpg')
-		}
-
-		switch(ssTicketStatus) {
-			case "Yes":
-			case "Y":
-			case "Ya":
-			case "yes":
-			case "y":
-			case "ya":
-
-			// validasi tiket status apakah ada apa engga
-				boolean checkTicketStatus = WebUI.verifyElementPresent(findTestObject('Page/Insera/Ticketing/RightMenuFloating/TicketStatus/Button/btn_menu_ticket_status'), GlobalVariable.VERIFY_TIMEOUT, FailureHandling.OPTIONAL)
-
-				if (checkTicketStatus) {
-					'pilih Ticket Status'
-					WebUI.click(findTestObject('Page/Insera/Ticketing/RightMenuFloating/TicketStatus/Button/btn_menu_ticket_status'))
-
-					'Melakukan Screenshot untuk bukti pengujian (Ticket Status)'
-					WebUI.takeScreenshot(((('Screenshot/' + targetFolder) + ticket.substring(0, 8)) + ' (Ticket Status) ' + ticket.substring(
-							43)) + ' - ' + timestamp + '.jpg')
-
-					'Close Ticket Status'
-					WebUI.click(findTestObject('Page/Insera/Ticketing/RightMenuFloating/TicketStatus/Button/btn_close_dialog_ticket_status'))
-				}
-				break
+			WebUI.takeFullPageScreenshot('Screenshot/' + targetFolder + title + ' - ' + timestamp + '.jpg')
 		}
 	}
 
-	
+	public String getCurrentDateTime() {
+		'Panggil current date time'
+		String getDateTime = coedotzMagic.getCurrentDateTime()
+
+		'Rubah teks : ke .'
+		getDateTime = getDateTime.replaceAll(":", ".")
+
+		'Mengembalikan nilai currentDateTime'
+		return getDateTime
+	}
+
+
 
 }
