@@ -1,4 +1,4 @@
-package id.coedotz.coedotzmagic
+package id.coedotz.QAJWorkflow.coedotzmagic
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.util.KeywordUtil
@@ -62,8 +62,8 @@ public class CoedotzMagic {
 	 *<br><br>
 	 *
 	 * @param targetText & list yang akan digunakan pada ekstrak
+	 * @since 1.0
 	 */
-	@Keyword
 	public String extractTextFromList(String targetText, List<String> listToSearch) {
 		// melakukan pengecekan secara menyeluruh pada data list untuk mendapatkan kata yang diinginkan
 		for (String textIWant : listToSearch) {
@@ -92,7 +92,6 @@ public class CoedotzMagic {
 	 * Parameter masukannya adalah targetText (kata yang ingin diekstrak) dan
 	 * textIWant (Kata yang mau kita ambil)
 	 */
-	@Keyword
 	public String extractText(String targetText, String textIWant) {
 		def inputText = targetText
 

@@ -31,5 +31,25 @@ katalon {
   minimize = false
 }
 
+task generateJavadocs(type: Javadoc) {
+  source = sourceSets.main.allJava
+  classpath = sourceSets.main.compileClasspath
+  destinationDir = file("${buildDir}/docs/javadoc")
+}
+
+build {
+  dependsOn generateJavadocs
+}
+
+// Task to package Javadocs into a JAR
+task javadocJar(type: Jar, dependsOn: generateJavadocs) {
+  classifier = 'javadoc'
+  from generateJavadocs.destinationDir
+}
+
+artifacts {
+  archives javadocJar
+}
+
 dependencies {
 }
