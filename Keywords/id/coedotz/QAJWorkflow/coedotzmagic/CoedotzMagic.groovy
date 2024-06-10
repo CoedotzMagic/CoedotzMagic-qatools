@@ -1,4 +1,4 @@
-package id.coedotz.qa-jogetworkflow.coedotzmagic
+package id.coedotz.QAJWorkflow.coedotzmagic
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.util.KeywordUtil
@@ -61,7 +61,7 @@ public class CoedotzMagic {
 	 *
 	 *<br><br>
 	 *
-	 * Parameter masukannya targetText & list yang akan digunakan pada ekstrak
+	 * @param targetText & list yang akan digunakan pada ekstrak
 	 */
 	@Keyword
 	public String extractTextFromList(String targetText, List<String> listToSearch) {
@@ -170,7 +170,7 @@ public class CoedotzMagic {
 
 	/* ------------------------------------------------------------------------- */
 
-	**
+	/**
 	 * <b>checkStatusTicket()</b>
 	 * digunakan untuk mengecek status tiket sekarang secara otomatis, berdasarkan kriteria
 	 * 

@@ -17,4 +17,4 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WebUI.setText(findTestObject, CustomKeywords.'id.coedotz.coedotzmagic.CoedotzMagic.extractText'(null, null))
+WebUI.setText(findTestObject, CustomKeywords.'id.coedotz.QAJWorkflow.coedotzmagic.CoedotzMagic.extractText'(null, null))
