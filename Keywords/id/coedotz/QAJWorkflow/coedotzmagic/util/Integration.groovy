@@ -58,18 +58,18 @@ public class Integration {
 	 *
 	 * <br><br>
 	 *
-	 * @param masukanya status & notes
+	 * @param masukanya testlinkUrl, apikey, projectname, testplanName, testcaseName, status & notes
 	 * - status : p (Passed), f (Failed) & a (Abort)
 	 * - Notes : Catatan Pengujian
 	 * @since 1.0
 	 */
-	void testlinkIntegration(String status, String notes) {
+	void testlinkIntegration(String testlinkUrl, String apikey, String projectname, String testplanName, String testcaseName, String status, String notes) {
 		// TestLink API configuration
-		def testLinkUrl = "http://your-testlink-instance/lib/api/xmlrpc/v1/xmlrpc.php"
-		def apiKey = "your-testlink-api-key"
-		def projectName = "your-testlink-project-name"
-		def testPlanName = "your-testlink-test-plan"
-		def testCaseName = "your-testlink-test-case-name"
+		def testLinkUrl = testlinkUrl
+		def apiKey = apikey
+		def projectName = projectname
+		def testPlanName = testplanName
+		def testCaseName = testcaseName
 
 		def httpClient = HttpClients.createDefault()
 
