@@ -50,7 +50,7 @@ import org.openqa.selenium.JavascriptExecutor
  */
 
 public class Util {
-	
+
 	/**
 	 * <b>extractTextFromList()</b>
 	 * digunakan untuk melakukan ekstraksi teks dari data list
@@ -81,7 +81,7 @@ public class Util {
 		// mengembalikan nilai kosong jika tidak ada kata yang diinginkan di targetText
 		return null
 	}
-	
+
 	/**
 	 * <b>extractText()</b>
 	 * digunakan untuk melakukan ekstraksi teks berdasarkan teks yang kita mau
@@ -110,7 +110,7 @@ public class Util {
 	}
 
 	/* ------------------------------------------------------------------------- */
-	
+
 	/**
 	 * <b>copyToClipboard()</b>
 	 * digunakan untuk melakukan salin teks ke clipboard external chrome
@@ -121,7 +121,7 @@ public class Util {
 	void copyToClipboard(String text) {
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(text), null)
 	}
-	
+
 	/**
 	 * <b>forceSetText()</b>
 	 * digunakan untuk melakukan paksa Set Text
@@ -174,7 +174,7 @@ public class Util {
 
 		'Menggambil tanggal hari ini dan merubah format ke dd-mm-yyyy'
 		String formattedDateTime = dateFormat.format(currentDate)
-		
+
 		'Rubah teks : ke .'
 		formattedDateTime = formattedDateTime.replaceAll(":", ".")
 
@@ -183,7 +183,7 @@ public class Util {
 	}
 
 	/* ------------------------------------------------------------------------- */
-	
+
 	/**
 	 * <b>createNewTab()</b>
 	 * digunakan untuk membantu membuat tab baru
@@ -204,7 +204,7 @@ public class Util {
 		'Masukan Url'
 		WebUI.navigateToUrl(url)
 	}
-	
+
 	/* ------------------------------------------------------------------------- */
 
 	/**
@@ -227,16 +227,16 @@ public class Util {
 		String targetFolder = folderName + File.separator
 
 		'Membuat direktori, jika direktori belum dibuat'
+		new File(pathFolderScreenshot).mkdirs()
 		new File(nameMasterTestcase).mkdirs()
 
 		'Membuat timestamp agar bisa mutiple screenshot dan tidak overwrite file'
 		String timestamp = performGetDateTime()
-		timestamp = timestamp.replaceAll(":", ".")
 
 		'set text jadi Screenshot'
 		String title = 'Screenshot '
 
-		'Kondisi jika nama foldernya insera'
+		'Cek apakah screenshotnya fullpage atau tidak'
 		if (fullpage) {
 			'Melakukan Screenshot untuk bukti pengujian'
 			WebUI.takeFullPageScreenshot('Screenshot/' + targetFolder + title + ' - ' + timestamp + '.jpg')
@@ -245,9 +245,9 @@ public class Util {
 			WebUI.takeScreenshot('Screenshot/' + targetFolder + title + ' - ' + timestamp + '.jpg')
 		}
 	}
-	
+
 	/* ------------------------------------------------------------------------- */
-	
+
 	/**
 	 * <b>checkTabBrowser()</b>
 	 * digunakan untuk mengecek apakah ada Tab Aktif dengan website khusus atau tidak
@@ -304,7 +304,6 @@ public class Util {
 		// kembalikan nilai result
 		return result
 	}
-	
+
 	/* ------------------------------------------------------------------------- */
-	
 }
