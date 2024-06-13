@@ -80,7 +80,7 @@ public class WebServices {
 	 * @param pathApi
 	 * @since 1.0
 	 */
-	void hitApiWithData(String pathApi) {
+	void hitApiWithData(String pathApi, Map<String, Object> dataMap) {
 		// panggil permintaan object api
 		RequestObject requestObject = findTestObject(pathApi)
 
@@ -91,7 +91,9 @@ public class WebServices {
 		def requestBodyJson = new JsonSlurper().parseText(requestBody)
 
 		// Masukan nilai untuk diset pada data body
-		requestBodyJson.ticket_id = ''
+		dataMap.each { key, value ->
+        requestBodyJson[key] = value
+    	}
 
 		// Konversi kembali modifikasi JSON menjadi String
 		def modifiedBody = new JsonBuilder(requestBodyJson).toPrettyString()
@@ -104,5 +106,22 @@ public class WebServices {
 
 		// Verifikasi bahwa response code harus 200
 		assert response.getStatusCode() == 200, "Status Code harus 200, dan status codenya adalah : ${response.getStatusCode()}"
+
+		// Mengambil data response dari API
+		def responseText = response.getResponseText()
+
+		// Parsing data response terbaru sebagai JSON
+		def jsonResponse = new JsonSlurper().parseText(responseText)
+
+		// mengambil dan menyimpan nilai status code
+		String statusCode = jsonResponse.code
+
+		// cek kondisi API
+		if (statusCode == '409') {
+			println("Failed to execute Api, error code 409.")
+		} else if (statusCode == '200') {
+			println("Api Successfully Execute.")
+		}
+
 	}
 }
