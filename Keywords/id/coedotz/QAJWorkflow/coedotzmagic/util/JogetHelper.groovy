@@ -1,0 +1,165 @@
+package id.coedotz.QAJWorkflow.coedotzmagic.util
+
+import com.kms.katalon.core.annotation.Keyword
+import com.kms.katalon.core.util.KeywordUtil
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+
+import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.Keys as Keys
+import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
+import java.text.SimpleDateFormat as SimpleDateFormat
+import java.util.Calendar as Calendar
+import java.io.File as File
+import groovy.json.JsonSlurper
+import groovy.json.JsonBuilder
+import com.kms.katalon.core.testobject.RequestObject
+import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
+import org.apache.http.client.methods.HttpPost
+import org.apache.http.impl.client.CloseableHttpClient
+import org.apache.http.impl.client.HttpClients
+import org.apache.http.entity.StringEntity
+import java.awt.Robot as Robot
+import java.awt.event.KeyEvent as KeyEvent
+import java.awt.Toolkit as Toolkit
+import java.awt.datatransfer.StringSelection as StringSelection
+import org.openqa.selenium.By
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.JavascriptExecutor
+
+
+/*
+ * Created by : Arief Wardhana
+ * itasoft gitlab / github : @poncoe
+ * Date : 19-02-24
+ */
+
+public class JogetHelper {
+
+	/**
+	 * <b>robotUploadFile()</b>
+	 * digunakan untuk melakukan automasi dialog file chooser
+	 * untuk melakukan pemilihan file secara otomatis pada dialog file chooser
+	 *
+	 * <br><br>
+	 *
+	 * parameter masukannya adalah uploadLocator & via.
+	 * dimana uploadLocator sebagai lokasi path area uploadnya dan via itu rutenya
+	 *
+	 * <br><br>
+	 *
+	 * Method ini hanya bisa digunakan pada method uploadFile di controller!
+	 * 
+	 * @since 1.0
+	 */
+	void robotUploadFile(String uploadLocator, String via) {
+		def keys = new KeysTyping()
+		def util = new Util()
+		
+		'Arahkan dengan mouse over'
+		WebUI.mouseOver(findTestObject(uploadLocator))
+
+		// set path untuk pemanggilan si file (Gambar)
+		def fileImgPath = RunConfiguration.getProjectDir() + '/testImgBorr.png'
+
+		// set path untuk pemanggilan si file (Dokumen)
+		def fileDocPath = RunConfiguration.getProjectDir() + '/testDocBorr.docx'
+
+		// rubah tanda "/" jadi "\" (Gambar)
+		fileImgPath = fileImgPath.replaceAll('/', '\\\\')
+
+		// rubah tanda "/" jadi "\" (Dokumen)
+		fileDocPath = fileDocPath.replaceAll('/', '\\\\')
+
+		// melakukan pengecekan jika attachment & evidence dia akan upload img, dan worklogs upload doc
+		switch(via.toLowerCase()) {
+			case "tiket attachments":
+			case "tiket evidence after":
+			// lakukan copy clipboard untuk lokasi file
+				util.copyToClipboard(fileImgPath)
+				break
+
+			case "worklogs":
+			// lakukan copy clipboard untuk lokasi file
+				util.copyToClipboard(fileDocPath)
+				break
+		}
+
+		// klik Area Upload File
+		WebUI.click(findTestObject(uploadLocator))
+
+		// jeda buat nunggu dialog terbuka, cuma garekomen terus2an pake Thread.sleep()
+		Thread.sleep(2000)
+
+		'Lakukan CTRL+V'
+		keys.combinationCTRLV()
+
+		'Lakukan Press ENTER'
+		keys.combinationENTER()
+	}
+
+	/* ------------------------------------------------------------------------- */
+	
+	/**
+	 * <b>checkStatusTicket()</b>
+	 * digunakan untuk mengecek status tiket sekarang secara otomatis, berdasarkan kriteria
+	 *
+	 * <br><br>
+	 *
+	 * progressbar closed --> wizard/step berblok warna biru
+	 * progressbar running --> wizard/step berblok warna hijau
+	 * progressbar open --> wizard/step berblok warna abu-abu
+	 * 
+	 * @since 1.0
+	 */
+	public String checkStatusTicket(){
+
+		// cek element ada apa enggga
+		boolean checkListProgressbar = WebUI.verifyElementNotPresent(findTestObject('Page/Insera/Ticketing/Components/List/list_status_ticket'), GlobalVariable.VERIFY_TIMEOUT, FailureHandling.OPTIONAL)
+
+		// Menampung nilai didalam result
+		def result = null
+
+		if (!checkListProgressbar) {
+			// panggil element dengan nama listProgressbar
+			def listProgressBar = WebUI.findWebElement(findTestObject('Page/Insera/Ticketing/Components/List/list_status_ticket'), GlobalVariable.VERIFY_TIMEOUT, FailureHandling.OPTIONAL)
+
+			// cari semua div yang ada didalam element  listProgressbar
+			List<WebElement> innerDivElements = listProgressBar.findElements(By.xpath(".//div"))
+
+			// mengalihkan ke dalam element div yang ada di listProgressbar
+			innerDivElements.each { innerDivElement ->
+				// ambil id dan class nilai atribut
+				def idValue = innerDivElement.getAttribute("id")
+				def classValue = innerDivElement.getAttribute("class")
+
+				// cek jika classValue berisikan nilai "progressbar running"
+				if (classValue.contains("progressbar running")) {
+					result = "Action ${idValue}"
+				}
+			}
+		}
+
+		if (result == null) {
+			result = "not in ticketing page"
+		}
+
+		return result
+	}
+	
+}

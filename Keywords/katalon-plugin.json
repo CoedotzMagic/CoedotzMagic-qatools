@@ -1,3 +1,9 @@
 {
-    "keywords": ["id.coedotz.QAJWorkflow.coedotzmagic.CoedotzMagic"]
+    "keywords": [
+    "id.coedotz.QAJWorkflow.coedotzmagic.CoedotzMagic", 
+    "id.coedotz.QAJWorkflow.coedotzmagic.util.Integration", 
+    "id.coedotz.QAJWorkflow.coedotzmagic.util.JogetHelper", 
+    "id.coedotz.QAJWorkflow.coedotzmagic.util.KeysTyping", 
+    "id.coedotz.QAJWorkflow.coedotzmagic.util.Util", 
+    "id.coedotz.QAJWorkflow.coedotzmagic.util.WebServices"]
 }
