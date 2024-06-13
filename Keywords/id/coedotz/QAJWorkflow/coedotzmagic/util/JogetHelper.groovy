@@ -58,47 +58,26 @@ public class JogetHelper {
 	 *
 	 * <br><br>
 	 *
-	 * parameter masukannya adalah uploadLocator & via.
-	 * dimana uploadLocator sebagai lokasi path area uploadnya dan via itu rutenya
-	 *
-	 * <br><br>
-	 *
-	 * Method ini hanya bisa digunakan pada method uploadFile di controller!
+	 * @param masukannya adalah uploadLocator & filePath.
+	 * dimana uploadLocator sebagai lokasi path area uploadnya dan file path
 	 * 
 	 * @since 1.0
 	 */
-	void robotUploadFile(String uploadLocator, String via) {
+	void robotUploadFile(String uploadLocator, String pathFile) {
 		def keys = new KeysTyping()
 		def util = new Util()
-		
+
 		'Arahkan dengan mouse over'
 		WebUI.mouseOver(findTestObject(uploadLocator))
 
-		// set path untuk pemanggilan si file (Gambar)
-		def fileImgPath = RunConfiguration.getProjectDir() + '/testImgBorr.png'
+		// set path untuk pemanggilan si file
+		def filePath = pathFile
 
-		// set path untuk pemanggilan si file (Dokumen)
-		def fileDocPath = RunConfiguration.getProjectDir() + '/testDocBorr.docx'
+		// rubah tanda "/" jadi "\"
+		filePath = filePath.replaceAll('/', '\\\\')
 
-		// rubah tanda "/" jadi "\" (Gambar)
-		fileImgPath = fileImgPath.replaceAll('/', '\\\\')
-
-		// rubah tanda "/" jadi "\" (Dokumen)
-		fileDocPath = fileDocPath.replaceAll('/', '\\\\')
-
-		// melakukan pengecekan jika attachment & evidence dia akan upload img, dan worklogs upload doc
-		switch(via.toLowerCase()) {
-			case "tiket attachments":
-			case "tiket evidence after":
-			// lakukan copy clipboard untuk lokasi file
-				util.copyToClipboard(fileImgPath)
-				break
-
-			case "worklogs":
-			// lakukan copy clipboard untuk lokasi file
-				util.copyToClipboard(fileDocPath)
-				break
-		}
+		// lakukan copy clipboard untuk lokasi file
+		util.copyToClipboard(filePath)
 
 		// klik Area Upload File
 		WebUI.click(findTestObject(uploadLocator))
@@ -114,7 +93,7 @@ public class JogetHelper {
 	}
 
 	/* ------------------------------------------------------------------------- */
-	
+
 	/**
 	 * <b>checkStatusTicket()</b>
 	 * digunakan untuk mengecek status tiket sekarang secara otomatis, berdasarkan kriteria
@@ -125,19 +104,20 @@ public class JogetHelper {
 	 * progressbar running --> wizard/step berblok warna hijau
 	 * progressbar open --> wizard/step berblok warna abu-abu
 	 * 
+	 * @param testObjListWizard
 	 * @since 1.0
 	 */
-	public String checkStatusTicket(){
+	public String checkStatusTicket(String testObjListWizard){
 
 		// cek element ada apa enggga
-		boolean checkListProgressbar = WebUI.verifyElementNotPresent(findTestObject('Page/Insera/Ticketing/Components/List/list_status_ticket'), GlobalVariable.VERIFY_TIMEOUT, FailureHandling.OPTIONAL)
+		boolean checkListProgressbar = WebUI.verifyElementNotPresent(findTestObject(testObjListWizard), 30, FailureHandling.OPTIONAL)
 
 		// Menampung nilai didalam result
 		def result = null
 
 		if (!checkListProgressbar) {
 			// panggil element dengan nama listProgressbar
-			def listProgressBar = WebUI.findWebElement(findTestObject('Page/Insera/Ticketing/Components/List/list_status_ticket'), GlobalVariable.VERIFY_TIMEOUT, FailureHandling.OPTIONAL)
+			def listProgressBar = WebUI.findWebElement(findTestObject(testObjListWizard), 30, FailureHandling.OPTIONAL)
 
 			// cari semua div yang ada didalam element  listProgressbar
 			List<WebElement> innerDivElements = listProgressBar.findElements(By.xpath(".//div"))
@@ -150,16 +130,15 @@ public class JogetHelper {
 
 				// cek jika classValue berisikan nilai "progressbar running"
 				if (classValue.contains("progressbar running")) {
-					result = "Action ${idValue}"
+					result = "${idValue}"
 				}
 			}
 		}
 
 		if (result == null) {
-			result = "not in ticketing page"
+			result = "list wizard not found"
 		}
 
 		return result
 	}
-	
 }
