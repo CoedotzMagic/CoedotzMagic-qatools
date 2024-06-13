@@ -5,7 +5,7 @@ plugins {
   id 'com.katalon.gradle-plugin' version '0.1.2'
 }
 
-version = '1.0.0' 
+version = '1.0' 
 description = 'Keywords Tools Testing for Joget Workflow apps'
 
 repositories {
