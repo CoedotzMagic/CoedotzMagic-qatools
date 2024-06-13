@@ -70,8 +70,8 @@ public class CoedotzMagic {
 	 * 
 	 * Method ini hanya bisa digunakan pada method uploadFile di controller!
 	 */
-	void robotUploadFile(String uploadLocator, String via) {
-		jogethelper.robotUploadFile(uploadLocator, via)
+	void robotUploadFile(String uploadLocator, String pathFile) {
+		jogethelper.robotUploadFile(uploadLocator, pathFile)
 	}
 
 	/* ------------------------------------------------------------------------- */
@@ -86,8 +86,8 @@ public class CoedotzMagic {
 	 * progressbar running --> wizard/step berblok warna hijau
 	 * progressbar open --> wizard/step berblok warna abu-abu
 	 */
-	public String checkStatusTicket(){
-		String result = jogethelper.checkStatusTicket()
+	public String checkStatusTicket(String testObjListWizard){
+		String result = jogethelper.checkStatusTicket(testObjListWizard)
 		return result
 	}
 
@@ -192,24 +192,36 @@ public class CoedotzMagic {
 	 * - status : p (Passed), f (Failed) & a (Abort)
 	 * - Notes : Catatan Pengujian
 	 */
-	void testlinkIntegration(String status, String notes) {
-		integration.testlinkIntegration(status, notes)
+	void testlinkIntegration(String testlinkUrl, String apikey, String projectname, String testplanName, String testcaseName, String status, String notes) {
+		integration.testlinkIntegration(testlinkUrl, apikey, projectname, testplanName, testcaseName, status, notes)
 	}
 
 	/* ------------------------------------------------------------------------- */
+	
+	/**
+	 * <b>hitApi</b>
+	 * digunakan untuk melakukan pemanggilan API dengan data
+	 *
+	 * <br><br>
+	 *
+	 * @param pathApi
+	 * @since 1.0
+	 */
+	void hitApi(String apiPath) {
+		webservices.hitApi(apiPath)
+	}
 
 	/**
-	 * @deprecated <b>hitTicketTSAUsingAPI() UNAVAILABLE/TAKEOUT</b>
-	 * digunakan untuk melakukan pembuatan tiket MyTSA
-	 * Tiket awalnya akan dibuat seperti biasa, tetapi untuk mengintegrasikan MyTSA
-	 * perlu adanya pemanggilan API "API/hitTicketTSA"
-	 * 
+	 * <b>hitApiWithData</b>
+	 * digunakan untuk melakukan pemanggilan API dengan data
+	 *
 	 * <br><br>
-	 * 
-	 * Parameter masukannya adalah idTicket yang ingin di integrasikan ke MyTSA
+	 *
+	 * @param pathApi
+	 * @since 1.0
 	 */
-	void hitTicketTSAUsingAPI(String idTicket) {
-		webservices.hitTicketTSAUsingAPI(idTicket)
+	void hitApiWithData(String apiPath) {
+		webservices.hitApiWithData(apiPath)
 	}
 
 	/**
