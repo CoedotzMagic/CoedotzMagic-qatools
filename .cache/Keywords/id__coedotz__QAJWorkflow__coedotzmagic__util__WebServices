@@ -1,10 +1,10 @@
 {
-  "keywordFileContentHash": "98BD33A444335966D6A46A42440A16DA",
+  "keywordFileContentHash": "B26C55A04C3F0DE144C80759872B718C",
   "keywordClasses": [
     {
       "name": "id.coedotz.QAJWorkflow.coedotzmagic.util.WebServices",
       "keywordMethods": []
     }
   ],
-  "javadocParsed": false
+  "javadocParsed": true
 }

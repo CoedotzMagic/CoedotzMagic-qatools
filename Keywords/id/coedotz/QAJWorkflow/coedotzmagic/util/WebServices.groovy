@@ -50,21 +50,39 @@ import org.openqa.selenium.JavascriptExecutor
  */
 
 public class WebServices {
-	
+
 	/**
-	 * @deprecated <b>hitTicketTSAUsingAPI() UNAVAILABLE/TAKEOUT</b>
-	 * digunakan untuk melakukan pembuatan tiket MyTSA
-	 * Tiket awalnya akan dibuat seperti biasa, tetapi untuk mengintegrasikan MyTSA
-	 * perlu adanya pemanggilan API "API/hitTicketTSA"
+	 * <b>hitApi</b>
+	 * digunakan untuk melakukan pemanggilan API tanpa data
 	 *
 	 * <br><br>
 	 *
-	 * @param masukannya adalah idTicket yang ingin di integrasikan ke MyTSA
+	 * @param pathApi
 	 * @since 1.0
 	 */
-	void hitTicketTSAUsingAPI(String idTicket) {
+	void hitApi(String pathApi) {
 		// panggil permintaan object api
-		RequestObject requestObject = findTestObject('API/hitTicketTSA')
+		RequestObject requestObject = findTestObject(pathApi)
+
+		// Kirim perubahan permintaan Objek API
+		def response = WS.sendRequest(requestObject)
+
+		// Verifikasi bahwa response code harus 200
+		assert response.getStatusCode() == 200, "Status Code harus 200, dan status codenya adalah : ${response.getStatusCode()}"
+	}
+
+	/**
+	 * <b>hitApiWithData</b>
+	 * digunakan untuk melakukan pemanggilan API dengan data
+	 *
+	 * <br><br>
+	 *
+	 * @param pathApi
+	 * @since 1.0
+	 */
+	void hitApiWithData(String pathApi) {
+		// panggil permintaan object api
+		RequestObject requestObject = findTestObject(pathApi)
 
 		// Parsing dan ambil data body
 		def requestBody = requestObject.getHttpBody()
@@ -73,7 +91,7 @@ public class WebServices {
 		def requestBodyJson = new JsonSlurper().parseText(requestBody)
 
 		// Masukan nilai untuk diset pada data body
-		requestBodyJson.ticket_id = idTicket
+		requestBodyJson.ticket_id = ''
 
 		// Konversi kembali modifikasi JSON menjadi String
 		def modifiedBody = new JsonBuilder(requestBodyJson).toPrettyString()
@@ -87,5 +105,4 @@ public class WebServices {
 		// Verifikasi bahwa response code harus 200
 		assert response.getStatusCode() == 200, "Status Code harus 200, dan status codenya adalah : ${response.getStatusCode()}"
 	}
-	
 }
