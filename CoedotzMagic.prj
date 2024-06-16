@@ -4,9 +4,12 @@
    <name>CoedotzMagic</name>
    <tag></tag>
    <UUID>d5ac74a5-1b42-4221-b3ad-125bc8a624ec</UUID>
+   <freeLicense>true</freeLicense>
    <migratedVersion>5.9.0</migratedVersion>
+   <modifiedEdition>FREE</modifiedEdition>
+   <modifiedVersion>9.5.0</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
-   <projectFileLocation>/Users/poncoe/Documents/Katalon Studio Projects/coedotzMagic-jogetworkflow-testing/CoedotzMagic.prj</projectFileLocation>
+   <projectFileLocation>C:\Users\Asani\Documents\Katalon Studio\CoedotzMagic\CoedotzMagic.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

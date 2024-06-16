@@ -14,7 +14,7 @@ import id.coedotz.QAJWorkflow.coedotzmagic.util.*
  */
 
 public class CoedotzMagic {
-	
+
 	def util = new Util()
 	def keys = new KeysTyping()
 	def integration = new Integration()
@@ -197,7 +197,7 @@ public class CoedotzMagic {
 	}
 
 	/* ------------------------------------------------------------------------- */
-	
+
 	/**
 	 * <b>hitApi</b>
 	 * digunakan untuk melakukan pemanggilan API dengan data
