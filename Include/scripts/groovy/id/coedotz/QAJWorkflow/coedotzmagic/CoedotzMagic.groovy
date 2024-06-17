@@ -31,7 +31,8 @@ public class CoedotzMagic {
 	 *
 	 *<br><br>
 	 *
-	 * @param targetText & list yang akan digunakan pada ekstrak
+	 * @param targetText
+	 * @param listToSearch, list yang akan digunakan pada ekstrak
 	 * @since 1.0
 	 */
 	public String extractTextFromList(String targetText, List<String> listToSearch) {
@@ -47,6 +48,9 @@ public class CoedotzMagic {
 	 * 
 	 * Parameter masukannya adalah targetText (kata yang ingin diekstrak) dan
 	 * textIWant (Kata yang mau kita ambil)
+	 * 
+	 * @param targetText
+	 * @param textIWant
 	 * 
 	 * @since 1.0
 	 */
@@ -66,9 +70,10 @@ public class CoedotzMagic {
 	 * parameter masukannya adalah uploadLocator & via.
 	 * dimana uploadLocator sebagai lokasi path area uploadnya dan via itu rutenya
 	 * 
-	 * <br><br>
+	 * @param uploadLocator
+	 * @param pathFile
 	 * 
-	 * Method ini hanya bisa digunakan pada method uploadFile di controller!
+	 * @since 1.0
 	 */
 	void robotUploadFile(String uploadLocator, String pathFile) {
 		jogethelper.robotUploadFile(uploadLocator, pathFile)
@@ -85,6 +90,9 @@ public class CoedotzMagic {
 	 * progressbar closed --> wizard/step berblok warna biru
 	 * progressbar running --> wizard/step berblok warna hijau
 	 * progressbar open --> wizard/step berblok warna abu-abu
+	 * 
+	 * @param testObjListWizard
+	 * @since 1.0
 	 */
 	public String checkStatusTicket(String testObjListWizard){
 		String result = jogethelper.checkStatusTicket(testObjListWizard)
@@ -129,6 +137,9 @@ public class CoedotzMagic {
 	 * <b>copyToClipboard()</b>
 	 * digunakan untuk melakukan salin teks ke clipboard external chrome
 	 * biasanya digunakan untuk handle CTRL+F pada chrome atau dialog chooser
+	 * 
+	 * @param text
+	 * @since 1.0
 	 */
 	void copyToClipboard(String text) {
 		util.copyToClipboard(text)
@@ -142,9 +153,8 @@ public class CoedotzMagic {
 	 * semisal kita ingin cek apakah situs google aktif atau tidak di tab browser atau tab lainnya
 	 * jika aktif nanti akan mengembalikan nilai "Tab Found" jika tidak "Tab Not Found"
 	 * 
-	 * <br><br>
-	 * 
-	 * fungsi ini digunakan untuk pengecekan Elastic (biasanya)
+	 * @param targetUrl
+	 * @since 1.0
 	 */
 	public String checkTabBrowser(String targetUrl) {
 		String result = util.checkTabBrowser(targetUrl)
@@ -159,9 +169,10 @@ public class CoedotzMagic {
 	 * method ini digunakan untuk handling ketika ketika ingin merubah inputan ke nilai terbaru
 	 * tetapi masih nyimpen nilai lama
 	 * 
-	 * <br><br>
+	 * @param to
+	 * @param text
 	 * 
-	 * Parameter masukannya to & text
+	 * @since 1.0
 	 */
 	void forceSetText(TestObject to, String text) {
 		util.forceSetText(to, text)
@@ -172,7 +183,9 @@ public class CoedotzMagic {
 	/**
 	 * <b>getCurrentDateTime()</b>
 	 * digunakan untuk mendapatkan Tanggal dan Waktu hari ini
-	 * biasanya fungsi ini digunakan untuk pembuatan di summary ticketing
+	 * biasanya fungsi ini digunakan untuk data unik / timestamp
+	 * 
+	 * @since 1.0
 	 */
 	public String getCurrentDateTime() {
 		String dateTime = util.performGetDateTime()
@@ -182,18 +195,21 @@ public class CoedotzMagic {
 	/* ------------------------------------------------------------------------- */
 
 	/**
-	 * <b>testlinkIntegration()</b>
+	 * <b>testlinkUpdateResults()</b>
 	 * digunakan untuk melakukan integrasi ke Testlink
 	 * dengan cara menjalankan dan menghasilkan report dam reportnya dilaporkan ke Testlink
 	 *
-	 * <br><br>
-	 *
-	 * Parameter masukanya status & notes
-	 * - status : p (Passed), f (Failed) & a (Abort)
-	 * - Notes : Catatan Pengujian
+	 * @param projectName
+	 * @param testplanName
+	 * @param testcaseName
+	 * @param buildName
+	 * @param execNotes
+	 * @param result
+	 * 
+	 * @since 1.0
 	 */
-	void testlinkIntegration(String testlinkUrl, String apikey, String projectname, String testplanName, String testcaseName, String status, String notes) {
-		integration.testlinkIntegration(testlinkUrl, apikey, projectname, testplanName, testcaseName, status, notes)
+	void testlinkUpdateResults(String projectname, String testplanName, String testcaseName, String buildName, String status, String notes) {
+		integration.testlinkUpdateResults(projectname, testplanName, testcaseName, buildName, status, notes)
 	}
 
 	/* ------------------------------------------------------------------------- */
@@ -202,9 +218,7 @@ public class CoedotzMagic {
 	 * <b>hitApi</b>
 	 * digunakan untuk melakukan pemanggilan API dengan data
 	 *
-	 * <br><br>
-	 *
-	 * @param pathApi
+	 * @param apiPath
 	 * @since 1.0
 	 */
 	void hitApi(String apiPath) {
@@ -215,13 +229,13 @@ public class CoedotzMagic {
 	 * <b>hitApiWithData</b>
 	 * digunakan untuk melakukan pemanggilan API dengan data
 	 *
-	 * <br><br>
-	 *
-	 * @param pathApi
+	 * @param apiPath
+	 * @param dataMap
+	 * 
 	 * @since 1.0
 	 */
-	void hitApiWithData(String apiPath) {
-		webservices.hitApiWithData(apiPath)
+	void hitApiWithData(String apiPath, Map<String, Object> dataMap) {
+		webservices.hitApiWithData(apiPath, dataMap)
 	}
 
 	/**
@@ -229,9 +243,8 @@ public class CoedotzMagic {
 	 * digunakan untuk membantu membuat tab baru 
 	 * dengan url yang ditentukan
 	 * 
-	 * <br><br>
-	 * 
-	 * Parameter masukannya yaitu url
+	 * @param url
+	 * @since 1.0
 	 */
 	void createNewTab(String url) {
 		util.createNewTab(url)
@@ -241,9 +254,10 @@ public class CoedotzMagic {
 	 * <b>takeScreenshot()</b>
 	 * digunakan untuk melakukan screenshot
 	 * 
-	 * <br><br>
-	 *
-	 * Parameter masukannya yaitu folderName & title
+	 * @param folderName
+	 * @param fullpage
+	 * 
+	 * @since 1.0
 	 */
 	void takeScreenshot(String folderName, boolean fullpage) {
 		util.takeScreenshot(folderName, fullpage)
