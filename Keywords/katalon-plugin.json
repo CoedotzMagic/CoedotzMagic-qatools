@@ -5,5 +5,46 @@
     "id.coedotz.QAJWorkflow.coedotzmagic.util.JogetHelper", 
     "id.coedotz.QAJWorkflow.coedotzmagic.util.KeysTyping", 
     "id.coedotz.QAJWorkflow.coedotzmagic.util.Util", 
-    "id.coedotz.QAJWorkflow.coedotzmagic.util.WebServices"]
+    "id.coedotz.QAJWorkflow.coedotzmagic.util.WebServices"
+],
+"configuration": {
+   "settingId": "id.coedotz.QAJWorkflow.coedotzmagic",
+   "settingPage": {
+      "name": "CoedotzMagic",
+      "components": [
+         {
+            "key": "",
+            "type": "label",
+            "label": "Thankyou for using CoedotzMagic.\nI think everyones can be magician, this library make easier to automation Joget Workflow Apps or Another Apps.\n\n"
+         },
+         {
+            "key": "",
+            "type": "label",
+            "label": "_____________________\n\nTestlink Configuration :\n\n"
+         },
+         {
+            "key": "testlinkKey",
+            "type": "text",
+            "label": "Testlink Key",
+            "defaultValue": ""
+         },
+         {
+            "key": "teslinkUrl",
+            "type": "text",
+            "label": "Testlink Url",
+            "defaultValue": ""
+         },
+         {
+            "key": "",
+            "type": "label",
+            "label": "_____________________"
+         },
+         {
+            "key": "lblVer",
+            "type": "label",
+            "label": "\nCoedotzMagic - v1.0 - 2024"
+         }
+      ]
+   }
+}
 }
