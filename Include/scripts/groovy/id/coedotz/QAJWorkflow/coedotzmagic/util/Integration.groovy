@@ -42,6 +42,12 @@ import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.JavascriptExecutor
 
+import com.kms.katalon.core.setting.BundleSettingStore
+import org.apache.commons.lang3.StringUtils
+
+import testlink.api.java.client.TestLinkAPIClient
+import testlink.api.java.client.TestLinkAPIException
+
 
 /*
  * Created by : Arief Wardhana
@@ -51,82 +57,48 @@ import org.openqa.selenium.JavascriptExecutor
 
 public class Integration {
 
+	static BundleSettingStore bundleSetting
+	static String TESTLINK_KEY
+	static String TESTLINK_URI
+
+	static {
+		try {
+			bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'id.coedotz.QAJWorkflow.coedotzmagic', true)
+			TESTLINK_KEY = bundleSetting.getString('testlinkKey', '')
+			if (StringUtils.isBlank(TESTLINK_KEY)) {
+				KeywordUtil.logInfo("Testlink's Key is missing.")
+				throw new IllegalStateException("Testlink's Key is missing.")
+			}
+			TESTLINK_URI = bundleSetting.getString('testlinkUrl', '')
+			if (StringUtils.isBlank(TESTLINK_URI)) {
+				KeywordUtil.logInfo("Testlink Url is missing.")
+				throw new IllegalStateException("Testlink Url is missing.")
+			}
+		} catch (Exception e) {
+			e.printStackTrace()
+			throw e
+		}
+	}
+
 	/**
-	 * <b>testlinkIntegration()</b>
+	 * <b>testlinkUpdateResults()</b>
 	 * digunakan untuk melakukan integrasi ke Testlink
 	 * dengan cara menjalankan dan menghasilkan report dam reportnya dilaporkan ke Testlink
 	 *
 	 * <br><br>
 	 *
-	 * @param masukanya testlinkUrl, apikey, projectname, testplanName, testcaseName, status & notes
-	 * - status : p (Passed), f (Failed) & a (Abort)
-	 * - Notes : Catatan Pengujian
+	 * @param projectName
+	 * @param testplanName
+	 * @param testcaseName
+	 * @param buildName
+	 * @param execNotes
+	 * @param result
+	 * 
 	 * @since 1.0
 	 */
-	void testlinkIntegration(String testlinkUrl, String apikey, String projectname, String testplanName, String testcaseName, String status, String notes) {
-		// TestLink API configuration
-		def testLinkUrl = testlinkUrl
-		def apiKey = apikey
-		def projectName = projectname
-		def testPlanName = testplanName
-		def testCaseName = testcaseName
-
-		def httpClient = HttpClients.createDefault()
-
-		try {
-			def url = new URL(testLinkUrl)
-			def uri = new URI(url.protocol, url.userInfo, url.host, url.port, url.path, url.query, url.ref)
-			def post = new HttpPost(uri)
-
-			def xmlRequest = """
-               <methodCall>
-                   <methodName>tl.reportTCResult</methodName>
-                   <params>
-                       <param>
-                           <value>
-                               <string>${apiKey}</string>
-                           </value>
-                       </param>
-                       <param>
-                           <value>
-                               <string>${testPlanName}</string>
-                           </value>
-                       </param>
-                       <param>
-                           <value>
-                               <string>${projectName}</string>
-                           </value>
-                       </param>
-                       <param>
-                           <value>
-                               <string>${testCaseName}</string>
-                           </value>
-                       </param>
-                       <param>
-                           <value>
-                               <string>${status}</string>
-                           </value>
-                       </param>
-                       <param>
-                           <value>
-                               <string>${notes}</string>
-                           </value>
-                       </param>
-                   </params>
-               </methodCall>
-           """
-
-			post.setEntity(new StringEntity(xmlRequest))
-			post.setHeader("Content-type", "text/xml")
-
-			def response = httpClient.execute(post)
-			def responseText = new BufferedReader(new InputStreamReader(response.getEntity().getContent())).readLine()
-
-			// Parse response if needed
-			def jsonResponse = new JsonSlurper().parseText(responseText)
-		} finally {
-			httpClient.close()
-		}
+	static testlinkUpdateResults(String projectname, String testplanName, String testcaseName,  String buildName, String execNotes, String results) throws TestLinkAPIException{
+		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URI)
+		testLink.reportTestCaseResult(projectname, testplanName, testcaseName, buildName, execNotes, results)
 	}
 
 	/* ------------------------------------------------------------------------- */
