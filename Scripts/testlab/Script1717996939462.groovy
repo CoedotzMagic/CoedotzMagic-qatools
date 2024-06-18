@@ -17,4 +17,14 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WebUI.setText(findTestObject, CustomKeywords.'id.coedotz.coedotzmagic.CoedotzMagic.extractText'(null, null))
+import id.coedotz.QAJWorkflow.coedotzmagic.util.Util
+
+def u = new Util()
+
+u.startRecording()
+
+WebUI.openBrowser('')
+WebUI.maximizeWindow()
+WebUI.closeBrowser()
+
+u.stopRecording()

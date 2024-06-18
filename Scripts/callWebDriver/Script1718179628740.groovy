@@ -17,5 +17,22 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+import testlink.api.java.client.TestLinkAPIClient
+import testlink.api.java.client.TestLinkAPIException
+import testlink.api.java.client.TestLinkAPIResults
+
+String projectName = 'KatalonAutomation'
+String testPlanName = 'AutomationTestPlan'
+String testCaseName = 'KA-56'
+
+TestLinkAPIClient testLink = new TestLinkAPIClient('1af4731c11a9f89513207b44a48258dd', 'https://testlink.itasoft.co.id/lib/api/xmlrpc/v1/xmlrpc.php')
+
+'open browser'
 WebUI.openBrowser('')
+
+'max windows'
 WebUI.maximizeWindow()
+
+testLink.reportTestCaseResult(projectName, testPlanName, testCaseName, 'SprintBuild', 'oke coe', TestLinkAPIResults.TEST_PASSED)
+
+WebUI.closeBrowser()

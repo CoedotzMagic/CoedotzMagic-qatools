@@ -4,5 +4,6 @@
    <name>callWebDriver</name>
    <tag></tag>
    <comment></comment>
+   <recordOption>OTHER</recordOption>
    <testCaseGuid>ac7c856c-0567-4bc9-b818-ee46c092d6c7</testCaseGuid>
 </TestCaseEntity>
