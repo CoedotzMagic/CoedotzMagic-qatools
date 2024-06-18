@@ -1,8 +1,13 @@
 .gradle
+.cache
+.settings
+.github
 
 bin
-
+Build
 Reports
+Screenshot
+ScreenRecording
 
 Libs
 
