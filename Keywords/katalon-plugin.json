@@ -40,11 +40,6 @@
             "label": "_____________________"
          },
          {
-            "key": "",
-            "type": "label",
-            "label": "<a href=\"https://coedotzmagic.com\">Documentation CoedotzMagic</a>"
-         },
-         {
             "key": "lblVer",
             "type": "label",
             "label": "\nCoedotzMagic - v1.0 - 2024"
