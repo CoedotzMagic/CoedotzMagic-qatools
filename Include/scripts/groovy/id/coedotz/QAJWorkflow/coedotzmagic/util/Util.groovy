@@ -42,6 +42,22 @@ import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.JavascriptExecutor
 
+import static org.monte.media.AudioFormatKeys.*
+import static org.monte.media.VideoFormatKeys.*
+import static org.monte.media.FormatKeys.MediaType.*
+import org.monte.media.math.Rational
+import org.monte.media.Format
+import org.monte.media.FormatKeys.MediaType
+import org.monte.screenrecorder.ScreenRecorder
+
+import java.awt.Dimension
+import java.awt.GraphicsConfiguration
+import java.awt.GraphicsEnvironment
+import java.awt.Rectangle
+
+import com.kms.katalon.core.setting.BundleSettingStore
+import org.apache.commons.lang3.StringUtils
+
 
 /*
  * Created by : Arief Wardhana
@@ -50,6 +66,14 @@ import org.openqa.selenium.JavascriptExecutor
  */
 
 public class Util {
+
+	//static BundleSettingStore bundleSetting
+	//static String FORMATMEDIA
+
+	public static final String USER_DIR = "user.dir"
+	public static final String SCREENSRECORD_FOLDER = "ScreenRecording"
+
+	private ScreenRecorder screenRecorder
 
 	/**
 	 * <b>extractTextFromList()</b>
@@ -303,6 +327,86 @@ public class Util {
 
 		// kembalikan nilai result
 		return result
+	}
+
+	/* ------------------------------------------------------------------------- */
+
+	/**
+	 * <b>startRecording()</b>
+	 * digunakan untuk memulai Screen Recording
+	 *
+	 * @since 1.0
+	 */
+	public void startRecording() throws Exception {
+		File file = new File(System.getProperty(USER_DIR) + File.separator + SCREENSRECORD_FOLDER)
+
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize()
+		int width = screenSize.width
+		int height = screenSize.height
+
+		Rectangle captureSize = new Rectangle(0, 0, width, height);
+		GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration()
+
+		this.screenRecorder = new ScreenRecordingHelper(gc, captureSize,
+			new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_QUICKTIME),
+			new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_QUICKTIME_JPEG,
+					CompressorNameKey, ENCODING_QUICKTIME_JPEG,
+					DepthKey, 24, FrameRateKey, Rational.valueOf(15),
+					QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60),
+			new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black",
+					FrameRateKey, Rational.valueOf(30)),
+			null, file, "MyTesting")
+		this.screenRecorder.start()
+		
+		
+		//bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'id.coedotz.QAJWorkflow.coedotzmagic', true)
+		//FORMATMEDIA = bundleSetting.getString('formatMedia', '')
+		
+//		Format fileFormat
+//		Format screenFormat
+//
+//		switch (FORMATMEDIA.toLowerCase()) {
+//			case 'mp4':
+//				fileFormat = new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_QUICKTIME)
+//				screenFormat = new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_QUICKTIME_JPEG,
+//						CompressorNameKey, ENCODING_QUICKTIME_JPEG, DepthKey, 24, FrameRateKey, Rational.valueOf(15),
+//						QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60)
+//				break
+//			case 'avi':
+//				fileFormat = new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_AVI)
+//				screenFormat = new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
+//						CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, DepthKey, 24, FrameRateKey, Rational.valueOf(15),
+//						QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60)
+//				break
+//			case 'mov':
+//				fileFormat = new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_QUICKTIME)
+//				screenFormat = new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_QUICKTIME_JPEG,
+//						CompressorNameKey, ENCODING_QUICKTIME_JPEG, DepthKey, 24, FrameRateKey, Rational.valueOf(15),
+//						QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60)
+//				break
+//			case '3gp':
+//				fileFormat = new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, "video/3gpp")
+//				screenFormat = new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
+//						CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, DepthKey, 24, FrameRateKey, Rational.valueOf(15),
+//						QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60)
+//				break
+//			default:
+//				throw new IllegalArgumentException("Unsupported format: " + FORMATMEDIA)
+//		}
+//
+//		this.screenRecorder = new ScreenRecordingHelper(gc, captureSize, fileFormat, screenFormat,
+//				new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black", FrameRateKey, Rational.valueOf(30)),
+//				null, file, "MyTesting")
+	}
+
+	/**
+	 * <b>stopRecording()</b>
+	 * digunakan untuk menghentikan Screen Recording
+	 *
+	 * @since 1.0
+	 */
+	public void stopRecording() throws Exception {
+		this.screenRecorder.stop()
 	}
 
 	/* ------------------------------------------------------------------------- */

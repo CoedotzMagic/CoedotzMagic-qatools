@@ -262,4 +262,24 @@ public class CoedotzMagic {
 	void takeScreenshot(String folderName, boolean fullpage) {
 		util.takeScreenshot(folderName, fullpage)
 	}
+	
+	/**
+	 * <b>startScreenRecording()</b>
+	 * digunakan untuk memulai Screen Recording
+	 *
+	 * @since 1.0
+	 */
+	void startScreenRecording() {
+		util.startRecording()
+	}
+	
+	/**
+	 * <b>stopScreenRecording()</b>
+	 * digunakan untuk menghentikan Screen Recording
+	 *
+	 * @since 1.0
+	 */
+	void stopScreenRecording() {
+		util.stopRecording()
+	}
 }
