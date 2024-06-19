@@ -29,7 +29,7 @@
             "defaultValue": ""
          },
          {
-            "key": "teslinkUrl",
+            "key": "testlinkUrl",
             "type": "text",
             "label": "Testlink Url",
             "defaultValue": ""
