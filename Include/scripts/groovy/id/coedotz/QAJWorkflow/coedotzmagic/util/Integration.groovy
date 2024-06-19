@@ -64,12 +64,12 @@ public class Integration {
 	static {
 		try {
 			bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'id.coedotz.QAJWorkflow.coedotzmagic', true)
-			TESTLINK_KEY = bundleSetting.getString('testlinkKey', '')
+			TESTLINK_KEY = bundleSetting.getString('testlinkKey', 'yeah')
 			if (StringUtils.isBlank(TESTLINK_KEY)) {
 				KeywordUtil.logInfo("Testlink's Key is missing.")
 				throw new IllegalStateException("Testlink's Key is missing.")
 			}
-			TESTLINK_URI = bundleSetting.getString('testlinkUrl', '')
+			TESTLINK_URI = bundleSetting.getString('testlinkUrl', 'uy')
 			if (StringUtils.isBlank(TESTLINK_URI)) {
 				KeywordUtil.logInfo("Testlink Url is missing.")
 				throw new IllegalStateException("Testlink Url is missing.")

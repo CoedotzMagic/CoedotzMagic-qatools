@@ -6,6 +6,9 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 
 import id.coedotz.QAJWorkflow.coedotzmagic.util.*
 
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
+
 
 /*
  * Created by : Arief Wardhana
@@ -15,6 +18,8 @@ import id.coedotz.QAJWorkflow.coedotzmagic.util.*
 
 public class CoedotzMagic {
 
+	private static final Logger LOG = LogManager.getLogger()
+	
 	def util = new Util()
 	def keys = new KeysTyping()
 	def integration = new Integration()
@@ -269,8 +274,12 @@ public class CoedotzMagic {
 	 *
 	 * @since 1.0
 	 */
-	void startScreenRecording() {
-		util.startRecording()
+	public void startScreenRecording() {
+		try {
+			ScreenRecordingHelper.startRecording()
+		} catch (final Exception e) {
+			LOG.error(e)
+		}
 	}
 
 	/**
@@ -279,7 +288,11 @@ public class CoedotzMagic {
 	 *
 	 * @since 1.0
 	 */
-	void stopScreenRecording() {
-		util.stopRecording()
+	public void stopScreenRecording() {
+		try {
+			ScreenRecordingHelper.stopRecording()
+		} catch (final Exception e) {
+			LOG.error(e)
+		}
 	}
 }

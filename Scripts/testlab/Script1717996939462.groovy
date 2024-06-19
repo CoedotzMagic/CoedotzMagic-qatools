@@ -17,14 +17,14 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-import id.coedotz.QAJWorkflow.coedotzmagic.util.Util
+import id.coedotz.QAJWorkflow.coedotzmagic.CoedotzMagic
 
-def u = new Util()
+def u = new CoedotzMagic()
 
-u.startRecording()
+u.startScreenRecording()
 
 WebUI.openBrowser('')
 WebUI.maximizeWindow()
 WebUI.closeBrowser()
 
-u.stopRecording()
+u.stopScreenRecording()
