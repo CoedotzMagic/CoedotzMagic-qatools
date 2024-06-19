@@ -197,7 +197,7 @@ public class CoedotzMagic {
 	/**
 	 * <b>testlinkUpdateResults()</b>
 	 * digunakan untuk melakukan integrasi ke Testlink
-	 * dengan cara menjalankan dan menghasilkan report dam reportnya dilaporkan ke Testlink
+	 * dengan cara menjalankan dan menghasilkan report dan reportnya dilaporkan ke Testlink
 	 *
 	 * @param projectName
 	 * @param testplanName
@@ -216,7 +216,7 @@ public class CoedotzMagic {
 
 	/**
 	 * <b>hitApi</b>
-	 * digunakan untuk melakukan pemanggilan API dengan data
+	 * digunakan untuk melakukan pemanggilan API tanpa data
 	 *
 	 * @param apiPath
 	 * @since 1.0

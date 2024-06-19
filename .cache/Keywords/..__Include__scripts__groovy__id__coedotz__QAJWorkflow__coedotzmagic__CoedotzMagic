@@ -1,10 +1,10 @@
 {
-  "keywordFileContentHash": "1805C6F53A960AE3E8F1E7870D855C27",
+  "keywordFileContentHash": "A2A95CA757AEA7856F037DD09B2F0A82",
   "keywordClasses": [
     {
       "name": "id.coedotz.QAJWorkflow.coedotzmagic.CoedotzMagic",
       "keywordMethods": []
     }
   ],
-  "javadocParsed": true
+  "javadocParsed": false
 }
