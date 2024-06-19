@@ -241,18 +241,32 @@ public class Util {
 	 * @since 1.0
 	 */
 	void takeScreenshot(String folderName, boolean fullpage) {
+		'Inisialisasi String'
+		String nameMasterTestcase
+		String targetFolder
+		
 		'Lokasi folder screenshot'
 		String pathFolderScreenshot = RunConfiguration.getProjectDir() + File.separator + "Screenshot"
 
-		'Nama Target Folder'
-		String nameMasterTestcase = pathFolderScreenshot + File.separator + folderName
-
-		'Target Folder'
-		String targetFolder = folderName + File.separator
-
 		'Membuat direktori, jika direktori belum dibuat'
 		new File(pathFolderScreenshot).mkdirs()
-		new File(nameMasterTestcase).mkdirs()
+		
+		'Cek jika folderName nya kosong'
+		if (folderName != null && !folderName.equalsIgnoreCase("")) {
+			
+			'Nama Target Folder'
+			nameMasterTestcase = pathFolderScreenshot + File.separator + folderName
+	
+			'Target Folder'
+			targetFolder = folderName + File.separator
+			
+			'Membuat direktori, jika direktori belum dibuat'
+			new File(nameMasterTestcase).mkdirs()
+			
+		} else {
+			'Target Folder'
+			targetFolder = pathFolderScreenshot + File.separator
+		}
 
 		'Membuat timestamp agar bisa mutiple screenshot dan tidak overwrite file'
 		String timestamp = performGetDateTime()
