@@ -18,11 +18,19 @@ import org.apache.logging.log4j.Logger
 
 public class CoedotzMagic {
 
+	String TESTLINK_TEST_PASSED = "p"
+	String TESTLINK_TEST_BLOCKED = "b"
+	String TESTLINK_TEST_FAILED = "f"
+	String TESTLINK_TEST_WRONG = "w"
+	String TESTLINK_TEST_DEPARTED = "d"
+	String TESTLINK_TEST_SET_HIGH = "3"
+	String TESTLINK_TEST_SET_MEDIUM = "2"
+	String TESTLINK_TEST_SET_LOW = "1"
+
 	private static final Logger LOG = LogManager.getLogger()
-	
+
 	def util = new Util()
 	def keys = new KeysTyping()
-	def integration = new Integration()
 	def webservices = new WebServices()
 	def jogethelper = new JogetHelper()
 
@@ -213,8 +221,8 @@ public class CoedotzMagic {
 	 * 
 	 * @since 1.0
 	 */
-	void testlinkUpdateResults(String projectname, String testplanName, String testcaseName, String buildName, String status, String notes) {
-		integration.testlinkUpdateResults(projectname, testplanName, testcaseName, buildName, status, notes)
+	void testlinkUpdateResults(String projectname, String testplanName, String testcaseName, String buildName, String notes, String status) {
+		Integration.testlinkUpdateResults(projectname, testplanName, testcaseName, buildName, notes, status)
 	}
 
 	/* ------------------------------------------------------------------------- */
