@@ -21,18 +21,26 @@ import testlink.api.java.client.TestLinkAPIClient
 import testlink.api.java.client.TestLinkAPIException
 import testlink.api.java.client.TestLinkAPIResults
 
+import id.coedotz.QAJWorkflow.coedotzmagic.CoedotzMagic
+import id.coedotz.QAJWorkflow.coedotzmagic.util.*
+
+import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep
+import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus
+
 String projectName = 'KatalonAutomation'
 String testPlanName = 'AutomationTestPlan'
 String testCaseName = 'KA-56'
 
-TestLinkAPIClient testLink = new TestLinkAPIClient('1af4731c11a9f89513207b44a48258dd', 'https://testlink.itasoft.co.id/lib/api/xmlrpc/v1/xmlrpc.php')
+def c = new CoedotzMagic()
+def testLink = new TestLinkIntegration()
 
-'open browser'
-WebUI.openBrowser('')
+List<TestCaseStep> steps = [
+        new TestCaseStep(null, null, "Step 1: Open Browser", c.TESTLINK_TEST_PASSED, null, null, null)
+    ]
+//testLink.reportTestCaseResult(projectName, testPlanName, testCaseName, 'SprintBuild', 'coedotz', ExecutionStatus.PASSED, "Opened browser", steps)
 
-'max windows'
-WebUI.maximizeWindow()
 
-testLink.reportTestCaseResult(projectName, testPlanName, testCaseName, 'SprintBuild', 'oke coe', TestLinkAPIResults.TEST_PASSED)
+//TestLinkAPIClient testLink = new TestLinkAPIClient('1af4731c11a9f89513207b44a48258dd', 'https://testlink.itasoft.co.id/lib/api/xmlrpc/v1/xmlrpc.php')
 
-WebUI.closeBrowser()
+//testLink.reportTestCaseResult(projectName, testPlanName, testCaseName, 'SprintBuild', 'oke coe via coedotzmagic-1', c.TESTLINK_TEST_PASSED)
