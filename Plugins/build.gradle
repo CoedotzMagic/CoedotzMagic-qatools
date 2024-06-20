@@ -41,7 +41,6 @@ build {
   dependsOn generateJavadocs
 }
 
-// Task to package Javadocs into a JAR
 task javadocJar(type: Jar, dependsOn: generateJavadocs) {
   classifier = 'javadoc'
   from generateJavadocs.destinationDir
@@ -52,4 +51,5 @@ artifacts {
 }
 
 dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
