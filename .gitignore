@@ -2,6 +2,7 @@
 .cache
 .settings
 .github
+.
 
 bin
 Build
