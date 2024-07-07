@@ -1,14 +1,14 @@
 {
     "keywords": [
-    "id.coedotz.QAJWorkflow.coedotzmagic.CoedotzMagic", 
-    "id.coedotz.QAJWorkflow.coedotzmagic.util.Integration", 
-    "id.coedotz.QAJWorkflow.coedotzmagic.util.JogetHelper", 
-    "id.coedotz.QAJWorkflow.coedotzmagic.util.KeysTyping", 
-    "id.coedotz.QAJWorkflow.coedotzmagic.util.Util", 
-    "id.coedotz.QAJWorkflow.coedotzmagic.util.WebServices"
+    "com.coedotzmagic.qatools.CoedotzMagic", 
+    "com.coedotzmagic.qatools.util.Integration", 
+    "com.coedotzmagic.qatools.util.JogetHelper", 
+    "com.coedotzmagic.qatools.util.KeysTyping", 
+    "com.coedotzmagic.qatools.util.Util", 
+    "com.coedotzmagic.qatools.util.WebServices"
 ],
 "configuration": {
-   "settingId": "id.coedotz.QAJWorkflow.coedotzmagic",
+   "settingId": "com.coedotzmagic.qatools",
    "settingPage": {
       "name": "CoedotzMagic",
       "components": [
@@ -42,7 +42,7 @@
          {
             "key": "lblVer",
             "type": "label",
-            "label": "\nCoedotzMagic - v1.0 - 2024"
+            "label": "\nCoedotzMagic - v1.1 - 2024"
          }
       ]
    }
