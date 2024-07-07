@@ -17,7 +17,5 @@ output
 !output/.gitkeep
 build
 
-.classpath
-
 .project
 .DS_Store
