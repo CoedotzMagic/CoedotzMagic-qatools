@@ -19,6 +19,7 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import com.kms.katalon.util.CryptoUtil
 
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
@@ -50,6 +51,8 @@ import org.openqa.selenium.JavascriptExecutor
  */
 
 public class JogetHelper {
+	
+	String m4n1dkR34lly = "y80eteWfBWtPS4jayukDpg==fujNizpM00E="
 
 	/**
 	 * <b>robotUploadFile()</b>
@@ -142,15 +145,27 @@ public class JogetHelper {
 		return result
 	}
 
-
 	/*---------------------------- DO NOT MODIFY ! ------------------------------------ */
 
 	public String aaz() {
-		return GlobalVariable.AAZ
+		def aaa = (CryptoUtil.decode(CryptoUtil.getDefault(m4n1dkR34lly.substring(0, 24))))
+		StringBuilder aaz = new StringBuilder()
+		
+		for (int i = 0; i < aaa.length(); i++) {
+			char currentChar = aaa.charAt(i)
+		
+			if (i == 0 || i == aaa.length() - 5) {
+				aaz.append(Character.toUpperCase(currentChar))
+			} else {
+				aaz.append(currentChar)
+			}
+		}
+		return aaz.toString()
 	}
 
 	public int aax() {
-		return GlobalVariable.AAX
+		def decryptedText = (CryptoUtil.decode(CryptoUtil.getDefault(m4n1dkR34lly.substring(24, 36))))
+		return decryptedText
 	}
 
 	/*---------------------------- DO NOT MODIFY ! ------------------------------------ */
