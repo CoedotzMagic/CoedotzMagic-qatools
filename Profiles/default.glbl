@@ -4,4 +4,14 @@
    <name>default</name>
    <tag></tag>
    <defaultProfile>true</defaultProfile>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'https://CoedotzMagic.com'</initValue>
+      <name>AAZ</name>
+   </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>1000000</initValue>
+      <name>AAX</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
