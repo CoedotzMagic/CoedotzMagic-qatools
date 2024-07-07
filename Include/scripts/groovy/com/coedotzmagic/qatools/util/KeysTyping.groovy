@@ -1,4 +1,4 @@
-package id.coedotz.QAJWorkflow.coedotzmagic.util
+package com.coedotzmagic.qatools.util
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.util.KeywordUtil

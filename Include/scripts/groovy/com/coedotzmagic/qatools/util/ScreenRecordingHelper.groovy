@@ -1,4 +1,4 @@
-package id.coedotz.QAJWorkflow.coedotzmagic.util
+package com.coedotzmagic.qatools.util
 
 import java.awt.AWTException
 import java.awt.GraphicsConfiguration
@@ -30,7 +30,7 @@ import org.apache.logging.log4j.Logger
 class ScreenRecordingHelper extends ScreenRecorder {
 
 	private static final Logger LOG = LogManager.getLogger()
-	
+
 	//static BundleSettingStore bundleSetting
 	//static String FORMATMEDIA
 
@@ -58,9 +58,9 @@ class ScreenRecordingHelper extends ScreenRecorder {
 
 		return new File(movieFolder, name + "-" + util.performGetDateTime() + "." + Registry.getInstance().getExtension(fileFormat));
 	}
-	
+
 	/* ------------------------------------------------------------------------- */
-	
+
 	/**
 	 * <b>startRecording()</b>
 	 * digunakan untuk memulai Screen Recording
@@ -79,15 +79,15 @@ class ScreenRecordingHelper extends ScreenRecorder {
 
 		try {
 			screenRecorder = new ScreenRecordingHelper(gc, captureSize,
-				new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_QUICKTIME),
-				new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_QUICKTIME_JPEG,
-				CompressorNameKey, ENCODING_QUICKTIME_JPEG,
-				DepthKey, 24, FrameRateKey, Rational.valueOf(15),
-				QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60),
-				new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black",
-				FrameRateKey, Rational.valueOf(30)),
-				null, file, "MyTesting")
-			
+					new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_QUICKTIME),
+					new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_QUICKTIME_JPEG,
+					CompressorNameKey, ENCODING_QUICKTIME_JPEG,
+					DepthKey, 24, FrameRateKey, Rational.valueOf(15),
+					QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60),
+					new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black",
+					FrameRateKey, Rational.valueOf(30)),
+					null, file, "MyTesting")
+
 			screenRecorder.start()
 		} catch (final IOException | AWTException e) {
 			LOG.error(e)

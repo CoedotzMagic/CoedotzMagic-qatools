@@ -1,10 +1,10 @@
-package id.coedotz.QAJWorkflow.coedotzmagic
+package com.coedotzmagic.qatools
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.testobject.TestObject as TestObject
 
-import id.coedotz.QAJWorkflow.coedotzmagic.util.*
+import com.coedotzmagic.qatools.util.*
 
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger

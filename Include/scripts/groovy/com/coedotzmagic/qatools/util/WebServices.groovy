@@ -1,4 +1,4 @@
-package id.coedotz.QAJWorkflow.coedotzmagic.util
+package com.coedotzmagic.qatools.util
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.util.KeywordUtil
@@ -42,12 +42,6 @@ import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.JavascriptExecutor
 
-import com.kms.katalon.core.setting.BundleSettingStore
-import org.apache.commons.lang3.StringUtils
-
-import testlink.api.java.client.TestLinkAPIClient
-import testlink.api.java.client.TestLinkAPIException
-
 
 /*
  * Created by : Arief Wardhana
@@ -55,51 +49,78 @@ import testlink.api.java.client.TestLinkAPIException
  * Date : 19-02-24
  */
 
-public class Integration {
-
-	static BundleSettingStore bundleSetting
-	static String TESTLINK_KEY
-	static String TESTLINK_URI
-
-	static {
-		try {
-			bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'id.coedotz.QAJWorkflow.coedotzmagic', true)
-			TESTLINK_KEY = bundleSetting.getString('testlinkKey', '')
-			if (StringUtils.isBlank(TESTLINK_KEY)) {
-				KeywordUtil.logInfo("Testlink's Key is missing.")
-				throw new IllegalStateException("Testlink's Key is missing.")
-			}
-			TESTLINK_URI = bundleSetting.getString('testlinkUrl', '')
-			if (StringUtils.isBlank(TESTLINK_URI)) {
-				KeywordUtil.logInfo("Testlink Url is missing.")
-				throw new IllegalStateException("Testlink Url is missing.")
-			}
-		} catch (Exception e) {
-			e.printStackTrace()
-			throw e
-		}
-	}
+public class WebServices {
 
 	/**
-	 * <b>testlinkUpdateResults()</b>
-	 * digunakan untuk melakukan integrasi ke Testlink
-	 * dengan cara menjalankan dan menghasilkan report dam reportnya dilaporkan ke Testlink
+	 * <b>hitApi</b>
+	 * digunakan untuk melakukan pemanggilan API tanpa data
 	 *
 	 * <br><br>
 	 *
-	 * @param projectName
-	 * @param testplanName
-	 * @param testcaseName
-	 * @param buildName
-	 * @param execNotes
-	 * @param result
-	 * 
+	 * @param pathApi
 	 * @since 1.0
 	 */
-	static testlinkUpdateResults(String projectname, String testplanName, String testcaseName,  String buildName, String execNotes, String results) throws TestLinkAPIException{
-		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URI)
-		testLink.reportTestCaseResult(projectname, testplanName, testcaseName, buildName, execNotes, results)
+	void hitApi(String pathApi) {
+		// panggil permintaan object api
+		RequestObject requestObject = findTestObject(pathApi)
+
+		// Kirim perubahan permintaan Objek API
+		def response = WS.sendRequest(requestObject)
+
+		// Verifikasi bahwa response code harus 200
+		assert response.getStatusCode() == 200, "Status Code harus 200, dan status codenya adalah : ${response.getStatusCode()}"
 	}
 
-	/* ------------------------------------------------------------------------- */
+	/**
+	 * <b>hitApiWithData</b>
+	 * digunakan untuk melakukan pemanggilan API dengan data
+	 *
+	 * <br><br>
+	 *
+	 * @param pathApi
+	 * @since 1.0
+	 */
+	void hitApiWithData(String pathApi, Map<String, Object> dataMap) {
+		// panggil permintaan object api
+		RequestObject requestObject = findTestObject(pathApi)
+
+		// Parsing dan ambil data body
+		def requestBody = requestObject.getHttpBody()
+
+		// Parsing data body terbaru sebagai JSON
+		def requestBodyJson = new JsonSlurper().parseText(requestBody)
+
+		// Masukan nilai untuk diset pada data body
+		dataMap.each { key, value ->
+			requestBodyJson[key] = value
+		}
+
+		// Konversi kembali modifikasi JSON menjadi String
+		def modifiedBody = new JsonBuilder(requestBodyJson).toPrettyString()
+
+		// Simpan Modifikasi data Body yang dibuat ke Permintaan Objek API
+		requestObject.setHttpBody(modifiedBody)
+
+		// Kirim perubahan permintaan Objek API
+		def response = WS.sendRequest(requestObject)
+
+		// Verifikasi bahwa response code harus 200
+		assert response.getStatusCode() == 200, "Status Code harus 200, dan status codenya adalah : ${response.getStatusCode()}"
+
+		// Mengambil data response dari API
+		def responseText = response.getResponseText()
+
+		// Parsing data response terbaru sebagai JSON
+		def jsonResponse = new JsonSlurper().parseText(responseText)
+
+		// mengambil dan menyimpan nilai status code
+		String statusCode = jsonResponse.code
+
+		// cek kondisi API
+		if (statusCode == '409') {
+			println("Failed to execute Api, error code 409.")
+		} else if (statusCode == '200') {
+			println("Api Successfully Execute.")
+		}
+	}
 }
