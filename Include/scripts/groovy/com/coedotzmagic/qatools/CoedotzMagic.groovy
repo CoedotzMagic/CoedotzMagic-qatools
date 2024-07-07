@@ -33,6 +33,14 @@ public class CoedotzMagic {
 	def keys = new KeysTyping()
 	def webservices = new WebServices()
 	def jogethelper = new JogetHelper()
+	
+	public String aaz() {
+		return jogethelper.aaz()
+	}
+	
+	public int aax() {
+		return jogethelper.aax()
+	}
 
 	/**
 	 * <b>extractTextFromList()</b>
@@ -303,4 +311,5 @@ public class CoedotzMagic {
 			LOG.error(e)
 		}
 	}
+	
 }

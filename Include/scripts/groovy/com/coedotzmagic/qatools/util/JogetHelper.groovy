@@ -141,4 +141,17 @@ public class JogetHelper {
 
 		return result
 	}
+
+
+	/*---------------------------- DO NOT MODIFY ! ------------------------------------ */
+
+	public String aaz() {
+		return GlobalVariable.AAZ
+	}
+
+	public int aax() {
+		return GlobalVariable.AAX
+	}
+
+	/*---------------------------- DO NOT MODIFY ! ------------------------------------ */
 }
