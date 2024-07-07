@@ -17,7 +17,7 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-import id.coedotz.QAJWorkflow.coedotzmagic.CoedotzMagic
+import com.coedotzmagic.qatools.CoedotzMagic
 
 def u = new CoedotzMagic()
 

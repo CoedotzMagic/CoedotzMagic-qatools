@@ -21,8 +21,8 @@ import testlink.api.java.client.TestLinkAPIClient
 import testlink.api.java.client.TestLinkAPIException
 import testlink.api.java.client.TestLinkAPIResults
 
-import id.coedotz.QAJWorkflow.coedotzmagic.CoedotzMagic
-import id.coedotz.QAJWorkflow.coedotzmagic.util.*
+import com.coedotzmagic.qatools.CoedotzMagic
+import com.coedotzmagic.qatools.util.*
 
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI
 import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep
