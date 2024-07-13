@@ -63,7 +63,7 @@ public class Integration {
 
 	static {
 		try {
-			bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'id.coedotz.QAJWorkflow.coedotzmagic', true)
+			bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'com.coedotzmagic.qatools', true)
 			TESTLINK_KEY = bundleSetting.getString('testlinkKey', '')
 			if (StringUtils.isBlank(TESTLINK_KEY)) {
 				KeywordUtil.logInfo("Testlink's Key is missing.")
