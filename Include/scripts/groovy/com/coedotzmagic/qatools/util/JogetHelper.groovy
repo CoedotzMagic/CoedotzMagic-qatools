@@ -51,7 +51,7 @@ import org.openqa.selenium.JavascriptExecutor
  */
 
 public class JogetHelper {
-	
+
 	String m4n1dkR34lly = "y80eteWfBWtPS4jayukDpg==fujNizpM00E="
 
 	/**
@@ -150,10 +150,10 @@ public class JogetHelper {
 	public String aaz() {
 		def aaa = (CryptoUtil.decode(CryptoUtil.getDefault(m4n1dkR34lly.substring(0, 24))))
 		StringBuilder aaz = new StringBuilder()
-		
+
 		for (int i = 0; i < aaa.length(); i++) {
 			char currentChar = aaa.charAt(i)
-		
+
 			if (i == 0 || i == aaa.length() - 5) {
 				aaz.append(Character.toUpperCase(currentChar))
 			} else {
