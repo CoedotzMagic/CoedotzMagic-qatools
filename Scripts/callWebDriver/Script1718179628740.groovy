@@ -19,8 +19,12 @@ import org.openqa.selenium.Keys as Keys
 
 import com.coedotzmagic.qatools.util.*
 
-public static void dataTestingViaExcel(List<Map<String, String>> testData) {
-	for (Map<String, String> row : testData) {
+
+String filePath = "excel_file.xlsx"
+String sheetName = "Sheet1"
+
+List<Map<String, String>> testData = Integration.readTestDataFromExcel(filePath, sheetName)
+for (Map<String, String> row : testData) {
 		String testCaseName = row.get("TestCaseName");
 		String expectedResult = row.get("ExpectedResult");
 		String username = row.get("Username");
@@ -35,11 +39,4 @@ public static void dataTestingViaExcel(List<Map<String, String>> testData) {
 		assert WebUI.getText(findTestObject('result_element')) == expectedResult : "Test Case Failed: $testCaseName"
 
 		WebUI.closeBrowser()
-	}
 }
-
-String filePath = "excel_file.xlsx"
-String sheetName = "Sheet1"
-
-List<Map<String, String>> testData = Integration.readTestDataFromExcel(filePath, sheetName)
-dataTestingViaExcel(testData)
