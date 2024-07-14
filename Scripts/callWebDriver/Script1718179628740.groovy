@@ -27,7 +27,7 @@ public static void dataTestingViaExcel(List<Map<String, String>> testData) {
 		String password = row.get("Password");
 
 		WebUI.openBrowser('')
-		WebUI.navigateToUrl('http://www.yourapp.com')
+		WebUI.navigateToUrl('https://coedotzmagic.com')
 		WebUI.setText(findTestObject('username_field'), username)
 		WebUI.setText(findTestObject('password_field'), password)
 		WebUI.click(findTestObject('login_button'))
