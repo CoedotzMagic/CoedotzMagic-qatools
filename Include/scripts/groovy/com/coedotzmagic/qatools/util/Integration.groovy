@@ -48,6 +48,14 @@ import org.apache.commons.lang3.StringUtils
 import testlink.api.java.client.TestLinkAPIClient
 import testlink.api.java.client.TestLinkAPIException
 
+import org.apache.poi.ss.usermodel.*
+import org.apache.poi.xssf.usermodel.XSSFWorkbook
+import java.io.FileInputStream
+import java.util.ArrayList
+import java.util.HashMap
+import java.util.List
+import java.util.Map
+
 
 /*
  * Created by : Arief Wardhana
@@ -99,6 +107,59 @@ public class Integration {
 	static testlinkUpdateResults(String projectname, String testplanName, String testcaseName,  String buildName, String execNotes, String results) throws TestLinkAPIException{
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URI)
 		testLink.reportTestCaseResult(projectname, testplanName, testcaseName, buildName, execNotes, results)
+	}
+
+	/* ------------------------------------------------------------------------- */
+	
+	/**
+	 * <b>readTestDataFromExcel</b>
+	 * digunakan untuk membaca data dan isi dari file excel
+	 * 
+	 * @param filePath
+	 * @param sheetName
+	 * 
+	 * @since 1.1
+	 */
+	public static List<Map<String, String>> readTestDataFromExcel(String filePath, String sheetName) {
+		try {
+			FileInputStream fis = new FileInputStream(new File(filePath))
+			Workbook workbook = new XSSFWorkbook(fis)
+			Sheet sheet = workbook.getSheet(sheetName)
+
+			int rowCount = sheet.getLastRowNum()
+			int colCount = sheet.getRow(0).getLastCellNum()
+
+			List<Map<String, String>> data = new ArrayList<>()
+
+			// Membaca header dari row pertama
+			Row headerRow = sheet.getRow(0)
+			String[] headers = new String[colCount]
+			for (int j = 0; j < colCount; j++) {
+				headers[j] = headerRow.getCell(j).toString().trim()
+			}
+
+			// Membaca data dari baris berikutnya
+			for (int i = 1; i <= rowCount; i++) {
+				Row dataRow = sheet.getRow(i)
+				Map<String, String> rowMap = new HashMap<>()
+
+				for (int j = 0; j < colCount; j++) {
+					String key = headers[j]
+					String value = dataRow.getCell(j).toString().trim()
+					rowMap.put(key, value)
+				}
+
+				data.add(rowMap)
+			}
+
+			workbook.close()
+			fis.close()
+
+			return data;
+		} catch (Exception e) {
+			e.printStackTrace()
+			return null
+		}
 	}
 
 	/* ------------------------------------------------------------------------- */
