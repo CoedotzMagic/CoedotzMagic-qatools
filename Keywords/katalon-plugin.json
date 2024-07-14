@@ -23,6 +23,12 @@
             "label": "_____________________\n\nTestlink Configuration :\n\n"
          },
          {
+            "key": "testlinkDevKey",
+            "type": "text",
+            "label": "Testlink Dev Key",
+            "defaultValue": ""
+         },
+         {
             "key": "testlinkKey",
             "type": "text",
             "label": "Testlink Key",
@@ -42,7 +48,7 @@
          {
             "key": "lblVer",
             "type": "label",
-            "label": "\nCoedotzMagic - v1.0 - 2024"
+            "label": "\nCoedotzMagic - v1.1 - 2024"
          }
       ]
    }

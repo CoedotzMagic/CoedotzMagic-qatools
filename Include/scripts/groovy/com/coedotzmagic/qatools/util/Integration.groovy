@@ -56,7 +56,6 @@ import java.util.HashMap
 import java.util.List
 import java.util.Map
 
-
 /*
  * Created by : Arief Wardhana
  * itasoft gitlab / github : @poncoe
@@ -67,11 +66,16 @@ public class Integration {
 
 	static BundleSettingStore bundleSetting
 	static String TESTLINK_KEY
+	static String TESTLINK_DEV_KEY
 	static String TESTLINK_URI
 
 	static {
 		try {
 			bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'com.coedotzmagic.qatools', true)
+			TESTLINK_DEV_KEY = bundleSetting.getString('testlinkDevKey', '')
+			if (StringUtils.isBlank(TESTLINK_DEV_KEY)) {
+				KeywordUtil.logInfo("Testlink's Dev Key is missing, some function may not work!.")
+			}
 			TESTLINK_KEY = bundleSetting.getString('testlinkKey', '')
 			if (StringUtils.isBlank(TESTLINK_KEY)) {
 				KeywordUtil.logInfo("Testlink's Key is missing.")
