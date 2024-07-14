@@ -17,14 +17,20 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+import testlink.api.java.client.TestLinkAPIClient
+import testlink.api.java.client.TestLinkAPIException
+import testlink.api.java.client.TestLinkAPIResults
 import com.coedotzmagic.qatools.CoedotzMagic
 
 def u = new CoedotzMagic()
 
-u.startScreenRecording()
+String projectName = 'KatalonAutomation'
+String testPlanName = 'AutomationTestPlan'
+String testCaseName = 'KA-56'
+String tlKey = '1af4731c11a9f89513207b44a48258dd'
+String tlUrl = 'https://testlink.itasoft.co.id/lib/api/xmlrpc/v1/xmlrpc.php'
 
-WebUI.openBrowser('')
-WebUI.maximizeWindow()
-WebUI.closeBrowser()
+def c = new CoedotzMagic()
 
-u.stopScreenRecording()
+TestLinkAPIClient testLink = new TestLinkAPIClient(tlKey, tlUrl)
+testLink.reportTestCaseResult(projectName, testPlanName, testCaseName, 'SprintBuild', 'oke coe via coedotzmagic-1', c.TESTLINK_TEST_PASSED)
