@@ -17,3 +17,29 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+import com.coedotzmagic.qatools.util.*
+
+public static void dataTestingViaExcel(List<Map<String, String>> testData) {
+	for (Map<String, String> row : testData) {
+		String testCaseName = row.get("TestCaseName");
+		String expectedResult = row.get("ExpectedResult");
+		String username = row.get("Username");
+		String password = row.get("Password");
+
+		WebUI.openBrowser('')
+		WebUI.navigateToUrl('http://www.yourapp.com')
+		WebUI.setText(findTestObject('username_field'), username)
+		WebUI.setText(findTestObject('password_field'), password)
+		WebUI.click(findTestObject('login_button'))
+
+		assert WebUI.getText(findTestObject('result_element')) == expectedResult : "Test Case Failed: $testCaseName"
+
+		WebUI.closeBrowser()
+	}
+}
+
+String filePath = "excel_file.xlsx"
+String sheetName = "Sheet1"
+
+List<Map<String, String>> testData = Integration.readTestDataFromExcel(filePath, sheetName)
+dataTestingViaExcel(testData)
