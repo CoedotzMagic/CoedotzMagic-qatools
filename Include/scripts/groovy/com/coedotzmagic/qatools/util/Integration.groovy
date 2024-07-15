@@ -126,7 +126,11 @@ public class Integration {
 	 */
 	public static List<Map<String, String>> readTestDataFromExcel(String filePath, String sheetName) {
 		try {
-			FileInputStream fis = new FileInputStream(new File(filePath))
+			String pathFolderTestdata = RunConfiguration.getProjectDir() + File.separator + "TestData"
+			new File(pathFolderTestdata).mkdirs()
+			String getFilePath = pathFolderTestdata + File.separator + filePath
+			
+			FileInputStream fis = new FileInputStream(new File(getFilePath))
 			Workbook workbook = new XSSFWorkbook(fis)
 			Sheet sheet = workbook.getSheet(sheetName)
 
