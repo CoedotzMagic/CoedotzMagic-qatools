@@ -124,6 +124,24 @@ public class Integration {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.createTestSuite(projectName, suiteName, description)
 	}
+	
+	/**
+	 * <b>testlinkCreateBuild()</b>
+	 * digunakan untuk melakukan pembuatan build di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param testplanName
+	 * @param buildName
+	 * @param buildNotes
+	 *
+	 * @since 1.1
+	 */
+	static testlinkCreateBuild(String projectName, String testplanName, String buildName, String buildNotes) throws TestLinkAPIException {
+		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
+		testLink.createBuild(projectName, testplanName, buildName, buildNotes)
+	}
 
 	/* ------------------------------------------------------------------------- */
 

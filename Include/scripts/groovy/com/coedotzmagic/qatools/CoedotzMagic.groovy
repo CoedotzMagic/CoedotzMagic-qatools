@@ -327,6 +327,23 @@ public class CoedotzMagic {
 	public void testlinkCreateTestSuite(String projectName, String suiteName, String description) {
 		Integration.testlinkCreateTestSuite(projectName, suiteName, description)
 	}
+	
+	/**
+	 * <b>testlinkCreateBuild()</b>
+	 * digunakan untuk melakukan pembuatan build di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param testplanName
+	 * @param buildName
+	 * @param buildNotes
+	 *
+	 * @since 1.1
+	 */
+	public void testlinkCreateBuild(String projectName, String testplanName, String buildName, String buildNotes) {
+		Integration.testlinkCreateBuild(projectName, testplanName, buildName, buildNotes)
+	}
 
 	/**
 	 * <b>readTestDataFromExcel()</b>

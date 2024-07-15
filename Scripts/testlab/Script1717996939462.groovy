@@ -35,5 +35,6 @@ String tlKey = '1af4731c11a9f89513207b44a48258dd'
 String tlUrl = 'https://testlink.itasoft.co.id/lib/api/xmlrpc/v1/xmlrpc.php'
 
 TestLinkAPIClient testLink = new TestLinkAPIClient(tlKey, tlUrl)
-testLink.createTestSuite(projectName, 'tsbaru-via-automation', 'test-via-katalon')
+//testLink.createBuild(projectName, testPlanName, 'CoedotzMagic', 'Create via CoedotzMagic Plugin Katalon')
+//testLink.createTestSuite(projectName, 'tsbaru-via-automation', 'test-via-katalon')
 //testLink.reportTestCaseResult(projectName, testPlanName, testCaseName, 'SprintBuild', 'oke coe via coedotzmagic-1', c.TESTLINK_TEST_PASSED)
