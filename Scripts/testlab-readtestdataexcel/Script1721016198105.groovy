@@ -17,6 +17,30 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-import com.coedotzmagic.qatools.util.*
+import com.coedotzmagic.qatools.CoedotzMagic
 
+def c = new CoedotzMagic()
 
+String filePath = "testingCoedotzMagic.xlsx"
+String sheetName = "Sheet1"
+
+WebUI.openBrowser('')
+WebUI.maximizeWindow()
+WebUI.navigateToUrl('http://coedotzmagic.com')
+
+List<Map<String, String>> testData = c.readTestDataFromExcel(filePath, sheetName)
+for (Map<String, String> row : testData) {
+		String username = row.get("Username");
+		String password = row.get("Password");
+
+		WebUI.setText(findTestObject('Object Repository/username'), username)
+		WebUI.setText(findTestObject('Object Repository/password'), password)
+		WebUI.click(findTestObject('Object Repository/login'))
+
+		boolean checkLogin = WebUI.verifyElementNotPresent(findTestObject('Object Repository/admin'), 2, FailureHandling.OPTIONAL)
+		if (!checkLogin) {
+			WebUI.click(findTestObject('Object Repository/admin'))
+			WebUI.click(findTestObject('Object Repository/span_Logout'))
+			WebUI.click(findTestObject('Object Repository/login'))
+		}
+}
