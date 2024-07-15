@@ -103,9 +103,26 @@ public class Integration {
 	 * 
 	 * @since 1.0
 	 */
-	static testlinkUpdateResults(String projectname, String testplanName, String testcaseName,  String buildName, String execNotes, String results) throws TestLinkAPIException{
+	static testlinkUpdateResults(String projectname, String testplanName, String testcaseName, String buildName, String execNotes, String results) throws TestLinkAPIException{
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URI)
 		testLink.reportTestCaseResult(projectname, testplanName, testcaseName, buildName, execNotes, results)
+	}
+	
+	/**
+	 * <b>testlinkCreateTestSuite()</b>
+	 * digunakan untuk melakukan pembuatan test suite di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param suiteName
+	 * @param description
+	 *
+	 * @since 1.1
+	 */
+	static testlinkCreateTestSuite(String projectName, String suiteName, String description) throws TestLinkAPIException {
+		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URI)
+		testLink.createTestSuite(projectName, suiteName, description)
 	}
 
 	/* ------------------------------------------------------------------------- */

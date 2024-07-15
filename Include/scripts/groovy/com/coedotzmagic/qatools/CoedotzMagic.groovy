@@ -313,6 +313,22 @@ public class CoedotzMagic {
 	}
 	
 	/**
+	 * <b>testlinkCreateTestSuite()</b>
+	 * digunakan untuk melakukan pembuatan test suite di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param suiteName
+	 * @param description
+	 *
+	 * @since 1.1
+	 */
+	public void testlinkCreateTestSuite(String projectName, String suiteName, String description) {
+		Integration.testlinkCreateTestSuite(projectName, suiteName, description)
+	}
+
+	/**
 	 * <b>readTestDataFromExcel()</b>
 	 * digunakan untuk membaca data dan isi dari file excel
 	 * 
@@ -324,5 +340,4 @@ public class CoedotzMagic {
 	public void readTestDataFromExcel(String filePath, String sheetName) {
 		Integration.readTestDataFromExcel(filePath, sheetName)
 	}
-	
 }
