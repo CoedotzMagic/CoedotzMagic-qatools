@@ -66,16 +66,11 @@ public class Integration {
 
 	static BundleSettingStore bundleSetting
 	static String TESTLINK_KEY
-	static String TESTLINK_DEV_KEY
 	static String TESTLINK_URI
 
 	static {
 		try {
 			bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'com.coedotzmagic.qatools', true)
-			TESTLINK_DEV_KEY = bundleSetting.getString('testlinkDevKey', '')
-			if (StringUtils.isBlank(TESTLINK_DEV_KEY)) {
-				KeywordUtil.logInfo("Testlink's Dev Key is missing, some function may not work!.")
-			}
 			TESTLINK_KEY = bundleSetting.getString('testlinkKey', '')
 			if (StringUtils.isBlank(TESTLINK_KEY)) {
 				KeywordUtil.logInfo("Testlink's Key is missing.")
@@ -114,7 +109,7 @@ public class Integration {
 	}
 
 	/* ------------------------------------------------------------------------- */
-	
+
 	/**
 	 * <b>readTestDataFromExcel</b>
 	 * digunakan untuk membaca data dan isi dari file excel
@@ -129,7 +124,7 @@ public class Integration {
 			String pathFolderTestdata = RunConfiguration.getProjectDir() + File.separator + "TestData"
 			new File(pathFolderTestdata).mkdirs()
 			String getFilePath = pathFolderTestdata + File.separator + filePath
-			
+
 			FileInputStream fis = new FileInputStream(new File(getFilePath))
 			Workbook workbook = new XSSFWorkbook(fis)
 			Sheet sheet = workbook.getSheet(sheetName)
@@ -167,6 +162,9 @@ public class Integration {
 		} catch (Exception e) {
 			e.printStackTrace()
 			return null
+		} catch (IOException e) {
+			System.out.println("Could not read the Excel sheet");
+			e.printStackTrace();
 		}
 	}
 
