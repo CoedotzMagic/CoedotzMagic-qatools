@@ -22,6 +22,10 @@ import testlink.api.java.client.TestLinkAPIException
 import testlink.api.java.client.TestLinkAPIResults
 import com.coedotzmagic.qatools.CoedotzMagic
 
+import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI
+import br.eti.kinoshita.testlinkjavaapi.model.TestCase
+import br.eti.kinoshita.testlinkjavaapi.model.TestCaseStep
+
 def u = new CoedotzMagic()
 
 String projectName = 'KatalonAutomation'
@@ -30,7 +34,6 @@ String testCaseName = 'KA-56'
 String tlKey = '1af4731c11a9f89513207b44a48258dd'
 String tlUrl = 'https://testlink.itasoft.co.id/lib/api/xmlrpc/v1/xmlrpc.php'
 
-def c = new CoedotzMagic()
-
 TestLinkAPIClient testLink = new TestLinkAPIClient(tlKey, tlUrl)
-testLink.reportTestCaseResult(projectName, testPlanName, testCaseName, 'SprintBuild', 'oke coe via coedotzmagic-1', c.TESTLINK_TEST_PASSED)
+testLink.createTestSuite(projectName, 'tsbaru-via-automation', 'test-via-katalon')
+//testLink.reportTestCaseResult(projectName, testPlanName, testCaseName, 'SprintBuild', 'oke coe via coedotzmagic-1', c.TESTLINK_TEST_PASSED)
