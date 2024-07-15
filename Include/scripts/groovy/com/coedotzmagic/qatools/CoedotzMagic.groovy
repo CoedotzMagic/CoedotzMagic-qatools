@@ -311,4 +311,18 @@ public class CoedotzMagic {
 			LOG.error(e)
 		}
 	}
+	
+	/**
+	 * <b>readTestDataFromExcel()</b>
+	 * digunakan untuk membaca data dan isi dari file excel
+	 * 
+	 * @param filePath
+	 * @param sheetName
+	 *
+	 * @since 1.1
+	 */
+	public void readTestDataFromExcel(String filePath, String sheetName) {
+		Integration.readTestDataFromExcel(filePath, sheetName)
+	}
+	
 }
