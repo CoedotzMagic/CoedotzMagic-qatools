@@ -66,7 +66,7 @@ public class Integration {
 
 	static BundleSettingStore bundleSetting
 	static String TESTLINK_KEY
-	static String TESTLINK_URI
+	static String TESTLINK_URL
 
 	static {
 		try {
@@ -76,8 +76,8 @@ public class Integration {
 				KeywordUtil.logInfo("Testlink's Key is missing.")
 				throw new IllegalStateException("Testlink's Key is missing.")
 			}
-			TESTLINK_URI = bundleSetting.getString('testlinkUrl', '')
-			if (StringUtils.isBlank(TESTLINK_URI)) {
+			TESTLINK_URL = bundleSetting.getString('testlinkUrl', '')
+			if (StringUtils.isBlank(TESTLINK_URL)) {
 				KeywordUtil.logInfo("Testlink Url is missing.")
 				throw new IllegalStateException("Testlink Url is missing.")
 			}
@@ -104,7 +104,7 @@ public class Integration {
 	 * @since 1.0
 	 */
 	static testlinkUpdateResults(String projectname, String testplanName, String testcaseName, String buildName, String execNotes, String results) throws TestLinkAPIException{
-		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URI)
+		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.reportTestCaseResult(projectname, testplanName, testcaseName, buildName, execNotes, results)
 	}
 	
@@ -121,7 +121,7 @@ public class Integration {
 	 * @since 1.1
 	 */
 	static testlinkCreateTestSuite(String projectName, String suiteName, String description) throws TestLinkAPIException {
-		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URI)
+		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.createTestSuite(projectName, suiteName, description)
 	}
 
