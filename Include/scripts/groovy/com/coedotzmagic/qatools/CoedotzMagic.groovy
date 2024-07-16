@@ -360,6 +360,22 @@ public class CoedotzMagic {
 	public void testlinkCreateTestProject(String projectName, String projectPrefix, String description) {
 		Integration.testlinkCreateTestProject(projectName, projectPrefix, description)
 	}
+	
+	/**
+	 * <b>testlinkAddTestCaseToTestPlan()</b>
+	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param testplanName
+	 * @param testcaseName
+	 *
+	 * @since 1.1
+	 */
+	public void testlinkAddTestCaseToTestPlan(String projectName, String testplanName, String testcaseName) {
+		Integration.testlinkAddTestCaseToTestPlan(projectName, testplanName, testcaseName)
+	}
 
 	/**
 	 * <b>readTestDataFromExcel()</b>
