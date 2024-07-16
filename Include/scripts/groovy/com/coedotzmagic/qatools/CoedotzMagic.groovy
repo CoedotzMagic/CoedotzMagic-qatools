@@ -311,7 +311,7 @@ public class CoedotzMagic {
 			LOG.error(e)
 		}
 	}
-	
+
 	/**
 	 * <b>testlinkCreateTestSuite()</b>
 	 * digunakan untuk melakukan pembuatan test suite di Testlink
@@ -327,7 +327,7 @@ public class CoedotzMagic {
 	public void testlinkCreateTestSuite(String projectName, String suiteName, String description) {
 		Integration.testlinkCreateTestSuite(projectName, suiteName, description)
 	}
-	
+
 	/**
 	 * <b>testlinkCreateBuild()</b>
 	 * digunakan untuk melakukan pembuatan build di Testlink
@@ -343,6 +343,22 @@ public class CoedotzMagic {
 	 */
 	public void testlinkCreateBuild(String projectName, String testplanName, String buildName, String buildNotes) {
 		Integration.testlinkCreateBuild(projectName, testplanName, buildName, buildNotes)
+	}
+	
+	/**
+	 * <b>testlinkCreateTestProject()</b>
+	 * digunakan untuk melakukan pembuatan test project di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param projectPrefix
+	 * @param description
+	 *
+	 * @since 1.1
+	 */
+	public void testlinkCreateTestProject(String projectName, String projectPrefix, String description) {
+		Integration.testlinkCreateTestProject(projectName, projectPrefix, description)
 	}
 
 	/**

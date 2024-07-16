@@ -107,7 +107,7 @@ public class Integration {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.reportTestCaseResult(projectname, testplanName, testcaseName, buildName, execNotes, results)
 	}
-	
+
 	/**
 	 * <b>testlinkCreateTestSuite()</b>
 	 * digunakan untuk melakukan pembuatan test suite di Testlink
@@ -124,7 +124,7 @@ public class Integration {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.createTestSuite(projectName, suiteName, description)
 	}
-	
+
 	/**
 	 * <b>testlinkCreateBuild()</b>
 	 * digunakan untuk melakukan pembuatan build di Testlink
@@ -141,6 +141,23 @@ public class Integration {
 	static testlinkCreateBuild(String projectName, String testplanName, String buildName, String buildNotes) throws TestLinkAPIException {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.createBuild(projectName, testplanName, buildName, buildNotes)
+	}
+	
+	/**
+	 * <b>testlinkCreateTestProject()</b>
+	 * digunakan untuk melakukan pembuatan test project di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param projectPrefix
+	 * @param description
+	 *
+	 * @since 1.1
+	 */
+	static testlinkCreateTestProject(String projectName, String projectPrefix, String description) throws TestLinkAPIException {
+		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
+		testLink.createTestProject(projectName, projectPrefix, description)
 	}
 
 	/* ------------------------------------------------------------------------- */
