@@ -176,6 +176,25 @@ public class Integration {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.addTestCaseToTestPlan(projectName, testplanName, testcaseName)
 	}
+	
+	/**
+	 * <b>testlinkAddTestCaseToTestPlan()</b>
+	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param testplanName
+	 * @param testcaseName
+	 * @param execOrder
+	 * @param urgency
+	 *
+	 * @since 1.1
+	 */
+	static testlinkAddTestCaseToTestPlan(String projectName, String testplanName, String testcaseName, int execOrder, String urgency) throws TestLinkAPIException {
+		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
+		testLink.addTestCaseToTestPlan(projectName, testplanName, testcaseName, execOrder, urgency)
+	}
 
 	/* ------------------------------------------------------------------------- */
 

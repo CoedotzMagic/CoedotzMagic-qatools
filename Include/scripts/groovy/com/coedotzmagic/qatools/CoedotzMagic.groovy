@@ -376,6 +376,24 @@ public class CoedotzMagic {
 	public void testlinkAddTestCaseToTestPlan(String projectName, String testplanName, String testcaseName) {
 		Integration.testlinkAddTestCaseToTestPlan(projectName, testplanName, testcaseName)
 	}
+	
+	/**
+	 * <b>testlinkAddTestCaseToTestPlan()</b>
+	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param testplanName
+	 * @param testcaseName
+	 * @param execOrder
+	 * @param urgency
+	 *
+	 * @since 1.1
+	 */
+	public void testlinkAddTestCaseToTestPlan(String projectName, String testplanName, String testcaseName, int execOrder, String urgency) {
+		Integration.testlinkAddTestCaseToTestPlan(projectName, testplanName, testcaseName, execOrder, urgency)
+	}
 
 	/**
 	 * <b>readTestDataFromExcel()</b>
