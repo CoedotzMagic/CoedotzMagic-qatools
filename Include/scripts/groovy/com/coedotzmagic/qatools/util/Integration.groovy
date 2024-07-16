@@ -96,16 +96,16 @@ public class Integration {
 	 *
 	 * @param projectName
 	 * @param testplanName
-	 * @param testcaseName
+	 * @param testcaseNameID
 	 * @param buildName
 	 * @param execNotes
 	 * @param result
 	 * 
 	 * @since 1.0
 	 */
-	static testlinkUpdateResults(String projectname, String testplanName, String testcaseName, String buildName, String execNotes, String results) throws TestLinkAPIException{
+	static testlinkUpdateResults(String projectname, String testplanName, String testcaseNameID, String buildName, String execNotes, String results) throws TestLinkAPIException{
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
-		testLink.reportTestCaseResult(projectname, testplanName, testcaseName, buildName, execNotes, results)
+		testLink.reportTestCaseResult(projectname, testplanName, testcaseNameID, buildName, execNotes, results)
 	}
 
 	/**

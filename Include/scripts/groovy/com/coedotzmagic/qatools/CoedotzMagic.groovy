@@ -222,15 +222,15 @@ public class CoedotzMagic {
 	 *
 	 * @param projectName
 	 * @param testplanName
-	 * @param testcaseName
+	 * @param testcaseNameID
 	 * @param buildName
 	 * @param execNotes
 	 * @param result
 	 * 
 	 * @since 1.0
 	 */
-	void testlinkUpdateResults(String projectname, String testplanName, String testcaseName, String buildName, String notes, String status) {
-		Integration.testlinkUpdateResults(projectname, testplanName, testcaseName, buildName, notes, status)
+	void testlinkUpdateResults(String projectname, String testplanName, String testcaseNameID, String buildName, String notes, String status) {
+		Integration.testlinkUpdateResults(projectname, testplanName, testcaseNameID, buildName, notes, status)
 	}
 
 	/* ------------------------------------------------------------------------- */
