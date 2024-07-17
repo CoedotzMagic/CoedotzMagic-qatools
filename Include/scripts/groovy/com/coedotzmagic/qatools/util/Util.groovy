@@ -213,7 +213,9 @@ public class Util {
 	 *
 	 * <br><br>
 	 *
-	 * @param folderName & title
+	 * @param folderName
+	 * @param fullpage
+	 * 
 	 * @since 1.0
 	 */
 	void takeScreenshot(String folderName, boolean fullpage) {
@@ -242,6 +244,45 @@ public class Util {
 			'Target Folder'
 			targetFolder = pathFolderScreenshot + File.separator
 		}
+
+		'Membuat timestamp agar bisa mutiple screenshot dan tidak overwrite file'
+		String timestamp = performGetDateTime()
+
+		'set text jadi Screenshot'
+		String title = 'Screenshot '
+
+		'Cek apakah screenshotnya fullpage atau tidak'
+		if (fullpage) {
+			'Melakukan Screenshot untuk bukti pengujian'
+			WebUI.takeFullPageScreenshot('Screenshot/' + targetFolder + title + ' - ' + timestamp + '.jpg')
+		} else {
+			'Melakukan Screenshot untuk bukti pengujian'
+			WebUI.takeScreenshot('Screenshot/' + targetFolder + title + ' - ' + timestamp + '.jpg')
+		}
+	}
+	
+	/**
+	 * <b>takeScreenshot()</b>
+	 * digunakan untuk melakukan screenshot
+	 *
+	 * <br><br>
+	 *
+	 * @param fullpage
+	 * @since 1.1
+	 */
+	void takeScreenshot(boolean fullpage) {
+		'Inisialisasi String'
+		String nameMasterTestcase
+		String targetFolder
+
+		'Lokasi folder screenshot'
+		String pathFolderScreenshot = RunConfiguration.getProjectDir() + File.separator + "Screenshot"
+
+		'Membuat direktori, jika direktori belum dibuat'
+		new File(pathFolderScreenshot).mkdirs()
+
+		'Target Folder'
+		targetFolder = pathFolderScreenshot + File.separator
 
 		'Membuat timestamp agar bisa mutiple screenshot dan tidak overwrite file'
 		String timestamp = performGetDateTime()

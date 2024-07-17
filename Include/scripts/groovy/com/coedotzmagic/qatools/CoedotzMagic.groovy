@@ -283,6 +283,19 @@ public class CoedotzMagic {
 	void takeScreenshot(String folderName, boolean fullpage) {
 		util.takeScreenshot(folderName, fullpage)
 	}
+	
+	/**
+	 * <b>takeScreenshot()</b>
+	 * digunakan untuk melakukan screenshot
+	 *
+	 * <br><br>
+	 *
+	 * @param fullpage
+	 * @since 1.1
+	 */
+	void takeScreenshot(boolean fullpage) {
+		util.takeScreenshot(fullpage)
+	}
 
 	/**
 	 * <b>startScreenRecording()</b>
@@ -344,7 +357,7 @@ public class CoedotzMagic {
 	public void testlinkCreateBuild(String projectName, String testplanName, String buildName, String buildNotes) {
 		Integration.testlinkCreateBuild(projectName, testplanName, buildName, buildNotes)
 	}
-	
+
 	/**
 	 * <b>testlinkCreateTestProject()</b>
 	 * digunakan untuk melakukan pembuatan test project di Testlink
@@ -360,7 +373,7 @@ public class CoedotzMagic {
 	public void testlinkCreateTestProject(String projectName, String projectPrefix, String description) {
 		Integration.testlinkCreateTestProject(projectName, projectPrefix, description)
 	}
-	
+
 	/**
 	 * <b>testlinkAddTestCaseToTestPlan()</b>
 	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink
@@ -376,7 +389,7 @@ public class CoedotzMagic {
 	public void testlinkAddTestCaseToTestPlan(String projectName, String testplanName, String testcaseName) {
 		Integration.testlinkAddTestCaseToTestPlan(projectName, testplanName, testcaseName)
 	}
-	
+
 	/**
 	 * <b>testlinkAddTestCaseToTestPlan()</b>
 	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink
