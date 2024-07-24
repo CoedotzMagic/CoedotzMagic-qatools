@@ -342,6 +342,29 @@ public class CoedotzMagic {
 	public void testlinkCreateTestPlan(String planName, String projectName, String notes, boolean isActive, boolean isPublic) {
 		Integration.testlinkCreateTestPlan(planName, projectName, notes, isActive, isPublic)
 	}
+	
+	/**
+	 * <b>testlinkCreateTestProject()</b>
+	 * digunakan untuk melakukan pembuatan Test Project di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param projectPrefix
+	 * @param notes
+	 * @param enableRequirements
+	 * @param enableTestPriority
+	 * @param enableAutomation
+	 * @param enableInventory
+	 * @param isActive
+	 * @param isPublic
+	 *
+	 * @since 1.1
+	 */
+	public void testlinkCreateTestProject(String projectName, String projectPrefix, String notes, boolean enableRequirements, 
+		boolean enableTestPriority, boolean enableAutomation, boolean enableInventory, boolean isActive, boolean isPublic) {
+		Integration.testlinkCreateTestProject(projectName, projectPrefix, notes, enableRequirements, enableTestPriority, enableAutomation, enableInventory, isActive, isPublic)
+	}
 
 	/**
 	 * <b>testlinkCreateTestSuite()</b>
@@ -374,22 +397,6 @@ public class CoedotzMagic {
 	 */
 	public void testlinkCreateBuild(String projectName, String testplanName, String buildName, String buildNotes) {
 		Integration.testlinkCreateBuild(projectName, testplanName, buildName, buildNotes)
-	}
-
-	/**
-	 * <b>testlinkCreateTestProject()</b>
-	 * digunakan untuk melakukan pembuatan test project di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectName
-	 * @param projectPrefix
-	 * @param description
-	 *
-	 * @since 1.1
-	 */
-	public void testlinkCreateTestProject(String projectName, String projectPrefix, String description) {
-		Integration.testlinkCreateTestProject(projectName, projectPrefix, description)
 	}
 
 	/**

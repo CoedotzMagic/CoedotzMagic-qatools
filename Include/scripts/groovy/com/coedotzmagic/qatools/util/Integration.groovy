@@ -86,6 +86,30 @@ public class Integration {
 		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
 		testLink.createTestPlan(planName, projectName, notes, isActive, isPublic)
 	}
+	
+	/**
+	 * <b>testlinkCreateTestProject()</b>
+	 * digunakan untuk melakukan pembuatan Test Project di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectName
+	 * @param projectPrefix
+	 * @param notes
+	 * @param enableRequirements
+	 * @param enableTestPriority
+	 * @param enableAutomation
+	 * @param enableInventory
+	 * @param isActive
+	 * @param isPublic
+	 *
+	 * @since 1.1
+	 */
+	static testlinkCreateTestProject(String projectName, String projectPrefix, String notes, boolean enableRequirements, 
+		boolean enableTestPriority, boolean enableAutomation, boolean enableInventory, boolean isActive, boolean isPublic) {
+		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
+		testLink.createTestProject(projectName, projectPrefix, notes, enableRequirements, enableTestPriority, enableAutomation, enableInventory, isActive, isPublic)
+	}
 
 	/**
 	 * <b>testlinkCreateTestSuite()</b>
@@ -120,23 +144,6 @@ public class Integration {
 	static testlinkCreateBuild(String projectName, String testplanName, String buildName, String buildNotes) throws TestLinkAPIException {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.createBuild(projectName, testplanName, buildName, buildNotes)
-	}
-
-	/**
-	 * <b>testlinkCreateTestProject()</b>
-	 * digunakan untuk melakukan pembuatan test project di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectName
-	 * @param projectPrefix
-	 * @param description
-	 *
-	 * @since 1.1
-	 */
-	static testlinkCreateTestProject(String projectName, String projectPrefix, String description) throws TestLinkAPIException {
-		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
-		testLink.createTestProject(projectName, projectPrefix, description)
 	}
 
 	/**
