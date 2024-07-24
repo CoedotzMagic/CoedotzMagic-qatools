@@ -260,7 +260,7 @@ public class Util {
 			WebUI.takeScreenshot('Screenshot/' + targetFolder + title + ' - ' + timestamp + '.jpg')
 		}
 	}
-	
+
 	/**
 	 * <b>takeScreenshot()</b>
 	 * digunakan untuk melakukan screenshot
