@@ -1,53 +1,9 @@
 package com.coedotzmagic.qatools.util
 
-import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.util.KeywordUtil
-import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
-import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
-import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
-import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
-
-import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
-import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
-import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
-import com.kms.katalon.core.model.FailureHandling as FailureHandling
-import com.kms.katalon.core.testcase.TestCase as TestCase
-import com.kms.katalon.core.testdata.TestData as TestData
-import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
-import com.kms.katalon.core.testobject.TestObject as TestObject
-import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
-import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-
-import internal.GlobalVariable as GlobalVariable
-import org.openqa.selenium.Keys as Keys
-import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
-import java.text.SimpleDateFormat as SimpleDateFormat
-import java.util.Calendar as Calendar
-import java.io.File as File
-import groovy.json.JsonSlurper
-import groovy.json.JsonBuilder
-import com.kms.katalon.core.testobject.RequestObject
 import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
-import org.apache.http.client.methods.HttpPost
-import org.apache.http.impl.client.CloseableHttpClient
-import org.apache.http.impl.client.HttpClients
-import org.apache.http.entity.StringEntity
-import java.awt.Robot as Robot
-import java.awt.event.KeyEvent as KeyEvent
-import java.awt.Toolkit as Toolkit
-import java.awt.datatransfer.StringSelection as StringSelection
-import org.openqa.selenium.By
-import org.openqa.selenium.WebElement
-import org.openqa.selenium.JavascriptExecutor
-
 import com.kms.katalon.core.setting.BundleSettingStore
 import org.apache.commons.lang3.StringUtils
-
-import testlink.api.java.client.TestLinkAPIClient
-import testlink.api.java.client.TestLinkAPIException
-
 import org.apache.poi.ss.usermodel.*
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.FileInputStream
@@ -55,6 +11,10 @@ import java.util.ArrayList
 import java.util.HashMap
 import java.util.List
 import java.util.Map
+
+import testlink.api.java.client.TestLinkAPIClient
+import testlink.api.java.client.TestLinkAPIException
+import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI
 
 /*
  * Created by : Arief Wardhana
@@ -107,6 +67,25 @@ public class Integration {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.reportTestCaseResult(projectname, testplanName, testcaseNameID, buildName, execNotes, results)
 	}
+	
+	/**
+	 * <b>testlinkCreateTestPlan()</b>
+	 * digunakan untuk melakukan pembuatan Test Plan di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param planName
+	 * @param projectName
+	 * @param notes
+	 * @param isActive
+	 * @param isPublic
+	 *
+	 * @since 1.1
+	 */
+	static testlinkCreateTestPlan(String planName, String projectName, String notes, boolean isActive, boolean isPublic) {
+		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
+		testLink.createTestPlan(planName, projectName, notes, isActive, isPublic)
+	}
 
 	/**
 	 * <b>testlinkCreateTestSuite()</b>
@@ -142,7 +121,7 @@ public class Integration {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.createBuild(projectName, testplanName, buildName, buildNotes)
 	}
-	
+
 	/**
 	 * <b>testlinkCreateTestProject()</b>
 	 * digunakan untuk melakukan pembuatan test project di Testlink
@@ -159,7 +138,7 @@ public class Integration {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.createTestProject(projectName, projectPrefix, description)
 	}
-	
+
 	/**
 	 * <b>testlinkAddTestCaseToTestPlan()</b>
 	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink
@@ -176,7 +155,7 @@ public class Integration {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.addTestCaseToTestPlan(projectName, testplanName, testcaseName)
 	}
-	
+
 	/**
 	 * <b>testlinkAddTestCaseToTestPlan()</b>
 	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink

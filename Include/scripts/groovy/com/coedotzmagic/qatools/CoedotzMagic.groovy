@@ -283,7 +283,7 @@ public class CoedotzMagic {
 	void takeScreenshot(String folderName, boolean fullpage) {
 		util.takeScreenshot(folderName, fullpage)
 	}
-	
+
 	/**
 	 * <b>takeScreenshot()</b>
 	 * digunakan untuk melakukan screenshot
@@ -323,6 +323,24 @@ public class CoedotzMagic {
 		} catch (final Exception e) {
 			LOG.error(e)
 		}
+	}
+	
+	/**
+	 * <b>testlinkCreateTestPlan()</b>
+	 * digunakan untuk melakukan pembuatan Test Plan di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param planName
+	 * @param projectName
+	 * @param notes
+	 * @param isActive
+	 * @param isPublic
+	 *
+	 * @since 1.1
+	 */
+	public void testlinkCreateTestPlan(String planName, String projectName, String notes, boolean isActive, boolean isPublic) {
+		Integration.testlinkCreateTestPlan(planName, projectName, notes, isActive, isPublic)
 	}
 
 	/**
