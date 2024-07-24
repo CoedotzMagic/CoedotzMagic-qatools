@@ -195,18 +195,13 @@
 			<attribute name="javadoc_location" value="file:/C:/Users/Asani/.katalon/packages/Katalon_Studio_Free_Windows_64-9.5.0/Katalon_Studio_Free_Windows_64-9.5.0/configuration/resources/apidocs/com.kms.katalon.core.testng/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/katalon_generated_MonteScreenRecorder.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/katalon_generated_testlink-api-client-2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/katalon_generated_testlink-java-api-1.9.20-1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/katalon_generated_ws-commons-util-1.0.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/katalon_generated_xmlrpc-client-3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/katalon_generated_xmlrpc-common-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/commons-configuration2-2.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/MonteScreenRecorder.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/testlink-api-client-2.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/testlink-java-api-1.9.20-1.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/ws-commons-util-1.0.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/xmlrpc-client-3.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/xmlrpc-common-3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/xmlrpc-client-3.1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/xmlrpc-common-3.1.3.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Asani/.katalon/packages/Katalon_Studio_Free_Windows_64-9.5.0/Katalon_Studio_Free_Windows_64-9.5.0/configuration/org.eclipse.osgi/28/0/.cp/resources/basic-report/katalon-studio-report-plugin.jar"/>
 	<classpathentry kind="con" path="GROOVY_SUPPORT"/>
 	<classpathentry kind="output" path="bin"/>
