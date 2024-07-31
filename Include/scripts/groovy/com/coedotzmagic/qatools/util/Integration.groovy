@@ -161,6 +161,26 @@ public class Integration {
 		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
 		testLink.createBuild(testPlanId, buildName, notes)
 	}
+	
+	/**
+	 * <b>testlinkCreateTestSuite()</b>
+	 * digunakan untuk membuat Test Suite di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectId
+	 * @param testSuiteName
+	 * @param details
+	 * @param parentId
+	 * @param order
+	 *
+	 * @since 1.1
+	 */
+	static testlinkCreateTestSuite(int projectId, String testSuiteName, String details, int parentId, int order) {
+		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
+		testLink.createTestSuite(projectId, testSuiteName, details, parentId, order, true, "CREATE_NEW_VERSION")
+	}
+		
 
 
 	/* ------------------------------------------------------------------------- */
