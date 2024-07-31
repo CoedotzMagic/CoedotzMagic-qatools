@@ -324,7 +324,7 @@ public class CoedotzMagic {
 			LOG.error(e)
 		}
 	}
-	
+
 	/**
 	 * <b>testlinkCreateTestPlan()</b>
 	 * digunakan untuk melakukan pembuatan Test Plan di Testlink
@@ -342,7 +342,7 @@ public class CoedotzMagic {
 	public void testlinkCreateTestPlan(String planName, String projectName, String notes, boolean isActive, boolean isPublic) {
 		Integration.testlinkCreateTestPlan(planName, projectName, notes, isActive, isPublic)
 	}
-	
+
 	/**
 	 * <b>testlinkCreateTestProject()</b>
 	 * digunakan untuk melakukan pembuatan Test Project di Testlink
@@ -361,77 +361,43 @@ public class CoedotzMagic {
 	 *
 	 * @since 1.1
 	 */
-	public void testlinkCreateTestProject(String projectName, String projectPrefix, String notes, boolean enableRequirements, 
-		boolean enableTestPriority, boolean enableAutomation, boolean enableInventory, boolean isActive, boolean isPublic) {
+	public void testlinkCreateTestProject(String projectName, String projectPrefix, String notes, boolean enableRequirements,
+			boolean enableTestPriority, boolean enableAutomation, boolean enableInventory, boolean isActive, boolean isPublic) {
 		Integration.testlinkCreateTestProject(projectName, projectPrefix, notes, enableRequirements, enableTestPriority, enableAutomation, enableInventory, isActive, isPublic)
 	}
 
 	/**
-	 * <b>testlinkCreateTestSuite()</b>
-	 * digunakan untuk melakukan pembuatan test suite di Testlink
+	 * <b>testlinkAddPlatformToTestPlan()</b>
+	 * digunakan untuk menambahkan Platform ke Testplan di Testlink
 	 *
 	 * <br><br>
 	 *
-	 * @param projectName
-	 * @param suiteName
-	 * @param description
+	 * @param projectId
+	 * @param testPlanId
+	 * @param platformName
 	 *
 	 * @since 1.1
 	 */
-	public void testlinkCreateTestSuite(String projectName, String suiteName, String description) {
-		Integration.testlinkCreateTestSuite(projectName, suiteName, description)
+	public void testlinkAddPlatformToTestPlan(int projectId, int testPlanId, String platformName) {
+		Integration.testlinkAddPlatformToTestPlan(projectId, testPlanId, platformName)
+	}
+	
+	/**
+	 * <b>testlinkRemovePlatformToTestPlan()</b>
+	 * digunakan untuk menghapus Platform ke Testplan di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectId
+	 * @param testPlanId
+	 * @param platformName
+	 *
+	 * @since 1.1
+	 */
+	public void testlinkRemovePlatformToTestPlan(int projectId, int testPlanId, String platformName) {
+		Integration.testlinkRemovePlatformToTestPLan(projectId, testPlanId, platformName)
 	}
 
-	/**
-	 * <b>testlinkCreateBuild()</b>
-	 * digunakan untuk melakukan pembuatan build di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectName
-	 * @param testplanName
-	 * @param buildName
-	 * @param buildNotes
-	 *
-	 * @since 1.1
-	 */
-	public void testlinkCreateBuild(String projectName, String testplanName, String buildName, String buildNotes) {
-		Integration.testlinkCreateBuild(projectName, testplanName, buildName, buildNotes)
-	}
-
-	/**
-	 * <b>testlinkAddTestCaseToTestPlan()</b>
-	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectName
-	 * @param testplanName
-	 * @param testcaseName
-	 *
-	 * @since 1.1
-	 */
-	public void testlinkAddTestCaseToTestPlan(String projectName, String testplanName, String testcaseName) {
-		Integration.testlinkAddTestCaseToTestPlan(projectName, testplanName, testcaseName)
-	}
-
-	/**
-	 * <b>testlinkAddTestCaseToTestPlan()</b>
-	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectName
-	 * @param testplanName
-	 * @param testcaseName
-	 * @param execOrder
-	 * @param urgency
-	 *
-	 * @since 1.1
-	 */
-	public void testlinkAddTestCaseToTestPlan(String projectName, String testplanName, String testcaseName, int execOrder, String urgency) {
-		Integration.testlinkAddTestCaseToTestPlan(projectName, testplanName, testcaseName, execOrder, urgency)
-	}
 
 	/**
 	 * <b>readTestDataFromExcel()</b>

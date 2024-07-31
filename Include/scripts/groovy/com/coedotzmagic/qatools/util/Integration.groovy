@@ -67,7 +67,7 @@ public class Integration {
 		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
 		testLink.reportTestCaseResult(projectname, testplanName, testcaseNameID, buildName, execNotes, results)
 	}
-	
+
 	/**
 	 * <b>testlinkCreateTestPlan()</b>
 	 * digunakan untuk melakukan pembuatan Test Plan di Testlink
@@ -86,7 +86,7 @@ public class Integration {
 		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
 		testLink.createTestPlan(planName, projectName, notes, isActive, isPublic)
 	}
-	
+
 	/**
 	 * <b>testlinkCreateTestProject()</b>
 	 * digunakan untuk melakukan pembuatan Test Project di Testlink
@@ -105,82 +105,47 @@ public class Integration {
 	 *
 	 * @since 1.1
 	 */
-	static testlinkCreateTestProject(String projectName, String projectPrefix, String notes, boolean enableRequirements, 
-		boolean enableTestPriority, boolean enableAutomation, boolean enableInventory, boolean isActive, boolean isPublic) {
+	static testlinkCreateTestProject(String projectName, String projectPrefix, String notes, boolean enableRequirements,
+			boolean enableTestPriority, boolean enableAutomation, boolean enableInventory, boolean isActive, boolean isPublic) {
 		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
 		testLink.createTestProject(projectName, projectPrefix, notes, enableRequirements, enableTestPriority, enableAutomation, enableInventory, isActive, isPublic)
 	}
-
+	
 	/**
-	 * <b>testlinkCreateTestSuite()</b>
-	 * digunakan untuk melakukan pembuatan test suite di Testlink
+	 * <b>testlinkAddPlatformToTestPlan()</b>
+	 * digunakan untuk menambahkan Platform ke Testplan di Testlink
 	 *
 	 * <br><br>
 	 *
-	 * @param projectName
-	 * @param suiteName
-	 * @param description
+	 * @param projectId
+	 * @param testPlanId
+	 * @param platformName
 	 *
 	 * @since 1.1
 	 */
-	static testlinkCreateTestSuite(String projectName, String suiteName, String description) throws TestLinkAPIException {
-		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
-		testLink.createTestSuite(projectName, suiteName, description)
+	static testlinkAddPlatformToTestPlan(int projectId, int testPlanId, String platformName) {
+		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
+		testLink.addPlatformToTestPlan(projectId, testPlanId, platformName)
 	}
-
+	
 	/**
-	 * <b>testlinkCreateBuild()</b>
-	 * digunakan untuk melakukan pembuatan build di Testlink
+	 * <b>testlinkRemovePlatformToTestPlan()</b>
+	 * digunakan untuk menghapus Platform ke Testplan di Testlink
 	 *
 	 * <br><br>
 	 *
-	 * @param projectName
-	 * @param testplanName
-	 * @param buildName
-	 * @param buildNotes
+	 * @param projectId
+	 * @param testPlanId
+	 * @param platformName
 	 *
 	 * @since 1.1
 	 */
-	static testlinkCreateBuild(String projectName, String testplanName, String buildName, String buildNotes) throws TestLinkAPIException {
-		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
-		testLink.createBuild(projectName, testplanName, buildName, buildNotes)
+	static testlinkRemovePlatformToTestPLan(int projectId, int testPlanId, String platformName) {
+		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
+		testLink.removePlatformFromTestPlan(projectId, testPlanId, platformName)
 	}
 
-	/**
-	 * <b>testlinkAddTestCaseToTestPlan()</b>
-	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectName
-	 * @param testplanName
-	 * @param testcaseName
-	 *
-	 * @since 1.1
-	 */
-	static testlinkAddTestCaseToTestPlan(String projectName, String testplanName, String testcaseName) throws TestLinkAPIException {
-		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
-		testLink.addTestCaseToTestPlan(projectName, testplanName, testcaseName)
-	}
 
-	/**
-	 * <b>testlinkAddTestCaseToTestPlan()</b>
-	 * digunakan untuk melakukan menambahkan testcase ke testplan di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectName
-	 * @param testplanName
-	 * @param testcaseName
-	 * @param execOrder
-	 * @param urgency
-	 *
-	 * @since 1.1
-	 */
-	static testlinkAddTestCaseToTestPlan(String projectName, String testplanName, String testcaseName, int execOrder, String urgency) throws TestLinkAPIException {
-		TestLinkAPIClient testLink = new TestLinkAPIClient(TESTLINK_KEY, TESTLINK_URL)
-		testLink.addTestCaseToTestPlan(projectName, testplanName, testcaseName, execOrder, urgency)
-	}
 
 	/* ------------------------------------------------------------------------- */
 
