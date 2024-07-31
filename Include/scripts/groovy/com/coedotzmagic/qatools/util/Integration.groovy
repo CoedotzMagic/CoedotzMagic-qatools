@@ -110,7 +110,7 @@ public class Integration {
 		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
 		testLink.createTestProject(projectName, projectPrefix, notes, enableRequirements, enableTestPriority, enableAutomation, enableInventory, isActive, isPublic)
 	}
-	
+
 	/**
 	 * <b>testlinkAddPlatformToTestPlan()</b>
 	 * digunakan untuk menambahkan Platform ke Testplan di Testlink
@@ -127,7 +127,7 @@ public class Integration {
 		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
 		testLink.addPlatformToTestPlan(projectId, testPlanId, platformName)
 	}
-	
+
 	/**
 	 * <b>testlinkRemovePlatformToTestPlan()</b>
 	 * digunakan untuk menghapus Platform ke Testplan di Testlink
@@ -145,6 +145,22 @@ public class Integration {
 		testLink.removePlatformFromTestPlan(projectId, testPlanId, platformName)
 	}
 
+	/**
+	 * <b>testlinkCreateBuild()</b>
+	 * digunakan untuk membuat Build di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param testPlanId
+	 * @param buildName
+	 * @param notes
+	 *
+	 * @since 1.1
+	 */
+	static testlinkCreateBuild(int testPlanId, String buildName, String notes) {
+		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
+		testLink.createBuild(testPlanId, buildName, notes)
+	}
 
 
 	/* ------------------------------------------------------------------------- */

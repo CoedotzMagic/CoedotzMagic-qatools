@@ -381,7 +381,7 @@ public class CoedotzMagic {
 	public void testlinkAddPlatformToTestPlan(int projectId, int testPlanId, String platformName) {
 		Integration.testlinkAddPlatformToTestPlan(projectId, testPlanId, platformName)
 	}
-	
+
 	/**
 	 * <b>testlinkRemovePlatformToTestPlan()</b>
 	 * digunakan untuk menghapus Platform ke Testplan di Testlink
@@ -396,6 +396,22 @@ public class CoedotzMagic {
 	 */
 	public void testlinkRemovePlatformToTestPlan(int projectId, int testPlanId, String platformName) {
 		Integration.testlinkRemovePlatformToTestPLan(projectId, testPlanId, platformName)
+	}
+	
+	/**
+	 * <b>testlinkCreateBuild()</b>
+	 * digunakan untuk membuat Build di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param testPlanId
+	 * @param buildName
+	 * @param notes
+	 *
+	 * @since 1.1
+	 */
+	public void testlinkCreateBuild(int testPlanId, String buildName, String notes) {
+		Integration.testlinkCreateBuild(testPlanId, buildName, notes)
 	}
 
 
