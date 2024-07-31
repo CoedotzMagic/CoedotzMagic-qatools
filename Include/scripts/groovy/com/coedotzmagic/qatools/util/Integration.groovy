@@ -15,6 +15,7 @@ import java.util.Map
 import testlink.api.java.client.TestLinkAPIClient
 import testlink.api.java.client.TestLinkAPIException
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI
+import br.eti.kinoshita.testlinkjavaapi.constants.*
 
 /*
  * Created by : Arief Wardhana
@@ -178,7 +179,7 @@ public class Integration {
 	 */
 	static testlinkCreateTestSuite(int projectId, String testSuiteName, String details, int parentId, int order) {
 		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
-		testLink.createTestSuite(projectId, testSuiteName, details, parentId, order, true, "CREATE_NEW_VERSION")
+		testLink.createTestSuite(projectId, testSuiteName, details, parentId, order, true, ActionOnDuplicate.CREATE_NEW_VERSION)
 	}
 		
 
