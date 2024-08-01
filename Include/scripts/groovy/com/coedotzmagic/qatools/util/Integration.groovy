@@ -16,6 +16,7 @@ import testlink.api.java.client.TestLinkAPIClient
 import testlink.api.java.client.TestLinkAPIException
 import br.eti.kinoshita.testlinkjavaapi.TestLinkAPI
 import br.eti.kinoshita.testlinkjavaapi.constants.*
+import br.eti.kinoshita.testlinkjavaapi.model.*
 
 /*
  * Created by : Arief Wardhana
@@ -180,6 +181,25 @@ public class Integration {
 	static testlinkCreateTestSuite(int projectId, String testSuiteName, String details, int parentId, int order) {
 		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
 		testLink.createTestSuite(projectId, testSuiteName, details, parentId, order, true, ActionOnDuplicate.CREATE_NEW_VERSION)
+	}
+	
+	/**
+	 * <b>testlinkCreateTestCase()</b>
+	 * digunakan untuk membuat Test Suite di Testlink
+	 *
+	 * <br><br>
+	 *
+	 * @param projectId
+	 * @param testSuiteName
+	 * @param details
+	 * @param parentId
+	 * @param order
+	 *
+	 * @since 1.1
+	 */
+	static testlinkCreateTestCase() {
+		TestLinkAPI testLink = new TestLinkAPI(new URL(TESTLINK_URL), TESTLINK_KEY)
+		testLink.createTestCase(TESTLINK_URL, 0, 0, TESTLINK_URL, TESTLINK_URL, null, TESTLINK_URL, TestCaseStatus.DRAFT, TestImportance.HIGH, ExecutionType.AUTOMATED, 0, 0, false, ActionOnDuplicate.CREATE_NEW_VERSION)
 	}
 		
 
