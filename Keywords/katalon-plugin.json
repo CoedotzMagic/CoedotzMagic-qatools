@@ -20,29 +20,12 @@
          {
             "key": "",
             "type": "label",
-            "label": "_____________________\n\nTestlink Configuration :\n\n"
-         },
-         {
-            "key": "testlinkKey",
-            "type": "text",
-            "label": "Testlink Key",
-            "defaultValue": ""
-         },
-         {
-            "key": "testlinkUrl",
-            "type": "text",
-            "label": "Testlink Url",
-            "defaultValue": ""
-         },
-         {
-            "key": "",
-            "type": "label",
             "label": "_____________________"
          },
          {
             "key": "lblVer",
             "type": "label",
-            "label": "\nCoedotzMagic - v1.1 - 2024"
+            "label": "\nCoedotzMagic - v1.0 - 2024"
          }
       ]
    }
