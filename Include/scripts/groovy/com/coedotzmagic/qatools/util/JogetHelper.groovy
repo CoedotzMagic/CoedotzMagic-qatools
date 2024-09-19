@@ -98,8 +98,8 @@ public class JogetHelper {
 	/* ------------------------------------------------------------------------- */
 
 	/**
-	 * <b>checkStatusTicket()</b>
-	 * digunakan untuk mengecek status tiket sekarang secara otomatis, berdasarkan kriteria
+	 * <b>checkStatusListWizard()</b>
+	 * digunakan untuk mengecek status list wizard sekarang secara otomatis, berdasarkan kriteria
 	 *
 	 * <br><br>
 	 *
@@ -110,7 +110,7 @@ public class JogetHelper {
 	 * @param testObjListWizard
 	 * @since 1.0
 	 */
-	public String checkStatusTicket(String testObjListWizard){
+	public String checkStatusListWizard(String testObjListWizard){
 
 		// cek element ada apa enggga
 		boolean checkListProgressbar = WebUI.verifyElementNotPresent(findTestObject(testObjListWizard), 30, FailureHandling.OPTIONAL)

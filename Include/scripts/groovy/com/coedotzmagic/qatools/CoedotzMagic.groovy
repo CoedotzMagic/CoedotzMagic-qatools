@@ -94,8 +94,8 @@ public class CoedotzMagic {
 	/* ------------------------------------------------------------------------- */
 
 	/**
-	 * <b>checkStatusTicket()</b>
-	 * digunakan untuk mengecek status tiket sekarang secara otomatis, berdasarkan kriteria
+	 * <b>checkStatusListWizard()</b>
+	 * digunakan untuk mengecek status list wizard sekarang secara otomatis, berdasarkan kriteria
 	 * 
 	 * <br><br>
 	 * 
@@ -106,8 +106,8 @@ public class CoedotzMagic {
 	 * @param testObjListWizard
 	 * @since 1.0
 	 */
-	public String checkStatusTicket(String testObjListWizard){
-		String result = jogethelper.checkStatusTicket(testObjListWizard)
+	public String checkStatusListWizard(String testObjListWizard){
+		String result = jogethelper.checkStatusListWizard(testObjListWizard)
 		return result
 	}
 
