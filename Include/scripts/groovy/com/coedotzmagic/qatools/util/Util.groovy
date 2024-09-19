@@ -268,7 +268,7 @@ public class Util {
 	 * <br><br>
 	 *
 	 * @param fullpage
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	void takeScreenshot(boolean fullpage) {
 		'Inisialisasi String'

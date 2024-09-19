@@ -262,7 +262,7 @@ public class CoedotzMagic {
 	 * <br><br>
 	 *
 	 * @param fullpage
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	void takeScreenshot(boolean fullpage) {
 		util.takeScreenshot(fullpage)
@@ -303,7 +303,7 @@ public class CoedotzMagic {
 	 * @param filePath
 	 * @param sheetName
 	 *
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	public void readTestDataFromExcel(String filePath, String sheetName) {
 		Integration.readTestDataFromExcel(filePath, sheetName)

@@ -27,7 +27,7 @@ public class Integration {
 	 * @param filePath
 	 * @param sheetName
 	 * 
-	 * @since 1.1
+	 * @since 1.0
 	 */
 	public static List<Map<String, String>> readTestDataFromExcel(String filePath, String sheetName) {
 		try {
