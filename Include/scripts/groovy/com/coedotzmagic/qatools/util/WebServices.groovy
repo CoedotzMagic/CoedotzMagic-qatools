@@ -69,6 +69,18 @@ public class WebServices {
 
 		// Verifikasi bahwa response code harus 200
 		assert response.getStatusCode() == 200, "Status Code harus 200, dan status codenya adalah : ${response.getStatusCode()}"
+		
+		// Mengambil data response dari API
+		def responseText = response.getResponseText()
+
+		// Parsing data response terbaru sebagai JSON
+		def jsonResponse = new JsonSlurper().parseText(responseText)
+
+		// mengambil dan menyimpan nilai status code
+		String statusCode = jsonResponse.code
+
+		// cek kondisi API
+		readStatusCode(statusCode)
 	}
 
 	/**
@@ -117,10 +129,59 @@ public class WebServices {
 		String statusCode = jsonResponse.code
 
 		// cek kondisi API
-		if (statusCode == '409') {
-			println("Failed to execute Api, error code 409.")
-		} else if (statusCode == '200') {
-			println("Api Successfully Execute.")
+		readStatusCode(statusCode)
+	}
+	
+	/* ------------------------------------------------------------------------- */
+
+	/**
+	 * <b>readStatusCode<b>
+	 * digunakan untuk membaca status kode ketika panggil api
+	 *
+	 * @param statusCode
+	 * @since 1.0
+	 */
+	void readStatusCode(String statusCode) {
+		switch(statusCode) {
+			case '409' :
+				println("Failed to execute Api because conflict, error code 409.")
+				break
+
+			case '200' :
+				println("Api Successfully Execute, code 200.")
+				break
+
+			case '400' :
+				println("Bad Request, error code 400.")
+				break
+
+			case '401' :
+				println("Unauthorized, error code 401.")
+				break
+
+			case '403' :
+				println("Forbidden, error code 403.")
+				break
+
+			case '404' :
+				println("Not found, error code 404.")
+				break
+
+			case '500' :
+				println("Internal Server Error, 500.")
+				break
+
+			case '502' :
+				println("Bad Gateway, 502.")
+				break
+
+			case '503' :
+				println("Service Unavailable, 503.")
+				break
+
+			case '504' :
+				println("Gateway Timeout, 504.")
+				break
 		}
 	}
 }
