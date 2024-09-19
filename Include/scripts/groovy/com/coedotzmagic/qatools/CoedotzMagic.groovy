@@ -18,15 +18,6 @@ import org.apache.logging.log4j.Logger
 
 public class CoedotzMagic {
 
-	String TESTLINK_TEST_PASSED = "p"
-	String TESTLINK_TEST_BLOCKED = "b"
-	String TESTLINK_TEST_FAILED = "f"
-	String TESTLINK_TEST_WRONG = "w"
-	String TESTLINK_TEST_DEPARTED = "d"
-	String TESTLINK_TEST_SET_HIGH = "3"
-	String TESTLINK_TEST_SET_MEDIUM = "2"
-	String TESTLINK_TEST_SET_LOW = "1"
-
 	private static final Logger LOG = LogManager.getLogger()
 
 	def util = new Util()
@@ -216,26 +207,6 @@ public class CoedotzMagic {
 	/* ------------------------------------------------------------------------- */
 
 	/**
-	 * <b>testlinkUpdateResults()</b>
-	 * digunakan untuk melakukan integrasi ke Testlink
-	 * dengan cara menjalankan dan menghasilkan report dan reportnya dilaporkan ke Testlink
-	 *
-	 * @param projectName
-	 * @param testplanName
-	 * @param testcaseNameID
-	 * @param buildName
-	 * @param execNotes
-	 * @param result
-	 * 
-	 * @since 1.0
-	 */
-	void testlinkUpdateResults(String projectname, String testplanName, String testcaseNameID, String buildName, String notes, String status) {
-		Integration.testlinkUpdateResults(projectname, testplanName, testcaseNameID, buildName, notes, status)
-	}
-
-	/* ------------------------------------------------------------------------- */
-
-	/**
 	 * <b>hitApi</b>
 	 * digunakan untuk melakukan pemanggilan API tanpa data
 	 *
@@ -324,114 +295,6 @@ public class CoedotzMagic {
 			LOG.error(e)
 		}
 	}
-
-	/**
-	 * <b>testlinkCreateTestPlan()</b>
-	 * digunakan untuk melakukan pembuatan Test Plan di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param planName
-	 * @param projectName
-	 * @param notes
-	 * @param isActive
-	 * @param isPublic
-	 *
-	 * @since 1.1
-	 */
-	public void testlinkCreateTestPlan(String planName, String projectName, String notes, boolean isActive, boolean isPublic) {
-		Integration.testlinkCreateTestPlan(planName, projectName, notes, isActive, isPublic)
-	}
-
-	/**
-	 * <b>testlinkCreateTestProject()</b>
-	 * digunakan untuk melakukan pembuatan Test Project di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectName
-	 * @param projectPrefix
-	 * @param notes
-	 * @param enableRequirements
-	 * @param enableTestPriority
-	 * @param enableAutomation
-	 * @param enableInventory
-	 * @param isActive
-	 * @param isPublic
-	 *
-	 * @since 1.1
-	 */
-	public void testlinkCreateTestProject(String projectName, String projectPrefix, String notes, boolean enableRequirements,
-			boolean enableTestPriority, boolean enableAutomation, boolean enableInventory, boolean isActive, boolean isPublic) {
-		Integration.testlinkCreateTestProject(projectName, projectPrefix, notes, enableRequirements, enableTestPriority, enableAutomation, enableInventory, isActive, isPublic)
-	}
-
-	/**
-	 * <b>testlinkAddPlatformToTestPlan()</b>
-	 * digunakan untuk menambahkan Platform ke Testplan di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectId
-	 * @param testPlanId
-	 * @param platformName
-	 *
-	 * @since 1.1
-	 */
-	public void testlinkAddPlatformToTestPlan(int projectId, int testPlanId, String platformName) {
-		Integration.testlinkAddPlatformToTestPlan(projectId, testPlanId, platformName)
-	}
-
-	/**
-	 * <b>testlinkRemovePlatformToTestPlan()</b>
-	 * digunakan untuk menghapus Platform ke Testplan di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectId
-	 * @param testPlanId
-	 * @param platformName
-	 *
-	 * @since 1.1
-	 */
-	public void testlinkRemovePlatformToTestPlan(int projectId, int testPlanId, String platformName) {
-		Integration.testlinkRemovePlatformToTestPLan(projectId, testPlanId, platformName)
-	}
-	
-	/**
-	 * <b>testlinkCreateBuild()</b>
-	 * digunakan untuk membuat Build di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param testPlanId
-	 * @param buildName
-	 * @param notes
-	 *
-	 * @since 1.1
-	 */
-	public void testlinkCreateBuild(int testPlanId, String buildName, String notes) {
-		Integration.testlinkCreateBuild(testPlanId, buildName, notes)
-	}
-	
-	/**
-	 * <b>testlinkCreateTestSuite()</b>
-	 * digunakan untuk membuat Test Suite di Testlink
-	 *
-	 * <br><br>
-	 *
-	 * @param projectId
-	 * @param testSuiteName
-	 * @param details
-	 * @param parentId
-	 * @param order
-	 *
-	 * @since 1.1
-	 */
-	public void testlinkCreateTestSuite(int projectId, String testSuiteName, String details, int parentId, int order) {
-		Integration.testlinkCreateTestSuite(projectId, testSuiteName, details, parentId, order)
-	}
-
 
 	/**
 	 * <b>readTestDataFromExcel()</b>
