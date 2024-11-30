@@ -2,7 +2,7 @@
     "keywords": [
     "com.coedotzmagic.qatools.CoedotzMagic", 
     "com.coedotzmagic.qatools.util.Integration", 
-    "com.coedotzmagic.qatools.util.JogetHelper", 
+    "com.coedotzmagic.qatools.util.MagixSecure", 
     "com.coedotzmagic.qatools.util.KeysTyping", 
     "com.coedotzmagic.qatools.util.Util", 
     "com.coedotzmagic.qatools.util.WebServices"
@@ -10,12 +10,12 @@
 "configuration": {
    "settingId": "com.coedotzmagic.qatools",
    "settingPage": {
-      "name": "CoedotzMagic",
+      "name": "CoedotzMagic QA Tools",
       "components": [
          {
             "key": "",
             "type": "label",
-            "label": "Thankyou for using CoedotzMagic.\nI think everyones can be magician, this library make easier to automation Joget Workflow Apps or Another Apps.\n\n"
+            "label": "Thankyou for using CoedotzMagic.\nI think everyones can be magician, this library make easier to automation using magic keywords in katalon.\n\n"
          },
          {
             "key": "",
@@ -25,7 +25,7 @@
          {
             "key": "lblVer",
             "type": "label",
-            "label": "\nCoedotzMagic - v1.0 - 2024"
+            "label": "\nCoedotzMagic - v1.1 - 2025"
          }
       ]
    }
