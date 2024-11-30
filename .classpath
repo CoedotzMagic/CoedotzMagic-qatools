@@ -213,6 +213,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/commons-configuration2-2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/MagixSecure.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/MonteScreenRecorder.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/testlink-api-client-2.0.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/testlink-java-api-1.9.20-1.jar"/>
