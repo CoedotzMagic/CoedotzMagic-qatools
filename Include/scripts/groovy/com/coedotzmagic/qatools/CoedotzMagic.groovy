@@ -23,7 +23,6 @@ public class CoedotzMagic {
 	def util = new Util()
 	def keys = new KeysTyping()
 	def webservices = new WebServices()
-	def jogethelper = new JogetHelper()
 	def magixsecure = new MagixSecure()
 
 	public String aaz() {
@@ -69,47 +68,6 @@ public class CoedotzMagic {
 	 */
 	public String extractText(String targetText, String textIWant) {
 		util.extractText(targetText, textIWant)
-	}
-
-	/* ------------------------------------------------------------------------- */
-
-	/**
-	 * <b>robotUploadFile()</b>
-	 * digunakan untuk melakukan automasi dialog file chooser
-	 * untuk melakukan pemilihan file secara otomatis pada dialog file chooser
-	 * 
-	 * <br><br>
-	 * 
-	 * parameter masukannya adalah uploadLocator & via.
-	 * dimana uploadLocator sebagai lokasi path area uploadnya dan via itu rutenya
-	 * 
-	 * @param uploadLocator
-	 * @param pathFile
-	 * 
-	 * @since 1.0
-	 */
-	void robotUploadFile(String uploadLocator, String pathFile) {
-		jogethelper.robotUploadFile(uploadLocator, pathFile)
-	}
-
-	/* ------------------------------------------------------------------------- */
-
-	/**
-	 * <b>checkStatusListWizard()</b>
-	 * digunakan untuk mengecek status list wizard sekarang secara otomatis, berdasarkan kriteria
-	 * 
-	 * <br><br>
-	 * 
-	 * progressbar closed --> wizard/step berblok warna biru
-	 * progressbar running --> wizard/step berblok warna hijau
-	 * progressbar open --> wizard/step berblok warna abu-abu
-	 * 
-	 * @param testObjListWizard
-	 * @since 1.0
-	 */
-	public String checkStatusListWizard(String testObjListWizard){
-		String result = jogethelper.checkStatusListWizard(testObjListWizard)
-		return result
 	}
 
 	/* ------------------------------------------------------------------------- */
@@ -241,6 +199,18 @@ public class CoedotzMagic {
 	 */
 	void createNewTab(String url) {
 		util.createNewTab(url)
+	}
+	
+	/**
+	 * <b>createNewTabV2()</b>
+	 * digunakan untuk membantu membuat tab baru
+	 * dengan url yang ditentukan
+	 *
+	 * @param url
+	 * @since 1.1
+	 */
+	void createNewTabV2(String url) {
+		util.createNewTabV2(url)
 	}
 
 	/**

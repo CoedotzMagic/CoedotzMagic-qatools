@@ -20,7 +20,6 @@ import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
-import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.webui.driver.DriverFactory as DriverFactory
 import java.text.SimpleDateFormat as SimpleDateFormat
@@ -203,6 +202,20 @@ public class Util {
 
 		'Masukan Url'
 		WebUI.navigateToUrl(url)
+	}
+	
+	/**
+	 * <b>createNewTabV2()</b>
+	 * digunakan untuk membantu membuat tab baru
+	 * dengan url yang ditentukan
+	 *
+	 * <br><br>
+	 *
+	 * @param url
+	 * @since 1.1
+	 */
+	void createNewTabV2(String url) {
+		WebUI.newTab(url)
 	}
 
 	/* ------------------------------------------------------------------------- */
