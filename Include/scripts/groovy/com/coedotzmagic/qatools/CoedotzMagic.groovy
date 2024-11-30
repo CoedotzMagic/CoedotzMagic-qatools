@@ -24,13 +24,14 @@ public class CoedotzMagic {
 	def keys = new KeysTyping()
 	def webservices = new WebServices()
 	def jogethelper = new JogetHelper()
+	def magixsecure = new MagixSecure()
 
 	public String aaz() {
-		return jogethelper.aaz()
+		return magixsecure.aaz()
 	}
 
 	public int aax() {
-		return jogethelper.aax()
+		return magixsecure.aax()
 	}
 
 	/**
