@@ -5,6 +5,7 @@ import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.testobject.TestObject as TestObject
 
 import com.coedotzmagic.qatools.util.*
+import com.coedotzmagic.magixsecure.*
 
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -23,7 +24,7 @@ public class CoedotzMagic {
 	def util = new Util()
 	def keys = new KeysTyping()
 	def webservices = new WebServices()
-	def magixsecure = new MagixSecure()
+	MagixSecure magixsecure = new MagixSecure();
 
 	public String aaz() {
 		return magixsecure.aaz()
