@@ -69,7 +69,7 @@ public class WebServices {
 
 		// Verifikasi bahwa response code harus 200
 		assert response.getStatusCode() == 200, "Status Code harus 200, dan status codenya adalah : ${response.getStatusCode()}"
-		
+
 		// Mengambil data response dari API
 		def responseText = response.getResponseText()
 
@@ -131,7 +131,7 @@ public class WebServices {
 		// cek kondisi API
 		readStatusCode(statusCode)
 	}
-	
+
 	/* ------------------------------------------------------------------------- */
 
 	/**
