@@ -201,7 +201,7 @@ public class CoedotzMagic {
 	void createNewTab(String url) {
 		util.createNewTab(url)
 	}
-	
+
 	/**
 	 * <b>createNewTabV2()</b>
 	 * digunakan untuk membantu membuat tab baru
