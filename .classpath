@@ -208,5 +208,6 @@
 	<classpathentry kind="lib" path="C:/Users/Asani/Documents/Katalon Studio/CoedotzMagic/Drivers/xmlrpc-common-3.1.3.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Asani/.katalon/packages/Katalon_Studio_Free_Windows_64-9.5.0/Katalon_Studio_Free_Windows_64-9.5.0/configuration/org.eclipse.osgi/28/0/.cp/resources/basic-report/katalon-studio-report-plugin.jar"/>
 	<classpathentry kind="con" path="GROOVY_SUPPORT"/>
+	<classpathentry kind="con" path="GROOVY_DSL_SUPPORT"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
