@@ -14,9 +14,14 @@ import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
 import com.coedotzmagic.qatools.util.*
 
+def util = new Util()
 
+util.startScreenRecording()
+
+util.openBrowser("coedotzmagic.com")
+
+util.stopScreenRecording()
