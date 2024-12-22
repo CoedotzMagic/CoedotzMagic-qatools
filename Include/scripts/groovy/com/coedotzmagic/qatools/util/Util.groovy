@@ -40,6 +40,9 @@ import java.awt.datatransfer.StringSelection as StringSelection
 import org.openqa.selenium.By
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.JavascriptExecutor
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
+import com.coedotzmagic.qatools.util.ScreenRecordingHelper
 
 
 /*
@@ -49,6 +52,8 @@ import org.openqa.selenium.JavascriptExecutor
  */
 
 public class Util {
+	
+	private static final Logger LOG = LogManager.getLogger()
 
 	/**
 	 * <b>extractTextFromList()</b>
@@ -217,8 +222,8 @@ public class Util {
 	void createNewTabV2(String url) {
 		WebUI.newTab(url)
 	}
-	
-	
+
+
 	/**
 	 * <b>openBrowser()</b>
 	 * digunakan untuk membantu membuka browser baru
@@ -232,10 +237,10 @@ public class Util {
 	void openBrowser(String url) {
 		'Open Browser'
 		WebUI.openBrowser('')
-		
+
 		'Maximize Windows'
 		WebUI.maximizeWindow()
-		
+
 		'Call the Url'
 		WebUI.navigateToUrl(url)
 	}
@@ -332,6 +337,34 @@ public class Util {
 		} else {
 			'Melakukan Screenshot untuk bukti pengujian'
 			WebUI.takeScreenshot('Screenshot/' + targetFolder + title + ' - ' + timestamp + '.jpg')
+		}
+	}
+	
+	/**
+	 * <b>startScreenRecording()</b>
+	 * digunakan untuk memulai Screen Recording
+	 *
+	 * @since 1.0
+	 */
+	public void startScreenRecording() {
+		try {
+			ScreenRecordingHelper.startRecording()
+		} catch (final Exception e) {
+			LOG.error(e)
+		}
+	}
+
+	/**
+	 * <b>stopScreenRecording()</b>
+	 * digunakan untuk menghentikan Screen Recording
+	 *
+	 * @since 1.0
+	 */
+	public void stopScreenRecording() {
+		try {
+			ScreenRecordingHelper.stopRecording()
+		} catch (final Exception e) {
+			LOG.error(e)
 		}
 	}
 
