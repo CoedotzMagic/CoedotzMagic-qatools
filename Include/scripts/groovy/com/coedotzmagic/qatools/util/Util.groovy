@@ -203,7 +203,7 @@ public class Util {
 		'Masukan Url'
 		WebUI.navigateToUrl(url)
 	}
-	
+
 	/**
 	 * <b>createNewTabV2()</b>
 	 * digunakan untuk membantu membuat tab baru
@@ -216,6 +216,28 @@ public class Util {
 	 */
 	void createNewTabV2(String url) {
 		WebUI.newTab(url)
+	}
+	
+	
+	/**
+	 * <b>openBrowser()</b>
+	 * digunakan untuk membantu membuka browser baru
+	 * dengan url yang ditentukan
+	 *
+	 * <br><br>
+	 *
+	 * @param url
+	 * @since 1.1
+	 */
+	void openBrowser(String url) {
+		'Open Browser'
+		WebUI.openBrowser('')
+		
+		'Maximize Windows'
+		WebUI.maximizeWindow()
+		
+		'Call the Url'
+		WebUI.navigateToUrl(url)
 	}
 
 	/* ------------------------------------------------------------------------- */
