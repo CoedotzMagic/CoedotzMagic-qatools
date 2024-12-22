@@ -83,7 +83,7 @@ class ScreenRecordingHelper extends ScreenRecorder {
 					new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_QUICKTIME_JPEG,
 					CompressorNameKey, ENCODING_QUICKTIME_JPEG,
 					DepthKey, 24, FrameRateKey, Rational.valueOf(15),
-					QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60),
+					QualityKey, 0.6f, KeyFrameIntervalKey, 15 * 60),
 					new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black",
 					FrameRateKey, Rational.valueOf(30)),
 					null, file, "MyTesting")
