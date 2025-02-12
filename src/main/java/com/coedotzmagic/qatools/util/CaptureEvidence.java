@@ -12,6 +12,11 @@ import java.io.File;
 import com.coedotzmagic.qatools.integration.ScreenRecordingHelper;
 import static com.coedotzmagic.qatools.integration.ScreenRecordingHelper.USER_DIR;
 
+/*
+ * write by Coedotz
+ * 11-02-2025
+ */
+
 public class CaptureEvidence {
 
     /**

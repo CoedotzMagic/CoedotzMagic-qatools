@@ -10,6 +10,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * write by Coedotz
+ * 11-02-2025
+ */
+
 public class BrowserHelper {
 
     /**

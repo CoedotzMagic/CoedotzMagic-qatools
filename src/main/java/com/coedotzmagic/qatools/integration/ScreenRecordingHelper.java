@@ -21,6 +21,11 @@ import org.monte.media.math.Rational;
 import org.monte.media.FormatKeys.MediaType;
 import org.monte.screenrecorder.ScreenRecorder;
 
+/*
+ * write by Coedotz
+ * 22-12-2024
+ */
+
 public class ScreenRecordingHelper extends ScreenRecorder {
     private static final Logger LOG = LogManager.getLogger();
     //static BundleSettingStore bundleSetting;

@@ -2,7 +2,11 @@ package com.coedotzmagic.qatools.util;
 
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
+/*
+ * write by Coedotz
+ * 11-02-2025
+ */
 
 public class DriverHelper {
     public static WebDriver driver;
