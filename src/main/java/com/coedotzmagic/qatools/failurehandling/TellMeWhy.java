@@ -1,0 +1,80 @@
+package com.coedotzmagic.qatools.failurehandling;
+
+import java.util.Map;
+import com.coedotzmagic.qatools.util.DateTime;
+
+/*
+ * write by Coedotz
+ * 12-02-2025
+ */
+
+public class TellMeWhy {
+    public static final String WEBSITE_COEDOTZMAGIC = "https://coedotzmagic.com";
+    public static final String REPORT_US = "contact us if show a problem & this message to reporter@coedotzmagic.com or create issue in github https://github.com/CoedotzMagic/CoedotzMagic-qatools";
+    public static final String UNABLE_TO = "Unable to ";
+    public static final String UNABLE_GET_WEBDRIVER = "Unable to get WebDriver & WebDriver must be set!";
+    public static final String FAILED_READ_EXCEL = "Could not read the Excel sheet : ";
+    public static final String SKIP_FAILURE = "Failed to execute this section. We skip this section...";
+    public static final String STOP_AUTOMATION = "Automation stopped because problem...";
+
+    public static final String ERROR_409 = "Failed to execute Api because conflict, error code 409.";
+    public static final String ERROR_200 = "Api Successfully Execute, code 200.";
+    public static final String ERROR_400 = "Bad Request, error code 400.";
+    public static final String ERROR_401 = "Unauthorized, error code 401.";
+    public static final String ERROR_403 = "Forbidden, error code 403.";
+    public static final String ERROR_404 = "Not Found, error code 404.";
+    public static final String ERROR_500 = "Internal Server Error, error code 500.";
+    public static final String ERROR_502 = "Bad Gateway, error code 502.";
+    public static final String ERROR_503 = "Service Unavailable, error code 503.";
+    public static final String ERROR_504 = "Gateway Timeout, error code 504.";
+    public static final String UNKNOW_STATUSCODE = "Unknown Status Code: ";
+
+    private static final Map<String, String> LEVELS = Map.of(
+            "i", "INFO",
+            "w", "WARNING",
+            "e", "ERROR",
+            "v", "VALIDATION_ERROR"
+    );
+
+    public TellMeWhy(String level, String getTrace, String messages) {
+        log(level, getTrace, messages);
+    }
+
+    public static String getIdentity() {
+        return "CoedotzMagic - QATools: ";
+    }
+
+    private static String getTimestamp() {
+        return new DateTime().getDateTime();
+    }
+
+    public static String getTraceInfo(StackTraceElement[] stackTrace) {
+        StackTraceElement element = stackTrace[2];
+        String traceMethod = " [Method: " + element.getMethodName() + "]";
+        String traceLine = " [Line: " + element.getLineNumber() + "]";
+        String traceClass = " Class: " + element.getClassName();
+        return traceClass + traceMethod + traceLine;
+    }
+
+    private void log(String level, String getTrace, String messages) {
+        String identity = getIdentity();
+        String timestamp = getTimestamp();
+        String levelFormatted = LEVELS.get(level.toLowerCase());
+
+        if (levelFormatted != null && !levelFormatted.equalsIgnoreCase("")) {
+            if (!level.equalsIgnoreCase("v")) {
+                System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + getTrace);
+            }
+
+            System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + "CAUSED BY: " + messages);
+
+            if ("e".equalsIgnoreCase(level)) {
+                System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + STOP_AUTOMATION);
+                System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + REPORT_US);
+                System.exit(1);
+            } else if ("w".equalsIgnoreCase(level)) {
+                System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + SKIP_FAILURE);
+            }
+        }
+    }
+}

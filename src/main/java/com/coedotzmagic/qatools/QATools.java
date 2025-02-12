@@ -1,7 +1,18 @@
 package com.coedotzmagic.qatools;
 
+import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
+import com.coedotzmagic.qatools.util.BrowserHelper;
+import com.coedotzmagic.qatools.util.DriverHelper;
+import org.openqa.selenium.WebDriver;
+
 public class QATools {
-    public static void main(String[] args) {
-        System.out.println("coedotzwuzzhere!");
+
+    private void CoedotzMagic() {
+        System.out.println(TellMeWhy.getIdentity() + "Hi, Everyones can be Magician! but Silence is golden.");
+        new BrowserHelper().OpenBrowser(TellMeWhy.WEBSITE_COEDOTZMAGIC);
+    }
+
+    private static void SetWebDriver(WebDriver driver) {
+        DriverHelper.SetWebDriver(driver);
     }
 }
