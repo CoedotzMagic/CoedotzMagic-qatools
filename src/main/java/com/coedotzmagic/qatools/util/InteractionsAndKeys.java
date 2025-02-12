@@ -8,7 +8,7 @@ import java.awt.event.*;
  * 19-02-2024
  */
 
-public class KeysTyping {
+public class InteractionsAndKeys {
 
     /**
      * <b>CombinationCTRLF()</b>
@@ -85,4 +85,6 @@ public class KeysTyping {
         robot.keyPress(KeyEvent.VK_ESCAPE);
         robot.keyRelease(KeyEvent.VK_ESCAPE);
     }
+
+    void
 }
