@@ -11,11 +11,27 @@ import org.openqa.selenium.WebDriver;
 public class DriverHelper {
     public static WebDriver driver;
 
-    public static WebDriver SetWebDriver(WebDriver setDriver) {
+    /**
+     * <b>SetWebDriver()</b>
+     * digunakan untuk set/menentukan web driver yang digunakan
+     *
+     * <br><br>
+     *
+     * @param setDriver
+     * @since 1.1
+     */
+    public static void SetWebDriver(WebDriver setDriver) {
         driver = setDriver;
-        return driver;
     }
 
+    /**
+     * <b>GetWebDriver()</b>
+     * digunakan untuk mendapatkan web driver yang digunakan
+     *
+     * <br><br>
+     *
+     * @since 1.1
+     */
     public static WebDriver GetWebDriver() {
         return (driver != null) ? driver : null;
         new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_GET_WEBDRIVER);

@@ -29,7 +29,7 @@ public class ReadDataExcel {
      * @param filePath
      * @param sheetName
      *
-     * @since 1.0
+     * @since 1.1
      */
     public static List<Map<String, String>> readTestDataFromExcel(String filePath, String sheetName) {
         try {
