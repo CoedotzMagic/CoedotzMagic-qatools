@@ -1,5 +1,10 @@
 package com.coedotzmagic.qatools.util;
 
+import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
 import java.awt.*;
 import java.awt.event.*;
 
@@ -78,7 +83,7 @@ public class InteractionsAndKeys {
      *
      * <br><br>
      *
-     * @since 1.0
+     * @since 1.1
      */
     void CombinationESC() throws AWTException {
         Robot robot = new Robot();
@@ -86,5 +91,48 @@ public class InteractionsAndKeys {
         robot.keyRelease(KeyEvent.VK_ESCAPE);
     }
 
-    void
+    /**
+     * <b>ScrollToElement()</b>
+     * digunakan untuk melakukan scroll ke element yang diinginkan
+     *
+     * <br><br>
+     *
+     * @param element
+     *
+     * @since 1.1
+     */
+    void ScrollToElement(WebElement element) {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        assert driver != null;
+        try {
+            new Actions(driver).scrollToElement(element).perform();
+        } catch (Exception e) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Scroll Element.");
+        }
+    }
+
+    /**
+     * <b>ScrollByDistance()</b>
+     * digunakan untuk melakukan scroll ke jarak yang diinginkan
+     *
+     * <br><br>
+     *
+     * @param x
+     * @param y
+     *
+     * @since 1.1
+     */
+    void ScrollByDistance(int x, int y) {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        assert driver != null;
+        try {
+            try {
+                new Actions(driver).scrollByAmount(x, y).perform();
+            } catch (Exception e1) {
+                new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Scroll Element.");
+            }
+        } catch (Exception e2) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.INVALID_NUMBER);
+        }
+    }
 }
