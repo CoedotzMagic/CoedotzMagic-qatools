@@ -33,7 +33,11 @@ public class DriverHelper {
      * @since 1.1
      */
     public static WebDriver GetWebDriver() {
-        return (driver != null) ? driver : null;
-        new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_GET_WEBDRIVER);
+        if (driver != null) {
+            return driver;
+        } else {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_GET_WEBDRIVER);
+            return null;
+        }
     }
 }
