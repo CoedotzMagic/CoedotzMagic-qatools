@@ -63,7 +63,7 @@ public class ImprovImgCaptcha {
         return width >= DELTA && height >= DELTA;
     }
 
-    static BufferedImage cleanImage(BufferedImage source) {
+    public static BufferedImage cleanImage(BufferedImage source) {
         BufferedImage clone = new BufferedImage(source.getWidth(), source.getHeight(), source.getType());
         Graphics2D g2d = clone.createGraphics();
         g2d.drawImage(source, 0, 0, null);
