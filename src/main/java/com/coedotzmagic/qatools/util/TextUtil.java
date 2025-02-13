@@ -1,5 +1,10 @@
 package com.coedotzmagic.qatools.util;
 
+import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.util.List;
@@ -72,5 +77,29 @@ public class TextUtil {
      */
     public void copyToClipboard(String text) {
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(text), null);
+    }
+
+    /**
+     * <b>InputTextField()</b>
+     * digunakan melakukan inputan teks biasa
+     *
+     * <br><br>
+     *
+     * @param id
+     * @param text
+     *
+     * @since 1.1
+     */
+    void InputTextField(String id, String text) {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        WebElement input;
+        try {
+            assert driver != null;
+            input = driver.findElement(By.xpath("//input[contains(@id, '" + id + "') or contains(@name, '" + id + "') or contains(@class, '" + id + "')]"));
+            input.clear();
+            input.sendKeys(text);
+        } catch (Exception e) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
+        }
     }
 }
