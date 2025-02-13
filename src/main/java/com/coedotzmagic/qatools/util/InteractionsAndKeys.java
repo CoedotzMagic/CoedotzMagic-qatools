@@ -23,7 +23,7 @@ public class InteractionsAndKeys {
      *
      * @since 1.0
      */
-    void CombinationCTRLF() throws AWTException {
+    public static void CombinationCTRLF() throws AWTException {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_F);
@@ -39,7 +39,7 @@ public class InteractionsAndKeys {
      *
      * @since 1.0
      */
-    void CombinationCTRLV() throws AWTException {
+    public static void CombinationCTRLV() throws AWTException {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
@@ -55,7 +55,7 @@ public class InteractionsAndKeys {
      *
      * @since 1.0
      */
-    void CombinationCTRLC() throws AWTException {
+    public static void CombinationCTRLC() throws AWTException {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_C);
@@ -71,7 +71,7 @@ public class InteractionsAndKeys {
      *
      * @since 1.0
      */
-    void CombinationENTER() throws AWTException {
+    public static void CombinationENTER() throws AWTException {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
@@ -85,7 +85,7 @@ public class InteractionsAndKeys {
      *
      * @since 1.1
      */
-    void CombinationESC() throws AWTException {
+    public static void CombinationESC() throws AWTException {
         Robot robot = new Robot();
         robot.keyPress(KeyEvent.VK_ESCAPE);
         robot.keyRelease(KeyEvent.VK_ESCAPE);
@@ -101,7 +101,7 @@ public class InteractionsAndKeys {
      *
      * @since 1.1
      */
-    void ScrollToElement(WebElement element) {
+    public static void ScrollToElement(WebElement element) {
         WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         try {
@@ -122,7 +122,7 @@ public class InteractionsAndKeys {
      *
      * @since 1.1
      */
-    void ScrollByDistance(int x, int y) {
+    public static void ScrollByDistance(int x, int y) {
         WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         try {

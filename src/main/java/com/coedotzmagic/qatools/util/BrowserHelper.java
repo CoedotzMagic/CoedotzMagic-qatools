@@ -29,7 +29,7 @@ public class BrowserHelper {
      *
      * @since 1.0
      */
-    public String checkTabBrowser(String targetUrl) {
+    public static String checkTabBrowser(String targetUrl) {
         WebDriver driver = DriverHelper.GetWebDriver();
 
         String jsCodeNumberWindows = "return window.top.frames.length;";
@@ -89,7 +89,7 @@ public class BrowserHelper {
      *
      * @since 1.1
      */
-    public void OpenBrowser(String url) {
+    public static void OpenBrowser(String url) {
         try {
             if (url != null && !url.equalsIgnoreCase("")) {
                 WebDriver driver = new ChromeDriver();
@@ -112,7 +112,7 @@ public class BrowserHelper {
      *
      * @since 1.0
      */
-    public void CreateNewTab(String url) {
+    public static void CreateNewTab(String url) {
         WebDriver driver = DriverHelper.GetWebDriver();
         try {
             if (url != null && !url.equalsIgnoreCase("")) {

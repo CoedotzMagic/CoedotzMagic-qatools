@@ -51,7 +51,7 @@ public class ScreenRecordingHelper extends ScreenRecorder {
             throw new IOException("\"" + movieFolder + "\" is not a directory.");
         }
 
-        return new File(movieFolder, name + "-" + new DateTime().getDateTime() + "." + Registry.getInstance().getExtension(fileFormat));
+        return new File(movieFolder, name + "-" + DateTime.getDateTime() + "." + Registry.getInstance().getExtension(fileFormat));
     }
 
     /**

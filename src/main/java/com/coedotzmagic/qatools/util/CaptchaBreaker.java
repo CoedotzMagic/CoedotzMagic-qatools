@@ -30,7 +30,7 @@ public class CaptchaBreaker {
      *
      * @since 1.1
      */
-    void CapthaManual(int timeout) {
+    public static void CapthaManual(int timeout) {
         try {
             Thread.sleep(timeout * 1000);
         } catch (Exception e) {
@@ -49,10 +49,10 @@ public class CaptchaBreaker {
      *
      * @since 1.1
      */
-    void CapthaAutomation(String xpathCaptchaElement, String idElementInput) {
+    public static void CapthaAutomation(String xpathCaptchaElement, String idElementInput) {
         WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
-        WebElement captchaImage = driver.findElement(By.xpath("//div[contains(@class, 'captchafield')]//img"));
+        WebElement captchaImage = driver.findElement(By.xpath(xpathCaptchaElement));
         new Actions(driver).sendKeys(Keys.ESCAPE).perform();
 
         File tessDataPath = new File("tessdata");
@@ -67,7 +67,7 @@ public class CaptchaBreaker {
         if (!folder.exists()) {
             folder.mkdirs();
         }
-        File captchaImageFile = new File(folder, "captcha-" + new DateTime().getDateTime() + ".png");
+        File captchaImageFile = new File(folder, "captcha-" + DateTime.getDateTime() + ".png");
         BufferedImage cleanedImage = null;
         try {
             FileUtils.copyFile(screenshot, captchaImageFile);
@@ -87,10 +87,10 @@ public class CaptchaBreaker {
             captchaText = captchaText.replaceAll("[^a-zA-Z0-9]", "");
             System.out.println("Captcha text: " + captchaText);
             if (!captchaText.equalsIgnoreCase("")) {
-                new TextUtil().InputTextField(idElementInput, captchaText);
+                TextUtil.InputTextField(idElementInput, captchaText);
                 CapthaManual(8);
             } else {
-                new TextUtil().InputTextField(idElementInput, TellMeWhy.UNABLE_EXTRACT_CAPTCHA);
+                TextUtil.InputTextField(idElementInput, TellMeWhy.UNABLE_EXTRACT_CAPTCHA);
                 new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_EXTRACT_CAPTCHA);
                 CapthaManual(8);
             }

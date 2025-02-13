@@ -36,7 +36,7 @@ public class TextUtil {
      *
      * @since 1.0
      */
-    public String extractTextFromList(String targetText, List<String> listToSearch) {
+    public static String extractTextFromList(String targetText, List<String> listToSearch) {
         for (String textIWant : listToSearch) {
             if (targetText.toLowerCase().contains(textIWant.toLowerCase())) {
                 return textIWant;
@@ -61,7 +61,7 @@ public class TextUtil {
      *
      * @since 1.0
      */
-    public String extractText(String targetText, String textIWant) {
+    public static String extractText(String targetText, String textIWant) {
         String pattern = "(?i)" + textIWant;
         Pattern compiledPattern = Pattern.compile(pattern);
         Matcher matcher = compiledPattern.matcher(targetText);
@@ -78,7 +78,7 @@ public class TextUtil {
      *
      * @since 1.0
      */
-    public void copyToClipboard(String text) {
+    public static void copyToClipboard(String text) {
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(new StringSelection(text), null);
     }
 
@@ -88,7 +88,7 @@ public class TextUtil {
      *
      * @since 1.1
      */
-    public String getClipboardContent() {
+    public static String getClipboardContent() {
         try {
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             Transferable contents = clipboard.getContents(null);
@@ -113,7 +113,7 @@ public class TextUtil {
      *
      * @since 1.1
      */
-    void InputTextField(String id, String text) {
+    public static void InputTextField(String id, String text) {
         WebDriver driver = DriverHelper.GetWebDriver();
         WebElement input;
         try {

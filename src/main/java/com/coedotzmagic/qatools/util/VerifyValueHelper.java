@@ -22,7 +22,7 @@ public class VerifyValueHelper {
      *
      * @since 1.1
      */
-    void VerifyTitlePage(String expect) {
+    public static void VerifyTitlePage(String expect) {
         WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         if (expect != null && !expect.equalsIgnoreCase("") && !driver.getTitle().equalsIgnoreCase(expect)) {
@@ -41,7 +41,7 @@ public class VerifyValueHelper {
      *
      * @since 1.1
      */
-    void VerifyValueElement(String xpath, String expect) {
+    public static void VerifyValueElement(String xpath, String expect) {
         WebDriver driver = DriverHelper.GetWebDriver();
         String currentValue;
         try {
@@ -68,7 +68,7 @@ public class VerifyValueHelper {
      *
      * @since 1.1
      */
-    void VerifyTextElement(String xpath, String expect) {
+    public static void VerifyTextElement(String xpath, String expect) {
         WebDriver driver = DriverHelper.GetWebDriver();
         String currentText;
         try {

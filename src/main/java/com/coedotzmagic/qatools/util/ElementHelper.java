@@ -22,7 +22,7 @@ public class ElementHelper {
      *
      * @since 1.1
      */
-    public String getElement(String type, String xpathElement) {
+    public static String getElement(String type, String xpathElement) {
         try {
             WebDriver driver = DriverHelper.GetWebDriver();
             assert driver != null;
@@ -54,7 +54,7 @@ public class ElementHelper {
      *
      * @since 1.1
      */
-    public String getIdElement(String xpathElement) {
+    public static String getIdElement(String xpathElement) {
         return getElement("id", xpathElement);
     }
 
@@ -67,7 +67,7 @@ public class ElementHelper {
      *
      * @since 1.1
      */
-    public String getClassElement(String xpathElement) {
+    public static String getClassElement(String xpathElement) {
         return getElement("class", xpathElement);
     }
 
@@ -80,7 +80,7 @@ public class ElementHelper {
      *
      * @since 1.1
      */
-    public String getNameElement(String xpathElement) {
+    public static String getNameElement(String xpathElement) {
         return getElement("name", xpathElement);
     }
 

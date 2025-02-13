@@ -25,7 +25,7 @@ public class CaptureEvidence {
      *
      * @since 1.0
      */
-    public void startScreenRecording() {
+    public static void startScreenRecording() {
         try {
             ScreenRecordingHelper.startRecording();
         } catch (final Exception e) {
@@ -39,7 +39,7 @@ public class CaptureEvidence {
      *
      * @since 1.0
      */
-    public void stopScreenRecording() {
+    public static void stopScreenRecording() {
         try {
             ScreenRecordingHelper.stopRecording();
         } catch (final Exception e) {
@@ -58,7 +58,7 @@ public class CaptureEvidence {
      *
      * @since 1.0
      */
-    public void TakeScreenshot(String folderName, boolean fullPage) {
+    public static void TakeScreenshot(String folderName, boolean fullPage) {
         WebDriver driver = new ChromeDriver();
         String nameMasterTestcase;
         String targetFolder;
@@ -74,7 +74,7 @@ public class CaptureEvidence {
             targetFolder = pathFolderScreenshot + File.separator;
         }
 
-        String timestamp = new DateTime().getDateTime();
+        String timestamp = DateTime.getDateTime();
 
         String title = "Screenshot ";
         File scrFile;

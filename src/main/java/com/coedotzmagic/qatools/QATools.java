@@ -7,9 +7,9 @@ import org.openqa.selenium.WebDriver;
 
 public class QATools {
 
-    public void CoedotzMagic() {
+    public static void CoedotzMagic() {
         System.out.println(TellMeWhy.getIdentity() + "Hi, Everyones can be Magician! but Silence is golden.");
-        new BrowserHelper().OpenBrowser(TellMeWhy.WEBSITE_COEDOTZMAGIC);
+        BrowserHelper.OpenBrowser(TellMeWhy.WEBSITE_COEDOTZMAGIC);
     }
 
     public static void SetWebDriver(WebDriver driver) {

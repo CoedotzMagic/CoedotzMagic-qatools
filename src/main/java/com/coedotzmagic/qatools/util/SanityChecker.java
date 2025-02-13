@@ -13,7 +13,7 @@ import com.coedotzmagic.qatools.integration.ReadDataExcel;
 
 public class SanityChecker {
 
-    void processSanityCheckAuto(String excelFilePath, String sheetName, Map<String, String> dataPreparation, Consumer<Void> afterInputAction, Consumer<Void> positiveAction, Consumer<Void> negativeAction) {
+    public static void processSanityCheckAuto(String excelFilePath, String sheetName, Map<String, String> dataPreparation, Consumer<Void> afterInputAction, Consumer<Void> positiveAction, Consumer<Void> negativeAction) {
         List<Map<String, String>> testData = ReadDataExcel.readTestDataFromExcel(excelFilePath, sheetName);
 
         assert testData != null;
@@ -45,7 +45,7 @@ public class SanityChecker {
         }
     }
 
-    void processSanityCheckManual(Map<String, String> dataPreparation, Consumer<Void> afterInputAction, Consumer<Void> positiveAction, Consumer<Void> negativeAction) {
+    public static void processSanityCheckManual(Map<String, String> dataPreparation, Consumer<Void> afterInputAction, Consumer<Void> positiveAction, Consumer<Void> negativeAction) {
         for (Map.Entry<String, String> entry : dataPreparation.entrySet()) {
             String xpath = entry.getKey();
             String value = entry.getValue();

@@ -22,7 +22,7 @@ public class GetValueHelper {
      *
      * @since 1.1
      */
-    public String getTextElement(String xpath) {
+    public static String getTextElement(String xpath) {
         WebDriver driver = DriverHelper.GetWebDriver();
         try {
             assert driver != null;
@@ -44,7 +44,7 @@ public class GetValueHelper {
      *
      * @since 1.1
      */
-    public String getValueElement(String xpath) {
+    public static String getValueElement(String xpath) {
         WebDriver driver = DriverHelper.GetWebDriver();
         try {
             assert driver != null;
@@ -64,7 +64,7 @@ public class GetValueHelper {
      *
      * @since 1.1
      */
-    public String getTitlePage() {
+    public static String getTitlePage() {
         WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         return driver.getTitle();

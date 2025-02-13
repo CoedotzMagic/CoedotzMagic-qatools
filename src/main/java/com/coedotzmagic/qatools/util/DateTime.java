@@ -18,7 +18,7 @@ public class DateTime {
      *
      * @since 1.0
      */
-    public String getDateTime() {
+    public static String getDateTime() {
         Calendar cal = Calendar.getInstance();
         Date currentDate = cal.getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
