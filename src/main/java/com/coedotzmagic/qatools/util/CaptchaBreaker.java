@@ -2,11 +2,9 @@ package com.coedotzmagic.qatools.util;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 
 import net.sourceforge.tess4j.Tesseract;
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -54,11 +52,6 @@ public class CaptchaBreaker {
         WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         WebElement captchaImage = driver.findElement(By.xpath(xpathCaptchaElement));
-        try {
-            InteractionsAndKeys.CombinationESC();
-        } catch (AWTException e) {
-            throw new RuntimeException(e);
-        }
 
         File tessDataPath = new File("tessdata");
         String tessDataPathString = tessDataPath.getAbsolutePath();
