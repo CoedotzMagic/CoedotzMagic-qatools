@@ -6,7 +6,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.File;
 import com.coedotzmagic.qatools.integration.ScreenRecordingHelper;
@@ -59,7 +58,7 @@ public class CaptureEvidence {
      * @since 1.0
      */
     public static void TakeScreenshot(String folderName, boolean fullPage) {
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = DriverHelper.GetWebDriver();
         String nameMasterTestcase;
         String targetFolder;
         String pathFolderScreenshot = System.getProperty(USER_DIR) + File.separator + "Screenshot";
