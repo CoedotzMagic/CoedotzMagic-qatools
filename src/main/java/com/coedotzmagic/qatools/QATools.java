@@ -43,7 +43,7 @@ public class QATools {
      *
      * @param close
      *
-     * @since 1.0
+     * @since 1.1
      */
     public static void SetCloseBrowserWhenError(boolean close) {
         FailureHandlingHelper.CloseBrowserWhenError(close);
