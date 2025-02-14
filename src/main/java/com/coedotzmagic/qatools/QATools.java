@@ -48,4 +48,19 @@ public class QATools {
     public static void SetCloseBrowserWhenError(boolean close) {
         FailureHandlingHelper.CloseBrowserWhenError(close);
     }
+
+    /**
+     * <b>SetCallBrowserFromUs()</b>
+     * Digunakan untuk memberikan perilaku pemanggilan browser dari kami
+     *
+     * <br><br>
+     *
+     * @param isActive
+     * @param browser
+     *
+     * @since 1.1
+     */
+    public static void SetCallBrowserFromUs(boolean isActive, String browser) {
+        DriverHelper.UseCallBrowserFromUs(isActive, browser);
+    }
 }
