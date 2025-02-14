@@ -6,6 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import net.sourceforge.tess4j.Tesseract;
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -53,7 +54,11 @@ public class CaptchaBreaker {
         WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         WebElement captchaImage = driver.findElement(By.xpath(xpathCaptchaElement));
-        new Actions(driver).sendKeys(Keys.ESCAPE).perform();
+        try {
+            InteractionsAndKeys.CombinationESC();
+        } catch (AWTException e) {
+            throw new RuntimeException(e);
+        }
 
         File tessDataPath = new File("tessdata");
         String tessDataPathString = tessDataPath.getAbsolutePath();
