@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,7 +91,7 @@ public class BrowserHelper {
     public static void OpenBrowser(String url) {
         try {
             if (url != null && !url.equalsIgnoreCase("")) {
-                WebDriver driver = new ChromeDriver();
+                WebDriver driver = DriverHelper.GetWebDriver();
                 driver.manage().window().maximize();
                 driver.get(url);
             }
