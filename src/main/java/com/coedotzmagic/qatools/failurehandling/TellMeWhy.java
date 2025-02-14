@@ -2,6 +2,8 @@ package com.coedotzmagic.qatools.failurehandling;
 
 import java.util.Map;
 import com.coedotzmagic.qatools.util.DateTime;
+import com.coedotzmagic.qatools.util.DriverHelper;
+import org.openqa.selenium.WebDriver;
 
 /*
  * write by Coedotz
@@ -9,6 +11,8 @@ import com.coedotzmagic.qatools.util.DateTime;
  */
 
 public class TellMeWhy {
+    private static boolean closeWhenError = false;
+
     public static final String WEBSITE_COEDOTZMAGIC = "https://coedotzmagic.com";
     public static final String REPORT_US = "contact us if show a problem & this message to reporter@coedotzmagic.com or create issue in github https://github.com/CoedotzMagic/CoedotzMagic-qatools";
     public static final String INVALID_NUMBER = "Please insert valid number!";
@@ -52,7 +56,11 @@ public class TellMeWhy {
     }
 
     private static String getTimestamp() {
-        return new DateTime().getDateTime();
+        return DateTime.getDateTime();
+    }
+
+    public static void setCloseWhenError(boolean close) {
+        closeWhenError = close;
     }
 
     public static String getTraceInfo(StackTraceElement[] stackTrace) {
@@ -78,6 +86,11 @@ public class TellMeWhy {
             if ("e".equalsIgnoreCase(level)) {
                 System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + STOP_AUTOMATION);
                 System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + REPORT_US);
+                if (closeWhenError) {
+                    WebDriver driver = DriverHelper.GetWebDriver();
+                    assert driver != null;
+                    driver.quit();
+                }
                 System.exit(1);
             } else if ("w".equalsIgnoreCase(level)) {
                 System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + SKIP_FAILURE);

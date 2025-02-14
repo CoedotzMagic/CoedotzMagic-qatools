@@ -1,9 +1,10 @@
 package com.coedotzmagic.qatools;
 
+import org.openqa.selenium.WebDriver;
+import com.coedotzmagic.qatools.failurehandling.FailureHandlingHelper;
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import com.coedotzmagic.qatools.util.BrowserHelper;
 import com.coedotzmagic.qatools.util.DriverHelper;
-import org.openqa.selenium.WebDriver;
 
 public class QATools {
 
@@ -14,5 +15,9 @@ public class QATools {
 
     public static void SetWebDriver(WebDriver driver) {
         DriverHelper.SetWebDriver(driver);
+    }
+
+    private static void SetCloseBrowserWhenError(boolean close) {
+        FailureHandlingHelper.CloseBrowserWhenError(close);
     }
 }
