@@ -27,6 +27,8 @@ public class VerifyValueHelper {
         assert driver != null;
         if (expect != null && !expect.equalsIgnoreCase("") && !driver.getTitle().equalsIgnoreCase(expect)) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + ", Current value/text is: " +  driver.getCurrentUrl());
+        } else {
+            new TellMeWhy("i", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.VERIFY_OK + expect + ", Current value/text is: " +  driver.getCurrentUrl());
         }
     }
 
@@ -51,6 +53,8 @@ public class VerifyValueHelper {
             assert currentValue != null;
             if (!currentValue.equalsIgnoreCase(expect)) {
                 new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + ", Current value/text is: " +  currentValue);
+            } else {
+                new TellMeWhy("i", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.VERIFY_OK + expect + ", Current value/text is: " +  currentValue);
             }
         } catch (Exception e) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
@@ -77,6 +81,8 @@ public class VerifyValueHelper {
             currentText = textElement.getText();
             if (!currentText.equalsIgnoreCase(expect)) {
                 new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + " Current value/text is: " +  currentText);
+            } else {
+                new TellMeWhy("i", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.VERIFY_OK + expect + " Current value/text is: " +  currentText);
             }
         } catch (Exception e) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);

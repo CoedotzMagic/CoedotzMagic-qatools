@@ -17,7 +17,6 @@ public class TellMeWhy {
     public static final String REPORT_US = "contact us if show a problem & this message to reporter@coedotzmagic.com or create issue in github https://github.com/CoedotzMagic/CoedotzMagic-qatools";
     public static final String INVALID_NUMBER = "Please insert valid number!";
     public static final String UNABLE_TO = "Unable to ";
-    public static final String UNABLE_GET_WEBDRIVER = "Unable to get WebDriver & WebDriver must be set!";
     public static final String UNABLE_EXTRACT_CAPTCHA = "Failed extract captcha, use manual, we hold automation 8s before continue automation.";
     public static final String NOT_FOUND_ELEMENT = "Ahhh, unable located element what you want, sorry.";
     public static final String NOT_FOUND_OCR_TESSDATA = "'tessdata' folder is not in this root project! Put 'tessdata' folder into this root project and can be downloaded from: https://github.com/CoedotzMagic/tessdata";
@@ -27,6 +26,7 @@ public class TellMeWhy {
     public static final String SKIP_FAILURE = "Failed to execute this section. We skip this section...";
     public static final String ERROR_OCR = "Error during OCR: ";
     public static final String STOP_AUTOMATION = "Automation stopped because problem...";
+    public static final String VERIFY_OK = "Successfully Verified, Expect value: ";
 
     public static final String ERROR_409 = "Failed to execute Api because conflict, error code 409.";
     public static final String ERROR_200 = "Api Successfully Execute, code 200.";
