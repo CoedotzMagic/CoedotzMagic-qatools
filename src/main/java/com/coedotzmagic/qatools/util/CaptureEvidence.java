@@ -60,16 +60,18 @@ public class CaptureEvidence {
     public static void TakeScreenshot(String folderName, boolean fullPage) {
         WebDriver driver = DriverHelper.GetWebDriver();
         String nameMasterTestcase;
-        String targetFolder;
+        String targetFolder = null;
         String pathFolderScreenshot = System.getProperty(USER_DIR) + File.separator + "Screenshot";
 
         new File(pathFolderScreenshot).mkdirs();
 
-        if (folderName != null && !folderName.equalsIgnoreCase("")) {
-            nameMasterTestcase = pathFolderScreenshot + File.separator + folderName;
-            targetFolder = folderName + File.separator;
-            new File(nameMasterTestcase).mkdirs();
-        } else {
+        try {
+            if (folderName != null) {
+                nameMasterTestcase = pathFolderScreenshot + File.separator + folderName;
+                targetFolder = folderName + File.separator;
+                new File(nameMasterTestcase).mkdirs();
+            }
+        } catch (Exception e) {
             targetFolder = pathFolderScreenshot + File.separator;
         }
 
@@ -86,12 +88,14 @@ public class CaptureEvidence {
         } else {
             scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         }
-        if (scrFile != null) {
-            try {
+        try {
+            if (folderName != null) {
                 FileUtils.copyFile(scrFile, new File("Screenshot/" + targetFolder + title + " - " + timestamp + ".jpg"));
-            } catch (Exception e) {
-                new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Screenshot this page :" + e.getMessage());
+            } else {
+                FileUtils.copyFile(scrFile, new File("Screenshot/" + title + " - " + timestamp + ".jpg"));
             }
+        } catch (Exception e) {
+            new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Screenshot this page :" + e.getMessage());
         }
     }
 }
