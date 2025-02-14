@@ -1,10 +1,7 @@
 package com.coedotzmagic.qatools.util;
 
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -115,8 +112,7 @@ public class BrowserHelper {
         WebDriver driver = DriverHelper.GetWebDriver();
         try {
             if (url != null && !url.equalsIgnoreCase("")) {
-                String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,"t");
-                driver.findElement(By.linkText("urlLink")).sendKeys(selectLinkOpeninNewTab);
+                driver.switchTo().newWindow(WindowType.TAB);
                 driver.navigate().to(url);
             }
         } catch (Exception e) {
