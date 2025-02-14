@@ -1,5 +1,6 @@
 package com.coedotzmagic.qatools;
 
+import com.coedotzmagic.qatools.failurehandling.KillProcessWebDriver;
 import org.openqa.selenium.WebDriver;
 import com.coedotzmagic.qatools.failurehandling.FailureHandlingHelper;
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
@@ -62,5 +63,17 @@ public class QATools {
      */
     public static void SetCallBrowserFromUs(boolean isActive, String browser) {
         DriverHelper.UseCallBrowserFromUs(isActive, browser);
+    }
+
+    /**
+     * <b>KillAllWebDriverProcess()</b>
+     * Digunakan untuk memberhentikan proses web driver yang masih berjalan pada task manager (windows) / activity monitor (macos/unix)
+     *
+     * <br><br>
+     *
+     * @since 1.1
+     */
+    public static void KillAllWebDriverProcess() {
+        new KillProcessWebDriver();
     }
 }

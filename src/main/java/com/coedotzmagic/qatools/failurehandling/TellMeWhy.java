@@ -23,6 +23,7 @@ public class TellMeWhy {
     public static final String FAILED_READ_EXCEL = "Could not read the Excel sheet : ";
     public static final String FAILED_TO_VERIFY = "Failed to Verify, Expect value: ";
     public static final String FAILED_TO_READWRITE_IMG = "Failed to Read/Write Image. ";
+    public static final String FAILED_TO_KILL_PROCESS = "Failed to Kill Process WebDriver, please try again... msg: . ";
     public static final String SKIP_FAILURE = "Failed to execute this section. We skip this section...";
     public static final String ERROR_OCR = "Error during OCR: ";
     public static final String STOP_AUTOMATION = "Automation stopped because problem...";
