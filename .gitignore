@@ -6,6 +6,7 @@ target/
 ### Evidence ###
 ScreenRecording
 Screenshot
+Captcha
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
