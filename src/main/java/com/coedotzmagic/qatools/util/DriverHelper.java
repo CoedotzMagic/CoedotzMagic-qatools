@@ -17,7 +17,6 @@ import java.util.Objects;
 
 public class DriverHelper {
     private static WebDriver driver;
-    private static boolean calBrowserFromUs = false;
 
     /**
      * <b>SetWebDriver()</b>
@@ -41,7 +40,10 @@ public class DriverHelper {
      * @since 1.1
      */
     public static WebDriver GetWebDriver() {
-        return Objects.requireNonNullElseGet(driver, () -> driver = new ChromeDriver());
+        if (driver == null) {
+            driver = new ChromeDriver();
+        }
+        return driver;
     }
 
     /**
@@ -56,7 +58,6 @@ public class DriverHelper {
      * @since 1.1
      */
     public static void UseCallBrowserFromUs(boolean isActive, String browser) {
-        calBrowserFromUs = isActive;
         WebDriver driverFromUS = null;
         if(isActive) {
             assert browser != null;
