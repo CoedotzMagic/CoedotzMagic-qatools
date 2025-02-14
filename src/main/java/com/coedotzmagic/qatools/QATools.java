@@ -45,7 +45,7 @@ public class QATools {
      *
      * @since 1.0
      */
-    private static void SetCloseBrowserWhenError(boolean close) {
+    public static void SetCloseBrowserWhenError(boolean close) {
         FailureHandlingHelper.CloseBrowserWhenError(close);
     }
 }
