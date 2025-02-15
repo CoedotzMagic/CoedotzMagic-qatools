@@ -5,8 +5,6 @@ import com.coedotzmagic.qatools.util.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.time.Duration;
-
 /*
  * write by Coedotz
  * 13-02-2025
