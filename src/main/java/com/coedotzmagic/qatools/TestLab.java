@@ -51,7 +51,7 @@ public class TestLab {
         VerifyValueHelper.VerifyTextElement("/html/body/h1/center[2]/span", "Everyones can be Magician!");
 
         // take screenshot
-        CaptureEvidence.TakeScreenshot(null,false);
+        CaptureEvidence.TakeScreenshot(null);
 
         // create new tab
         BrowserHelper.CreateNewTab("http://localhost:8080/jw/web/userview/jogetdx7Components/home/_/enterprise");
@@ -60,7 +60,7 @@ public class TestLab {
         CaptchaBreaker.CapthaAutomation("//div[contains(@class, 'captchafield')]//img", "field4");
 
         // take screenshot
-        CaptureEvidence.TakeScreenshot("",true);
+        CaptureEvidence.TakeScreenshot("");
 
         // stop recording
         CaptureEvidence.stopScreenRecording();
