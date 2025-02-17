@@ -2,10 +2,7 @@ package com.coedotzmagic.qatools.util;
 
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 
 import java.io.File;
 import com.coedotzmagic.qatools.integration.ScreenRecordingHelper;
@@ -88,5 +85,23 @@ public class CaptureEvidence {
         } catch (Exception e) {
             new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Screenshot this page :" + e.getMessage());
         }
+    }
+
+    /**
+     * <b>TakeScreenshotSpecificPath()</b>
+     * digunakan untuk melakukan screenshot pada bagian yang spesifik
+     *
+     * <br><br>
+     *
+     * @param folderName
+     * @param xpath
+     *
+     * @since 1.1
+     */
+    public static void TakeScreenshotSpecificPath(String folderName, String xpath) {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        WebElement element = driver.findElement(By.xpath(xpath));
+        InteractionsAndKeys.ScrollToElement(element);
+        TakeScreenshot(folderName);
     }
 }
