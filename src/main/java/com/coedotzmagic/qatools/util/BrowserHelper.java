@@ -25,7 +25,7 @@ public class BrowserHelper {
      *
      * @since 1.0
      */
-    public static String checkTabBrowser(String targetUrl) {
+    public static boolean checkTabBrowser(String targetUrl) {
         WebDriver driver = DriverHelper.GetWebDriver();
 
         String jsCodeNumberWindows = "return window.top.frames.length;";
@@ -36,7 +36,7 @@ public class BrowserHelper {
         String tabHandle;
 
         // jalankan javascript untuk mendapatkan url sekarang dari masing2 tab
-        String result = null;
+        boolean result = false;
         for (int i = 0; i < numberOfOpenWindows; i++) {
             // arahkan tab ke target
             tabHandle = windowHandles.get(i);
@@ -51,24 +51,18 @@ public class BrowserHelper {
                 // Periksa apakah URL yang diinginkan ada di URL saat ini
                 if (currentURL != null && !currentURL.equalsIgnoreCase("")) {
                     if (currentURL.contains(targetUrl)) {
-                        result = "tab found";
-                        break;
+                        result = true;
                     }
                 }
             } catch (Exception e) {
                 new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "get site web :" + e.getMessage());
-                result = "Error checking";
+                System.out.println("Error Checking");
             }
         }
 
         // Arahkan ke tab sebelumnya
         tabHandle = windowHandles.iterator().next();
         driver.switchTo().window(tabHandle);
-
-        // jika tidak ditemukan / kosong
-        if (result == null) {
-            result = "tab not found";
-        }
 
         // kembalikan nilai result
         return result;
