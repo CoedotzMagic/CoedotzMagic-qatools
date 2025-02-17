@@ -3,12 +3,11 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-### Evidence ###
+### CoedotzMagic ###
 ScreenRecording
 Screenshot
 Captcha
-
-### TESTLAB ###
+DataDriven
 TestLab.java
 
 ### IntelliJ IDEA ###
