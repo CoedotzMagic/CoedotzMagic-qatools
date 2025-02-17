@@ -36,6 +36,14 @@ public class TestLab {
         // get title page
         System.out.println("Page Title: " + GetValueHelper.getTitlePage());
 
+        // Makesure title correct
+        boolean checkTab = BrowserHelper.checkTabBrowser("coedotzmagic.com");
+        if (checkTab) {
+            System.out.println("OK, this tab active");
+        } else {
+            System.out.println("Not Okay, tab not active!");
+        }
+
         // wait 15s
         try {
             Thread.sleep(15000);
