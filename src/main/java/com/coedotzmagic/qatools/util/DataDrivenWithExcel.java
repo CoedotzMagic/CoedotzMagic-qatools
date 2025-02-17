@@ -1,4 +1,4 @@
-package com.coedotzmagic.qatools.integration;
+package com.coedotzmagic.qatools.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import static com.coedotzmagic.qatools.integration.ScreenRecordingHelper.USER_DIR;
@@ -20,7 +18,7 @@ import static com.coedotzmagic.qatools.integration.ScreenRecordingHelper.USER_DI
  * 19-02-2024
  */
 
-public class ReadDataExcel {
+public class DataDrivenWithExcel {
 
     /**
      * <b>readTestDataFromExcel</b>
@@ -33,7 +31,7 @@ public class ReadDataExcel {
      */
     public static List<Map<String, String>> readTestDataFromExcel(String filePath, String sheetName) {
         try {
-            String pathFolderTestdata = System.getProperty(USER_DIR) + File.separator + "TestData";
+            String pathFolderTestdata = System.getProperty(USER_DIR) + File.separator + "DataDriven";
             new File(pathFolderTestdata).mkdirs();
             String getFilePath = pathFolderTestdata + File.separator + filePath;
 
