@@ -1,9 +1,13 @@
 package com.coedotzmagic.qatools;
 
-import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
-import com.coedotzmagic.qatools.util.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+import java.util.Map;
+
+import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
+import com.coedotzmagic.qatools.util.*;
 
 /*
  * write by Coedotz
@@ -15,6 +19,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class TestLab {
 
 //    public static String url = TellMeWhy.WEBSITE_COEDOTZMAGIC;
+//    String filePath = "testingDataDriven.xlsx";
+//    String sheetName = "Sheet1";
 
 //    public static void main(String[] args) {
 //        // create driver
@@ -73,7 +79,21 @@ public class TestLab {
 //        // take screenshot specific components
 //        CaptureEvidence.TakeScreenshotSpecificPath("", "/html/body/div[2]/div[1]/div/div[2]/main/div[1]/fieldset/form/div[2]/div[2]/div/i/input");
 //
+//        // create new tab
+//        BrowserHelper.CreateNewTab("http://localhost:8080/jw/web/login");
+//
+//        // Data driven source from excel
+//        List<Map<String, String>> testData = DataDrivenWithExcel.readTestDataFromExcel(filePath, sheetName);
+//        assert testData != null;
+//        for (Map<String, String> row : testData) {
+//        String username = row.get("Username");
+//        String password = row.get("Password");
+//
+//        TextUtil.InputTextField("username", username);
+//        TextUtil.InputTextField("password", password);
+//    }
 //        // stop recording
 //        CaptureEvidence.stopScreenRecording();
 //    }
+
 }
