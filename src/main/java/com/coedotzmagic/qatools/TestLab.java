@@ -14,66 +14,66 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestLab {
 
-    public static String url = TellMeWhy.WEBSITE_COEDOTZMAGIC;
+//    public static String url = TellMeWhy.WEBSITE_COEDOTZMAGIC;
 
-    public static void main(String[] args) {
-        // create driver
-        WebDriver driver = new ChromeDriver();
-
-        // set webdriver
-        QATools.SetWebDriver(driver);
-
-        // start recording
-        CaptureEvidence.startScreenRecording();
-
-        // open browser
-        BrowserHelper.OpenBrowser(url);
-
-        // get element
-        String getclass = ElementHelper.getClassElement("/html/body/h1/center[2]/span");
-        System.out.println(getclass);
-
-        // get title page
-        System.out.println("Page Title: " + GetValueHelper.getTitlePage());
-
-        // Makesure title correct
-        boolean checkTab = BrowserHelper.checkTabBrowser("coedotzmagic.com");
-        if (checkTab) {
-            System.out.println("OK, this tab active");
-        } else {
-            System.out.println("Not Okay, tab not active!");
-        }
-
-        // wait 15s
-        try {
-            Thread.sleep(15000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-
-        // get text
-        System.out.println("Get Text magician: " + GetValueHelper.getTextElement("/html/body/h1/center[2]/span"));
-
-        // verifytitle
-        VerifyValueHelper.VerifyTitlePage("CoedotzMagic: Everyones can be Magician!");
-        VerifyValueHelper.VerifyTextElement("/html/body/h1/center[2]/span", "Everyones can be Magician!");
-
-        // take screenshot
-        CaptureEvidence.TakeScreenshot(null);
-
-        // create new tab
-        BrowserHelper.CreateNewTab("http://localhost:8080/jw/web/userview/jogetdx7Components/home/_/enterprise");
-
-        // doing break captcha
-        CaptchaBreaker.CapthaAutomation("//div[contains(@class, 'captchafield')]//img", "field4");
-
-        // take screenshot
-        CaptureEvidence.TakeScreenshot("");
-
-        // take screenshot specific components
-        CaptureEvidence.TakeScreenshotSpecificPath("", "/html/body/div[2]/div[1]/div/div[2]/main/div[1]/fieldset/form/div[2]/div[2]/div/i/input");
-
-        // stop recording
-        CaptureEvidence.stopScreenRecording();
-    }
+//    public static void main(String[] args) {
+//        // create driver
+//        WebDriver driver = new ChromeDriver();
+//
+//        // set webdriver
+//        QATools.SetWebDriver(driver);
+//
+//        // start recording
+//        CaptureEvidence.startScreenRecording();
+//
+//        // open browser
+//        BrowserHelper.OpenBrowser(url);
+//
+//        // get element
+//        String getclass = ElementHelper.getClassElement("/html/body/h1/center[2]/span");
+//        System.out.println(getclass);
+//
+//        // get title page
+//        System.out.println("Page Title: " + GetValueHelper.getTitlePage());
+//
+//        // Makesure title correct
+//        boolean checkTab = BrowserHelper.checkTabBrowser("coedotzmagic.com");
+//        if (checkTab) {
+//            System.out.println("OK, this tab active");
+//        } else {
+//            System.out.println("Not Okay, tab not active!");
+//        }
+//
+//        // wait 15s
+//        try {
+//            Thread.sleep(15000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        // get text
+//        System.out.println("Get Text magician: " + GetValueHelper.getTextElement("/html/body/h1/center[2]/span"));
+//
+//        // verifytitle
+//        VerifyValueHelper.VerifyTitlePage("CoedotzMagic: Everyones can be Magician!");
+//        VerifyValueHelper.VerifyTextElement("/html/body/h1/center[2]/span", "Everyones can be Magician!");
+//
+//        // take screenshot
+//        CaptureEvidence.TakeScreenshot(null);
+//
+//        // create new tab
+//        BrowserHelper.CreateNewTab("http://localhost:8080/jw/web/userview/jogetdx7Components/home/_/enterprise");
+//
+//        // doing break captcha
+//        CaptchaBreaker.CapthaAutomation("//div[contains(@class, 'captchafield')]//img", "field4");
+//
+//        // take screenshot
+//        CaptureEvidence.TakeScreenshot("");
+//
+//        // take screenshot specific components
+//        CaptureEvidence.TakeScreenshotSpecificPath("", "/html/body/div[2]/div[1]/div/div[2]/main/div[1]/fieldset/form/div[2]/div[2]/div/i/input");
+//
+//        // stop recording
+//        CaptureEvidence.stopScreenRecording();
+//    }
 }
