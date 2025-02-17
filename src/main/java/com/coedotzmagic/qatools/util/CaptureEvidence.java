@@ -53,11 +53,10 @@ public class CaptureEvidence {
      * <br><br>
      *
      * @param folderName
-     * @param fullPage
      *
      * @since 1.0
      */
-    public static void TakeScreenshot(String folderName, boolean fullPage) {
+    public static void TakeScreenshot(String folderName) {
         WebDriver driver = DriverHelper.GetWebDriver();
         String nameMasterTestcase;
         String targetFolder = null;
@@ -79,15 +78,7 @@ public class CaptureEvidence {
 
         String title = "Screenshot ";
         File scrFile;
-        if (fullPage) {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            Long scrollHeight = (Long) js.executeScript("return document.documentElement.scrollHeight");
-            js.executeScript("window.scrollTo(0, " + scrollHeight + ")");
-            scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            js.executeScript("window.scrollTo(0, 0)");
-        } else {
-            scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        }
+        scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
             if (folderName != null) {
                 FileUtils.copyFile(scrFile, new File("Screenshot/" + targetFolder + title + " - " + timestamp + ".jpg"));
