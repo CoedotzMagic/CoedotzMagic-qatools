@@ -62,6 +62,9 @@ public class TestLab {
         // take screenshot
         CaptureEvidence.TakeScreenshot("");
 
+        // take screenshot specific components
+        CaptureEvidence.TakeScreenshotSpecificPath("", "/html/body/div[2]/div[1]/div/div[2]/main/div[1]/fieldset/form/div[2]/div[2]/div/i/input");
+
         // stop recording
         CaptureEvidence.stopScreenRecording();
     }
