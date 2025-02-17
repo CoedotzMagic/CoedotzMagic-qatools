@@ -112,6 +112,7 @@ public class BrowserHelper {
         WebDriver driver = DriverHelper.GetWebDriver();
         try {
             if (url != null && !url.equalsIgnoreCase("")) {
+                driver.manage().window().maximize();
                 driver.switchTo().newWindow(WindowType.TAB);
                 driver.navigate().to(url);
             }
