@@ -1,14 +1,11 @@
 package com.coedotzmagic.qatools.util;
 
-import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
-import java.util.Objects;
 
 /*
  * write by Coedotz
@@ -20,7 +17,7 @@ public class DriverHelper {
 
     /**
      * <b>SetWebDriver()</b>
-     * digunakan untuk set/menentukan web driver yang digunakan
+     * used to set/determine the webdriver used
      *
      * <br><br>
      *
@@ -33,7 +30,7 @@ public class DriverHelper {
 
     /**
      * <b>GetWebDriver()</b>
-     * digunakan untuk mendapatkan web driver yang digunakan
+     * used to get the webdriver used
      *
      * <br><br>
      *
@@ -48,7 +45,7 @@ public class DriverHelper {
 
     /**
      * <b>SetCallBrowserFromUs()</b>
-     * Digunakan untuk memberikan perilaku pemanggilan browser dari kami
+     * Used to provide browser calling behavior from QA Tools
      *
      * <br><br>
      *

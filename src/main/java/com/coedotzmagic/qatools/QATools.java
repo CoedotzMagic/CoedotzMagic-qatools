@@ -24,7 +24,7 @@ public class QATools {
 
     /**
      * <b>SetWebDriver()</b>
-     * Digunakan untuk set WebDriver pada komponen-komponen yang akan dipakai pada QA Tools
+     * Used to set WebDriver on components that will be used in QA Tools.
      *
      * <br><br>
      *
@@ -38,7 +38,7 @@ public class QATools {
 
     /**
      * <b>SetCloseBrowserWhenError()</b>
-     * Digunakan untuk memberikan perilaku jika error maka browser akan keluar
+     * Used to provide behavior if an error occurs then the browser will exit.
      *
      * <br><br>
      *
@@ -52,7 +52,7 @@ public class QATools {
 
     /**
      * <b>SetCallBrowserFromUs()</b>
-     * Digunakan untuk memberikan perilaku pemanggilan browser dari kami
+     * Used to provide browser calling behavior from QA Tools
      *
      * <br><br>
      *
@@ -67,7 +67,7 @@ public class QATools {
 
     /**
      * <b>KillAllWebDriverProcess()</b>
-     * Digunakan untuk memberhentikan proses web driver yang masih berjalan pada task manager (windows) / activity monitor (macos/unix)
+     * Used to stop the webdriver process that is still running in task manager (windows) / activity monitor (macos/unix)
      *
      * <br><br>
      *

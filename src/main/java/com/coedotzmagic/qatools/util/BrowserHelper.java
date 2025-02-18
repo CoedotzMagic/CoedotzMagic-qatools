@@ -15,9 +15,9 @@ public class BrowserHelper {
 
     /**
      * <b>checkTabBrowser()</b>
-     * digunakan untuk mengecek apakah ada Tab Aktif dengan website khusus atau tidak
-     * semisal kita ingin cek apakah situs google aktif atau tidak di tab browser atau tab lainnya
-     * jika aktif nanti akan mengembalikan nilai "Tab Found" jika tidak "Tab Not Found"
+     * used to check whether there is an Active Tab with a specific website or not
+     * for example we want to check whether the Google site is active or not in the browser tab or other tabs
+     * if active it will return the value "Tab Found" if not "Tab Not Found"
      *
      * <br><br>
      *
@@ -70,8 +70,8 @@ public class BrowserHelper {
 
     /**
      * <b>openBrowser()</b>
-     * digunakan untuk membantu membuka browser baru
-     * dengan url yang ditentukan
+     * used to help open a new browser
+     * with the specified url
      *
      * <br><br>
      *
@@ -93,8 +93,8 @@ public class BrowserHelper {
 
     /**
      * <b>createNewTab()</b>
-     * digunakan untuk membantu membuat tab baru
-     * dengan url yang ditentukan
+     * is used to help create new tabs
+     * with the specified url
      *
      * <br><br>
      *

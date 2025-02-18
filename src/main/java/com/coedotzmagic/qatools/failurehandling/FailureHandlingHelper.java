@@ -9,7 +9,7 @@ public class FailureHandlingHelper {
 
     /**
      * <b>CloseBrowserWhenError()</b>
-     * Digunakan untuk memberikan perilaku jika error maka browser akan keluar
+     * Used to provide behavior if an error occurs then the browser will exit.
      *
      * <br><br>
      *

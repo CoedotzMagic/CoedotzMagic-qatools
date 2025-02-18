@@ -14,7 +14,7 @@ public class VerifyValueHelper {
 
     /**
      * <b>VerifyTitlePage()</b>
-     * digunakan untuk verifikasi title halaman page
+     * used to verify page title
      *
      * <br><br>
      *
@@ -34,7 +34,7 @@ public class VerifyValueHelper {
 
     /**
      * <b>VerifyValueElement()</b>
-     * digunakan untuk verifikasi value pada element
+     * used to verify the value of an element
      *
      * <br><br>
      *
@@ -63,7 +63,7 @@ public class VerifyValueHelper {
 
     /**
      * <b>VerifyTextElement()</b>
-     * digunakan untuk verifikasi text pada element
+     * used to verify text on elements
      *
      * <br><br>
      *

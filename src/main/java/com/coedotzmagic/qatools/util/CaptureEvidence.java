@@ -17,7 +17,7 @@ public class CaptureEvidence {
 
     /**
      * <b>startScreenRecording()</b>
-     * digunakan untuk memulai Screen Recording
+     * used to start Screen Recording
      *
      * @since 1.0
      */
@@ -31,7 +31,7 @@ public class CaptureEvidence {
 
     /**
      * <b>stopScreenRecording()</b>
-     * digunakan untuk menghentikan Screen Recording
+     * used to stop Screen Recording
      *
      * @since 1.0
      */
@@ -45,7 +45,7 @@ public class CaptureEvidence {
 
     /**
      * <b>takeScreenshot()</b>
-     * digunakan untuk melakukan screenshot
+     * used to take screenshots
      *
      * <br><br>
      *
@@ -89,7 +89,7 @@ public class CaptureEvidence {
 
     /**
      * <b>TakeScreenshotSpecificPath()</b>
-     * digunakan untuk melakukan screenshot pada bagian yang spesifik
+     * used to take screenshots of specific parts
      *
      * <br><br>
      *

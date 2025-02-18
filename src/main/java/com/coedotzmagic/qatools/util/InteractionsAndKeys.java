@@ -17,7 +17,7 @@ public class InteractionsAndKeys {
 
     /**
      * <b>CombinationCTRLF()</b>
-     * digunakan untuk melakukan perintah CTRL+F (Find)
+     * used to perform the CTRL+F (Find) command
      *
      * <br><br>
      *
@@ -33,7 +33,7 @@ public class InteractionsAndKeys {
 
     /**
      * <b>CombinationCTRLV()</b>
-     * digunakan untuk melakukan perintah CTRL+V (Paste)
+     * used to perform the CTRL+V (Paste) command
      *
      * <br><br>
      *
@@ -49,7 +49,7 @@ public class InteractionsAndKeys {
 
     /**
      * <b>CombinationCTRLC()</b>
-     * digunakan untuk melakukan perintah CTRL+C (Copy)
+     * used to perform the CTRL+C (Copy) command
      *
      * <br><br>
      *
@@ -65,7 +65,7 @@ public class InteractionsAndKeys {
 
     /**
      * <b>CombinationENTER()</b>
-     * digunakan untuk melakukan perintah ENTER
+     * used to perform the ENTER command
      *
      * <br><br>
      *
@@ -79,7 +79,7 @@ public class InteractionsAndKeys {
 
     /**
      * <b>CombinationESC()</b>
-     * digunakan untuk melakukan perintah ESC
+     * used to perform the ESC command
      *
      * <br><br>
      *
@@ -93,7 +93,7 @@ public class InteractionsAndKeys {
 
     /**
      * <b>ScrollToElement()</b>
-     * digunakan untuk melakukan scroll ke element yang diinginkan
+     * used to scroll to the desired element
      *
      * <br><br>
      *
@@ -113,7 +113,7 @@ public class InteractionsAndKeys {
 
     /**
      * <b>ScrollByDistance()</b>
-     * digunakan untuk melakukan scroll ke jarak yang diinginkan
+     * used to scroll to the desired distance
      *
      * <br><br>
      *

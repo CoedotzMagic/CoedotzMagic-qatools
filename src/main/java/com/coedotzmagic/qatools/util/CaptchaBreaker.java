@@ -21,7 +21,7 @@ public class CaptchaBreaker {
 
     /**
      * <b>CapthaManual()</b>
-     * digunakan untuk menghandle captha dalam bentuk manual
+     * used to handle captcha in manual
      *
      * <br><br>
      *
@@ -39,7 +39,7 @@ public class CaptchaBreaker {
 
     /**
      * <b>CapthaAutomation()</b>
-     * digunakan untuk menghandle captha dalam bentuk otomatis
+     * used to handle captcha in self action / automatic
      *
      * <br><br>
      *

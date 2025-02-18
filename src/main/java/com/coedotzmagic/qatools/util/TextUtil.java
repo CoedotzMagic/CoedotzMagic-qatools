@@ -23,11 +23,11 @@ public class TextUtil {
 
     /**
      * <b>extractTextFromList()</b>
-     * digunakan untuk melakukan ekstraksi teks dari data list
-     * maksudnya misal, ada service id 50250205_122848263712_INTERNET
-     * nah dia akan melakukan pencarian dengan mencocokan data di list, apakah pada targetText
-     * ada kata yang cocok dengan yang dilist, jika ada nanti akan dioutputkan, jadi nanti dilist ada
-     * data "internet" nah nanti outputnya jadi "internet" karena di target textnya ada kata "internet"
+     * used to extract text from list data
+     * means for example, there is a service id Coedotz_123456789_MAGIC
+     * well it will do a search by matching the data in the list, whether in targetText
+     * there is a word that matches the one in the list, if there is, it will be output, so later in the list there is
+     * data "MAGIC" well later the output will be "MAGIC" because in the target text there is the word "MAGIC"
      *
      *<br><br>
      *
@@ -51,8 +51,8 @@ public class TextUtil {
 
     /**
      * <b>extractText()</b>
-     * digunakan untuk melakukan ekstraksi teks berdasarkan teks yang kita mau
-     * misal, teks "COEDOTZ ITA 12 SOFT 4 SKYYLUVIE dan kita mau kata COEDOTZ aja berati nanti outputnya "COEDOTZ"
+     * used to perform text extraction based on the text we want
+     * for example, the text "COEDOTZ ITA 12 SOFT 4 SKYYLUVIE and we want the word COEDOTZ only, the output will be "COEDOTZ"
      *
      * <br><br>
      *
@@ -73,8 +73,8 @@ public class TextUtil {
 
     /**
      * <b>copyToClipboard()</b>
-     * digunakan untuk melakukan salin teks ke clipboard external chrome
-     * biasanya digunakan untuk handle CTRL+F pada chrome atau dialog chooser
+     * used to copy text to browser external clipboard
+     * usually used to handle CTRL+F on chrome or dialog chooser
      *
      * @since 1.0
      */
@@ -84,7 +84,7 @@ public class TextUtil {
 
     /**
      * <b>getClipboardContent()</b>
-     * digunakan untuk melakukan mengambil salin teks dari clipboard external chrome
+     * used to perform copying and retrieving text from browser external clipboard
      *
      * @since 1.1
      */
@@ -104,7 +104,7 @@ public class TextUtil {
 
     /**
      * <b>InputTextField()</b>
-     * digunakan melakukan inputan teks biasa
+     * used to perform regular text input
      *
      * <br><br>
      *

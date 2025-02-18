@@ -13,8 +13,7 @@ public class DateTime {
 
     /**
      * <b>getDateTime()</b>
-     * digunakan untuk mendapatkan Tanggal dan Waktu hari ini
-     * biasanya fungsi ini digunakan untuk pembuatan di summary ticketing
+     * used to get today's Date and Time
      *
      * @since 1.0
      */

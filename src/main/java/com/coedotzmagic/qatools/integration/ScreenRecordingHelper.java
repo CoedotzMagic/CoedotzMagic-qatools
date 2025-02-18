@@ -56,7 +56,7 @@ public class ScreenRecordingHelper extends ScreenRecorder {
 
     /**
      * <b>startRecording()</b>
-     * digunakan untuk memulai Screen Recording
+     * used to start Screen Recording
      *
      * @since 1.0
      */
@@ -128,7 +128,7 @@ public class ScreenRecordingHelper extends ScreenRecorder {
 
     /**
      * <b>stopRecording()</b>
-     * digunakan untuk menghentikan Screen Recording
+     * used to stop Screen Recording
      *
      * @since 1.0
      */

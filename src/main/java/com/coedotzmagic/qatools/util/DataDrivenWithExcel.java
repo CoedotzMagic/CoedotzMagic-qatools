@@ -22,7 +22,7 @@ public class DataDrivenWithExcel {
 
     /**
      * <b>readTestDataFromExcel</b>
-     * digunakan untuk membaca data dan isi dari file excel
+     * used to read data and contents from excel files
      *
      * @param filePath
      * @param sheetName

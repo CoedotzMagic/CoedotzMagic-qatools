@@ -14,7 +14,7 @@ public class ElementHelper {
 
     /**
      * <b>getIdElement()</b>
-     * digunakan untuk mendapatkan element atribut id
+     * used to get the element attributes id, name and class
      *
      * <br><br>
      * @param type
@@ -47,7 +47,7 @@ public class ElementHelper {
 
     /**
      * <b>getIdElement()</b>
-     * digunakan untuk mendapatkan element atribut id
+     * used to get the id attribute element
      *
      * <br><br>
      * @param xpathElement
@@ -60,7 +60,7 @@ public class ElementHelper {
 
     /**
      * <b>getClassElement()</b>
-     * digunakan untuk mendapatkan element atribut class
+     * used to get the class attribute element
      *
      * <br><br>
      * @param xpathElement
@@ -73,7 +73,7 @@ public class ElementHelper {
 
     /**
      * <b>getNameElement()</b>
-     * digunakan untuk mendapatkan element atribut name
+     * used to get the name attribute element
      *
      * <br><br>
      * @param xpathElement

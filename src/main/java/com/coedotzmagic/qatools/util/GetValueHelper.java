@@ -14,7 +14,7 @@ public class GetValueHelper {
 
     /**
      * <b>getTextElement()</b>
-     * digunakan untuk mendapatkan teks pada element
+     * used to get text on an element
      *
      * <br><br>
      *
@@ -36,7 +36,7 @@ public class GetValueHelper {
 
     /**
      * <b>getValueElement()</b>
-     * digunakan untuk mendapatkan value pada element
+     * used to get the value of an element
      *
      * <br><br>
      *
@@ -58,7 +58,7 @@ public class GetValueHelper {
 
     /**
      * <b>getTitlePage()</b>
-     * digunakan untuk mendapatkan title halaman page
+     * used to get the page title
      *
      * <br><br>
      *
