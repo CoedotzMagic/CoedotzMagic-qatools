@@ -7,11 +7,12 @@ import java.util.Map;
  * 19-02-2024
  */
 
+@Deprecated(since = "1.1")
 public class WebServices {
 
     /**
      * <b>hitApi</b>
-     * digunakan untuk melakukan pemanggilan API tanpa data
+     * used to make API calls without data (UNDER DEVELOPMENT)
      *
      * <br><br>
      *
@@ -19,13 +20,14 @@ public class WebServices {
      *
      * @since 1.0
      */
+    @Deprecated(since = "1.1")
     public void HitApi(String pathApi) {
 
     }
 
     /**
      * <b>hitApiWithData</b>
-     * digunakan untuk melakukan pemanggilan API dengan data
+     * used to make API calls with data (UNDER DEVELOPMENT)
      *
      * <br><br>
      *
@@ -34,6 +36,7 @@ public class WebServices {
      *
      * @since 1.0
      */
+    @Deprecated(since = "1.1")
     public void HitApiWithData(String pathApi, Map<String, Object> dataMap) {
 
     }
