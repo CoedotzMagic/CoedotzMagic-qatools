@@ -10,7 +10,6 @@
     <packaging>jar</packaging>
 
     <name>CoedotzMagic - QATools</name>
-    <url>https://coedotzmagic.com/opensource</url>
     <description>
         # QATools
 
@@ -25,6 +24,7 @@
         BrowserHelper, CaptchaBreaker, CaptureEvidence, DataDriven with Excel, ElementHelper
         Get and Verify Value Helper and more..
     </description>
+    <url>https://coedotzmagic.com/opensource</url>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -43,7 +43,6 @@
         </repository>
     </distributionManagement>
 
-
     <licenses>
         <license>
             <name>Apache License 2.0</name>
@@ -58,24 +57,27 @@
     </organization>
 
     <scm>
-        <connection>scm:git:https://github.com/CoedotzMagic/CoedotzMagic-qatools.git</connection>
-        <developerConnection>scm:git:https://github.com/CoedotzMagic/CoedotzMagic-qatools.git</developerConnection>
-        <url>https://github.com/CoedotzMagic/CoedotzMagic-qatools</url>
+        <connection>scm:git:git://github.com/CoedotzMagic/CoedotzMagic-qatools.git</connection>
+        <developerConnection>scm:git:ssh://github.com:CoedotzMagic/CoedotzMagic-qatools.git</developerConnection>
+        <url>http://github.com/CoedotzMagic/CoedotzMagic-qatools/tree/master</url>
     </scm>
 
     <developers>
         <developer>
             <name>Arief Wardhana</name>
             <email>poncoe@coedotzmagic.com</email>
+            <organization>CoedotzMagic</organization>
+            <organizationUrl>https://coedotzmagic.com</organizationUrl>
         </developer>
     </developers>
 
     <build>
         <plugins>
+            <!-- JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -85,10 +87,11 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Java Docs -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -99,9 +102,19 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.7.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
+            </plugin>
+            <!-- pom & asc -->
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
-                <version>1.5</version>
+                <version>3.2.6</version>
                 <executions>
                     <execution>
                         <id>sign-artifacts</id>
@@ -110,12 +123,27 @@
                             <goal>sign</goal>
                         </goals>
                         <configuration>
-                            <keyname>${gpg.keyname}</keyname>
-                            <passphraseServerId>${gpg.keyname}</passphraseServerId>
+                            <keyname>${gpg.keyname}</keyname> <!-- Your GPG key ID -->
+                            <gpgArguments>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
+                            </gpgArguments>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.7.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
