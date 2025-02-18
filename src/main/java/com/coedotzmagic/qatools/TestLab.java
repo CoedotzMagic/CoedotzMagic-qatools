@@ -16,6 +16,14 @@ import com.coedotzmagic.qatools.util.*;
  * only for testing use.
  */
 
+/**
+ * <b>TestLab</b>
+ * only for testing coedotz use.
+ *
+ * <br><br>
+ *
+ * @since 1.1
+ */
 public class TestLab {
 
 //    public static String url = TellMeWhy.WEBSITE_COEDOTZMAGIC;
