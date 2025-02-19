@@ -21,12 +21,8 @@ public class CaptureEvidence {
      *
      * @since 1.0
      */
-    public static void startScreenRecording() {
-        try {
-            ScreenRecordingHelper.startRecording();
-        } catch (final Exception e) {
-            new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Start Recording :" + e.getMessage());
-        }
+    public static void startScreenRecording() throws Exception {
+        ScreenRecordingHelper.startRecording();
     }
 
     /**
@@ -35,12 +31,8 @@ public class CaptureEvidence {
      *
      * @since 1.0
      */
-    public static void stopScreenRecording() {
-        try {
-            ScreenRecordingHelper.stopRecording();
-        } catch (final Exception e) {
-            new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Stop Recording :" + e.getMessage());
-        }
+    public static void stopScreenRecording() throws Exception {
+        ScreenRecordingHelper.stopRecording();
     }
 
     /**

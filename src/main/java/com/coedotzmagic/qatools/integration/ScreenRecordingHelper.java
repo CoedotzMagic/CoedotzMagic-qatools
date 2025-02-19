@@ -9,9 +9,8 @@ import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
 
+import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import com.coedotzmagic.qatools.util.DateTime;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import static org.monte.media.AudioFormatKeys.*;
 import static org.monte.media.VideoFormatKeys.*;
@@ -27,7 +26,6 @@ import org.monte.screenrecorder.ScreenRecorder;
  */
 
 public class ScreenRecordingHelper extends ScreenRecorder {
-    private static final Logger LOG = LogManager.getLogger();
     //static BundleSettingStore bundleSetting;
     //static String FORMATMEDIA;
 
@@ -83,7 +81,7 @@ public class ScreenRecordingHelper extends ScreenRecorder {
 
             screenRecorder.start();
         } catch (final IOException e) {
-            LOG.error(e);
+            new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Start Recording :" + e.getMessage());
         }
 
         //bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'id.coedotzmagic.qatools', true);
@@ -136,7 +134,7 @@ public class ScreenRecordingHelper extends ScreenRecorder {
         try {
             screenRecorder.stop();
         } catch (final IOException e) {
-            LOG.error(e);
+            new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Stop Recording :" + e.getMessage());
         }
     }
 }
