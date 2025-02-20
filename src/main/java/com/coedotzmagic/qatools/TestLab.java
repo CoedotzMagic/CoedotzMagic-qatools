@@ -27,10 +27,10 @@ import com.coedotzmagic.qatools.util.*;
 public class TestLab {
 
 //    public static String url = TellMeWhy.WEBSITE_COEDOTZMAGIC;
-//    String filePath = "testingDataDriven.xlsx";
-//    String sheetName = "Sheet1";
-
-//    public static void main(String[] args) {
+//    static String filePath = "testingDataDriven.xlsx";
+//    static String sheetName = "Sheet1";
+//
+//    public static void main(String[] args) throws Exception {
 //        // create driver
 //        WebDriver driver = new ChromeDriver();
 //
@@ -102,6 +102,8 @@ public class TestLab {
 //    }
 //        // stop recording
 //        CaptureEvidence.stopScreenRecording();
+//
+//        // kill all process
+//        QATools.KillAllWebDriverProcess();
 //    }
-
 }
