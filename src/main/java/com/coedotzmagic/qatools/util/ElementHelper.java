@@ -1,9 +1,14 @@
 package com.coedotzmagic.qatools.util;
 
+import com.coedotzmagic.qatools.failurehandling.FailureHandlingHelper;
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 /*
  * write by Coedotz
@@ -25,12 +30,13 @@ public class ElementHelper {
     public static String getElement(String type, String xpathElement) {
         try {
             WebDriver driver = DriverHelper.GetWebDriver();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
-            WebElement bodyElement = driver.findElement(By.xpath(xpathElement));
+            WebElement bodyElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathElement)));
 
-            String dynamicId = (type.equalsIgnoreCase("id")) ? bodyElement.getAttribute("id") :
-                    (type.equalsIgnoreCase("class")) ? bodyElement.getAttribute("class") :
-                            (type.equalsIgnoreCase("name")) ? bodyElement.getAttribute("name") : null;
+            String dynamicId = (type.equalsIgnoreCase("id")) ? bodyElement.getDomProperty("id") :
+                    (type.equalsIgnoreCase("class")) ? bodyElement.getDomProperty("class") :
+                            (type.equalsIgnoreCase("name")) ? bodyElement.getDomProperty("name") : null;
 
             assert dynamicId != null;
             if (!dynamicId.equalsIgnoreCase("")) {
