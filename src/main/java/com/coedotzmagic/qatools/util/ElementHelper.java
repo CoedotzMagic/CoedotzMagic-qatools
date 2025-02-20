@@ -34,9 +34,9 @@ public class ElementHelper {
             assert driver != null;
             WebElement bodyElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathElement)));
 
-            String dynamicId = (type.equalsIgnoreCase("id")) ? bodyElement.getDomProperty("id") :
-                    (type.equalsIgnoreCase("class")) ? bodyElement.getDomProperty("class") :
-                            (type.equalsIgnoreCase("name")) ? bodyElement.getDomProperty("name") : null;
+            String dynamicId = (type.equalsIgnoreCase("id")) ? bodyElement.getDomAttribute("id") :
+                    (type.equalsIgnoreCase("class")) ? bodyElement.getDomAttribute("class") :
+                            (type.equalsIgnoreCase("name")) ? bodyElement.getDomAttribute("name") : null;
 
             assert dynamicId != null;
             if (!dynamicId.equalsIgnoreCase("")) {
