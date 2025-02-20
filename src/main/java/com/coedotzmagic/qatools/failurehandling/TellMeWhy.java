@@ -64,6 +64,10 @@ public class TellMeWhy {
         closeWhenError = close;
     }
 
+    public static boolean getCloseWhenError() {
+        return closeWhenError;
+    }
+
     public static String getTraceInfo(StackTraceElement[] stackTrace) {
         StackTraceElement element = stackTrace[2];
         String traceMethod = " [Method: " + element.getMethodName() + "]";
@@ -87,7 +91,7 @@ public class TellMeWhy {
             if ("e".equalsIgnoreCase(level)) {
                 System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + STOP_AUTOMATION);
                 System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + REPORT_US);
-                if (closeWhenError) {
+                if (getCloseWhenError()) {
                     WebDriver driver = DriverHelper.GetWebDriver();
                     assert driver != null;
                     driver.quit();
