@@ -14,6 +14,7 @@ import java.awt.event.*;
  */
 
 public class InteractionsAndKeys {
+    private static final WebDriver driver = DriverHelper.GetWebDriver();
 
     /**
      * <b>CombinationCTRLF()</b>
@@ -102,7 +103,6 @@ public class InteractionsAndKeys {
      * @since 1.1
      */
     public static void ScrollToElement(WebElement element) {
-        WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         try {
             new Actions(driver).scrollToElement(element).perform();
@@ -123,7 +123,6 @@ public class InteractionsAndKeys {
      * @since 1.1
      */
     public static void ScrollByDistance(int x, int y) {
-        WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         try {
             try {

@@ -12,6 +12,7 @@ import java.util.List;
  */
 
 public class BrowserHelper {
+    private static final WebDriver driver = DriverHelper.GetWebDriver();
 
     /**
      * <b>checkTabBrowser()</b>
@@ -26,8 +27,6 @@ public class BrowserHelper {
      * @since 1.0
      */
     public static boolean checkTabBrowser(String targetUrl) {
-        WebDriver driver = DriverHelper.GetWebDriver();
-
         String jsCodeNumberWindows = "return window.top.frames.length;";
         JavascriptExecutor jsExecutor = (JavascriptExecutor) DriverHelper.GetWebDriver();
         jsExecutor.executeScript(jsCodeNumberWindows);
@@ -82,7 +81,6 @@ public class BrowserHelper {
     public static void OpenBrowser(String url) {
         try {
             if (url != null && !url.equalsIgnoreCase("")) {
-                WebDriver driver = DriverHelper.GetWebDriver();
                 driver.manage().window().maximize();
                 driver.get(url);
             }
@@ -103,7 +101,6 @@ public class BrowserHelper {
      * @since 1.0
      */
     public static void CreateNewTab(String url) {
-        WebDriver driver = DriverHelper.GetWebDriver();
         try {
             if (url != null && !url.equalsIgnoreCase("")) {
                 driver.manage().window().maximize();
@@ -114,5 +111,4 @@ public class BrowserHelper {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "New Tab Browser :" + e.getMessage());
         }
     }
-
 }
