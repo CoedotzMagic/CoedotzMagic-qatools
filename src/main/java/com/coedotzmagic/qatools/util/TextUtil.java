@@ -1,15 +1,19 @@
 package com.coedotzmagic.qatools.util;
 
+import com.coedotzmagic.qatools.failurehandling.FailureHandlingHelper;
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
+import java.time.Duration;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -20,6 +24,9 @@ import java.util.regex.Pattern;
  */
 
 public class TextUtil {
+    private static final WebDriver driver = DriverHelper.GetWebDriver();
+    private static final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
+    private static WebElement element;
 
     /**
      * <b>extractTextFromList()</b>
@@ -114,13 +121,30 @@ public class TextUtil {
      * @since 1.1
      */
     public static void InputTextField(String id, String text) {
-        WebDriver driver = DriverHelper.GetWebDriver();
-        WebElement input;
         try {
             assert driver != null;
-            input = driver.findElement(By.xpath("//input[contains(@id, '" + id + "') or contains(@name, '" + id + "') or contains(@class, '" + id + "')]"));
-            input.clear();
-            input.sendKeys(text);
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@id, '" + id + "') or contains(@name, '" + id + "') or contains(@class, '" + id + "')]")));
+            element.clear();
+            element.sendKeys(text);
+        } catch (Exception e) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
+        }
+    }
+
+    /**
+     * <b>ClearInputfield()</b>
+     * used to delete input in the input field
+     *
+     * <br><br>
+     *
+     * @param id
+     *
+     * @since 1.2
+     */
+    public static void ClearInputfield (String id) {
+        try {
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@id, '" + id + "') or contains(@name, '" + id + "') or contains(@class, '" + id + "')]")));
+            element.clear();
         } catch (Exception e) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
         }
