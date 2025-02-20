@@ -13,7 +13,7 @@ import java.util.StringJoiner;
 public class ImprovImgCaptcha {
     private static final int DELTA = 3;
 
-    static boolean isEligible(BufferedImage img, int x, int y) {
+    private static boolean isEligible(BufferedImage img, int x, int y) {
         int left = x - 1;
         while (left >= 0 && (x - left) < 2 * DELTA) {
             if (img.getRGB(left, y) == Color.WHITE.getRGB()) {
@@ -86,7 +86,7 @@ public class ImprovImgCaptcha {
         return clone;
     }
 
-    static String cleanResult(String result) {
+    private static String cleanResult(String result) {
         StringJoiner sb = new StringJoiner("");
         for (int i = 0; i < result.length(); i++) {
             char c = result.charAt(i);
