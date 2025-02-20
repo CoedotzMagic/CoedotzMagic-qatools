@@ -103,6 +103,9 @@ public class TestLab {
 //        // stop recording
 //        CaptureEvidence.stopScreenRecording();
 //
+//        // close browser
+//        driver.quit();
+//
 //        // kill all process
 //        QATools.KillAllWebDriverProcess();
 //    }
