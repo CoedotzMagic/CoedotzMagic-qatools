@@ -76,4 +76,32 @@ public class QATools {
     public static void KillAllWebDriverProcess() {
         new KillProcessWebDriver();
     }
+
+
+
+    /**
+     * <b>SetTimeoutWait()</b>
+     * Used to set timeout when waiting time for get the element visible
+     *
+     * <br><br>
+     *
+     * @param seconds
+     *
+     * @since 1.2
+     */
+    public static void SetTimeoutWait(int seconds) {
+        FailureHandlingHelper.SetTimeoutWait(seconds);
+    }
+
+    /**
+     * <b>GetTimeoutWait()</b>
+     * Used to get timeout when waiting time for WebDriverWait
+     *
+     * <br><br>
+     *
+     * @since 1.2
+     */
+    public static int GetTimeoutWait() {
+        return FailureHandlingHelper.GetTimeoutWait();
+    }
 }

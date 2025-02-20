@@ -6,6 +6,7 @@ package com.coedotzmagic.qatools.failurehandling;
  */
 
 public class FailureHandlingHelper {
+    private static int timeout = 0;
 
     /**
      * <b>CloseBrowserWhenError()</b>
@@ -19,6 +20,36 @@ public class FailureHandlingHelper {
      */
     public static void CloseBrowserWhenError(boolean close) {
         TellMeWhy.setCloseWhenError(close);
+    }
+
+    /**
+     * <b>SetTimeoutWait()</b>
+     * Used to set timeout when waiting time for get the element visible
+     *
+     * <br><br>
+     *
+     * @param seconds
+     *
+     * @since 1.2
+     */
+    public static void SetTimeoutWait(int seconds) {
+        try {
+            timeout = seconds;
+        } catch (Exception e) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.INVALID_NUMBER);
+        }
+    }
+
+    /**
+     * <b>GetTimeoutWait()</b>
+     * Used to get timeout when waiting time for WebDriverWait
+     *
+     * <br><br>
+     *
+     * @since 1.2
+     */
+    public static int GetTimeoutWait() {
+        return (timeout != 0) ? timeout : 10;
     }
 
 }
