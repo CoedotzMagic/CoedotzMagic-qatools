@@ -74,8 +74,9 @@ public class TextUtil {
         Matcher matcher = compiledPattern.matcher(targetText);
         if (matcher.find()) {
             return matcher.group(0);
+        } else {
+            return null;
         }
-        return null;
     }
 
     /**
