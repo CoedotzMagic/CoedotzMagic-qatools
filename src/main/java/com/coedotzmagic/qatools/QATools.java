@@ -90,16 +90,4 @@ public class QATools {
     public static void SetTimeoutWait(int seconds) {
         FailureHandlingHelper.SetTimeoutWait(seconds);
     }
-
-    /**
-     * <b>GetTimeoutWait()</b>
-     * Used to get timeout when waiting time for WebDriverWait
-     *
-     * <br><br>
-     *
-     * @since 1.2
-     */
-    public static int GetTimeoutWait() {
-        return FailureHandlingHelper.GetTimeoutWait();
-    }
 }
