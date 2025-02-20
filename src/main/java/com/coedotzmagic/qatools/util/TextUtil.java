@@ -24,8 +24,6 @@ import java.util.regex.Pattern;
  */
 
 public class TextUtil {
-    private static final WebDriver driver = DriverHelper.GetWebDriver();
-    private static final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
     private static WebElement element;
 
     /**
@@ -123,6 +121,8 @@ public class TextUtil {
      */
     public static void InputTextField(String id, String text) {
         try {
+            WebDriver driver = DriverHelper.GetWebDriver();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@id, '" + id + "') or contains(@name, '" + id + "') or contains(@class, '" + id + "')]")));
             element.clear();
@@ -144,6 +144,8 @@ public class TextUtil {
      */
     public static void ClearInputfield (String id) {
         try {
+            WebDriver driver = DriverHelper.GetWebDriver();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@id, '" + id + "') or contains(@name, '" + id + "') or contains(@class, '" + id + "')]")));
             element.clear();
         } catch (Exception e) {

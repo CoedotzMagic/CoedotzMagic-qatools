@@ -16,8 +16,6 @@ import java.time.Duration;
  */
 
 public class GetValueHelper {
-    private static final WebDriver driver = DriverHelper.GetWebDriver();
-    private static final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
 
     /**
      * <b>getTextElement()</b>
@@ -31,6 +29,8 @@ public class GetValueHelper {
      */
     public static String getTextElement(String xpath) {
         try {
+            WebDriver driver = DriverHelper.GetWebDriver();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
             WebElement textElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             return textElement.getText();
@@ -52,6 +52,8 @@ public class GetValueHelper {
      */
     public static String getValueElement(String xpath) {
         try {
+            WebDriver driver = DriverHelper.GetWebDriver();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
             WebElement valueElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             return valueElement.getDomProperty("value");
@@ -70,6 +72,7 @@ public class GetValueHelper {
      * @since 1.1
      */
     public static String getTitlePage() {
+        WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         return driver.getTitle();
     }

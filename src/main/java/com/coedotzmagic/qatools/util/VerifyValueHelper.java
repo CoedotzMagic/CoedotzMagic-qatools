@@ -16,8 +16,6 @@ import java.time.Duration;
  */
 
 public class VerifyValueHelper {
-    private static final WebDriver driver = DriverHelper.GetWebDriver();
-    private static final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
 
     /**
      * <b>VerifyTitlePage()</b>
@@ -30,6 +28,7 @@ public class VerifyValueHelper {
      * @since 1.1
      */
     public static void VerifyTitlePage(String expect) {
+        WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         if (expect != null && !expect.equalsIgnoreCase("") && !driver.getTitle().equalsIgnoreCase(expect)) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + ", Current value/text is: " +  driver.getCurrentUrl());
@@ -52,6 +51,8 @@ public class VerifyValueHelper {
     public static void VerifyValueElement(String xpath, String expect) {
         String currentValue;
         try {
+            WebDriver driver = DriverHelper.GetWebDriver();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
             WebElement valueElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             currentValue = valueElement.getDomProperty("value");
@@ -80,6 +81,8 @@ public class VerifyValueHelper {
     public static void VerifyTextElement(String xpath, String expect) {
         String currentText;
         try {
+            WebDriver driver = DriverHelper.GetWebDriver();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
             WebElement textElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             currentText = textElement.getText();
