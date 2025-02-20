@@ -77,8 +77,6 @@ public class QATools {
         new KillProcessWebDriver();
     }
 
-
-
     /**
      * <b>SetTimeoutWait()</b>
      * Used to set timeout when waiting time for get the element visible
