@@ -1,11 +1,15 @@
 package com.coedotzmagic.qatools.util;
 
-import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
+import java.io.File;
+import java.time.Duration;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.File;
 import com.coedotzmagic.qatools.integration.ScreenRecordingHelper;
+import com.coedotzmagic.qatools.failurehandling.FailureHandlingHelper;
+import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import static com.coedotzmagic.qatools.integration.ScreenRecordingHelper.USER_DIR;
 
 /*
@@ -14,6 +18,8 @@ import static com.coedotzmagic.qatools.integration.ScreenRecordingHelper.USER_DI
  */
 
 public class CaptureEvidence {
+    private static final WebDriver driver = DriverHelper.GetWebDriver();
+    private static final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
 
     /**
      * <b>startScreenRecording()</b>
@@ -46,7 +52,6 @@ public class CaptureEvidence {
      * @since 1.0
      */
     public static void TakeScreenshot(String folderName) {
-        WebDriver driver = DriverHelper.GetWebDriver();
         String nameMasterTestcase;
         String targetFolder = null;
         String pathFolderScreenshot = System.getProperty(USER_DIR) + File.separator + "Screenshot";
@@ -91,8 +96,7 @@ public class CaptureEvidence {
      * @since 1.1
      */
     public static void TakeScreenshotSpecificPath(String folderName, String xpath) {
-        WebDriver driver = DriverHelper.GetWebDriver();
-        WebElement element = driver.findElement(By.xpath(xpath));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
         InteractionsAndKeys.ScrollToElement(element);
         TakeScreenshot(folderName);
     }

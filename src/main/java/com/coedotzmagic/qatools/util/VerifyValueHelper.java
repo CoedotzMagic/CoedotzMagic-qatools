@@ -1,9 +1,14 @@
 package com.coedotzmagic.qatools.util;
 
+import com.coedotzmagic.qatools.failurehandling.FailureHandlingHelper;
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 /*
  * write by Coedotz
@@ -11,6 +16,8 @@ import org.openqa.selenium.WebElement;
  */
 
 public class VerifyValueHelper {
+    private static final WebDriver driver = DriverHelper.GetWebDriver();
+    private static final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
 
     /**
      * <b>VerifyTitlePage()</b>
@@ -23,7 +30,6 @@ public class VerifyValueHelper {
      * @since 1.1
      */
     public static void VerifyTitlePage(String expect) {
-        WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         if (expect != null && !expect.equalsIgnoreCase("") && !driver.getTitle().equalsIgnoreCase(expect)) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + ", Current value/text is: " +  driver.getCurrentUrl());
@@ -44,11 +50,10 @@ public class VerifyValueHelper {
      * @since 1.1
      */
     public static void VerifyValueElement(String xpath, String expect) {
-        WebDriver driver = DriverHelper.GetWebDriver();
         String currentValue;
         try {
             assert driver != null;
-            WebElement valueElement = driver.findElement(By.xpath(xpath));
+            WebElement valueElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             currentValue = valueElement.getDomProperty("value");
             assert currentValue != null;
             if (!currentValue.equalsIgnoreCase(expect)) {
@@ -73,11 +78,10 @@ public class VerifyValueHelper {
      * @since 1.1
      */
     public static void VerifyTextElement(String xpath, String expect) {
-        WebDriver driver = DriverHelper.GetWebDriver();
         String currentText;
         try {
             assert driver != null;
-            WebElement textElement = driver.findElement(By.xpath(xpath));
+            WebElement textElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             currentText = textElement.getText();
             if (!currentText.equalsIgnoreCase(expect)) {
                 new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + " Current value/text is: " +  currentText);
@@ -88,5 +92,4 @@ public class VerifyValueHelper {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
         }
     }
-
 }

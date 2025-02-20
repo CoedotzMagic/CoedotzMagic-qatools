@@ -1,5 +1,6 @@
 package com.coedotzmagic.qatools.util;
 
+import com.coedotzmagic.qatools.failurehandling.FailureHandlingHelper;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 
@@ -8,9 +9,12 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 
 import com.coedotzmagic.qatools.integration.ImprovImgCaptcha;
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /*
  * write by Coedotz
@@ -50,8 +54,9 @@ public class CaptchaBreaker {
      */
     public static void CapthaAutomation(String xpathCaptchaElement, String idElementInput) {
         WebDriver driver = DriverHelper.GetWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
         assert driver != null;
-        WebElement captchaImage = driver.findElement(By.xpath(xpathCaptchaElement));
+        WebElement captchaImage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathCaptchaElement)));
 
         File tessDataPath = new File("tessdata");
         String tessDataPathString = tessDataPath.getAbsolutePath();
@@ -96,5 +101,4 @@ public class CaptchaBreaker {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.ERROR_OCR + e.getMessage());
         }
     }
-
 }

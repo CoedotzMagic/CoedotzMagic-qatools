@@ -1,9 +1,14 @@
 package com.coedotzmagic.qatools.util;
 
+import com.coedotzmagic.qatools.failurehandling.FailureHandlingHelper;
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 /*
  * write by Coedotz
@@ -11,6 +16,8 @@ import org.openqa.selenium.WebElement;
  */
 
 public class GetValueHelper {
+    private static final WebDriver driver = DriverHelper.GetWebDriver();
+    private static final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
 
     /**
      * <b>getTextElement()</b>
@@ -23,10 +30,9 @@ public class GetValueHelper {
      * @since 1.1
      */
     public static String getTextElement(String xpath) {
-        WebDriver driver = DriverHelper.GetWebDriver();
         try {
             assert driver != null;
-            WebElement textElement = driver.findElement(By.xpath(xpath));
+            WebElement textElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             return textElement.getText();
         } catch (Exception e) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
@@ -45,10 +51,9 @@ public class GetValueHelper {
      * @since 1.1
      */
     public static String getValueElement(String xpath) {
-        WebDriver driver = DriverHelper.GetWebDriver();
         try {
             assert driver != null;
-            WebElement valueElement = driver.findElement(By.xpath(xpath));
+            WebElement valueElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             return valueElement.getDomProperty("value");
         } catch (Exception e) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
@@ -65,7 +70,6 @@ public class GetValueHelper {
      * @since 1.1
      */
     public static String getTitlePage() {
-        WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         return driver.getTitle();
     }
