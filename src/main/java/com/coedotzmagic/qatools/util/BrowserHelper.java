@@ -123,7 +123,7 @@ public class BrowserHelper {
      *
      * @param url
      *
-     * @since 1.0
+     * @since 1.3
      */
     public static void NavigateToUrl(String url) {
         try {
@@ -140,7 +140,7 @@ public class BrowserHelper {
      *
      * <br><br>
      *
-     * @since 1.0
+     * @since 1.3
      */
     public static void RefreshPage() {
         WebDriver driver = DriverHelper.GetWebDriver();
