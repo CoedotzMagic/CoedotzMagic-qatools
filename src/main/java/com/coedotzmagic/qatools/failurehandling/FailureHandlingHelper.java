@@ -52,4 +52,18 @@ public class FailureHandlingHelper {
         return (timeout != 0) ? timeout : 10;
     }
 
+    /**
+     * <b>SkipFailure()</b>
+     * Used to provide behavior if an error occurs then the automation will skip error and handling exception.
+     *
+     * <br><br>
+     *
+     * @param skip
+     *
+     * @since 1.3
+     */
+    public static void SkipFailure(boolean skip) {
+        TellMeWhy.setSkipFailure(skip);
+    }
+
 }

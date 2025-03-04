@@ -12,6 +12,7 @@ import org.openqa.selenium.WebDriver;
 
 public class TellMeWhy {
     private static boolean closeWhenError = false;
+    private static boolean skipFailure = false;
 
     public static final String WEBSITE_COEDOTZMAGIC = "https://coedotzmagic.com";
     public static final String REPORT_US = "contact us if show a problem & this message to reporter@coedotzmagic.com or create issue in github https://github.com/CoedotzMagic/CoedotzMagic-qatools";
@@ -27,6 +28,7 @@ public class TellMeWhy {
     public static final String SKIP_FAILURE = "Failed to execute this section. We skip this section...";
     public static final String ERROR_OCR = "Error during OCR: ";
     public static final String STOP_AUTOMATION = "Automation stopped because problem...";
+    public static final String BYPASS_FAILURE = "This part should be the problem and automation will force stop, but you bypass the failure (skip failure = true), its okay, we keep continue the next section...";
     public static final String VERIFY_OK = "Successfully Verified, Expect value: ";
 
     public static final String IN_DEVELOPMENT = "under development, sometimes it works sometimes it doesn't.";
@@ -63,6 +65,14 @@ public class TellMeWhy {
         return DateTime.getDateTime();
     }
 
+    public static void setSkipFailure(boolean skip) {
+        skipFailure = skip;
+    }
+
+    private static boolean getSkipFailure() {
+        return skipFailure;
+    }
+
     public static void setCloseWhenError(boolean close) {
         closeWhenError = close;
     }
@@ -92,14 +102,18 @@ public class TellMeWhy {
             System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + "CAUSED BY: " + messages);
 
             if ("e".equalsIgnoreCase(level)) {
-                System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + STOP_AUTOMATION);
-                System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + REPORT_US);
-                if (getCloseWhenError()) {
-                    WebDriver driver = DriverHelper.GetWebDriver();
-                    assert driver != null;
-                    driver.quit();
+                if (!getSkipFailure()) {
+                    System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + STOP_AUTOMATION);
+                    System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + REPORT_US);
+                    if (getCloseWhenError()) {
+                        WebDriver driver = DriverHelper.GetWebDriver();
+                        assert driver != null;
+                        driver.quit();
+                    }
+                    System.exit(1);
+                } else {
+                    System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + BYPASS_FAILURE);
                 }
-                System.exit(1);
             } else if ("w".equalsIgnoreCase(level)) {
                 System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + SKIP_FAILURE);
             }

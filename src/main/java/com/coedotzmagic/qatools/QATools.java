@@ -90,4 +90,18 @@ public class QATools {
     public static void SetTimeoutWait(int seconds) {
         FailureHandlingHelper.SetTimeoutWait(seconds);
     }
+
+    /**
+     * <b>SkipFailure()</b>
+     * used to skip if there is a problem with the test runner, and the automation continues to run until completion
+     *
+     * <br><br>
+     *
+     * @param skip
+     *
+     * @since 1.3
+     */
+    public static void SkipFailure(boolean skip) {
+        FailureHandlingHelper.SkipFailure(skip);
+    }
 }
