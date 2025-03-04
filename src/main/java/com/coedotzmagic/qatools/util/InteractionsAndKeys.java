@@ -135,4 +135,22 @@ public class InteractionsAndKeys {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.INVALID_NUMBER);
         }
     }
+
+    /**
+     * <b>MouseOverCurrentComponents()</b>
+     * used to mouse over and hold in current components
+     *
+     * <br><br>
+     *
+     * @param element
+     *
+     * @since 1.3
+     */
+    public static void MouseOverCurrentComponents(WebElement element) {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element)
+                .clickAndHold()
+                .perform();
+    }
 }
