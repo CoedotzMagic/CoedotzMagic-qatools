@@ -29,6 +29,9 @@ public class TellMeWhy {
     public static final String STOP_AUTOMATION = "Automation stopped because problem...";
     public static final String VERIFY_OK = "Successfully Verified, Expect value: ";
 
+    public static final String IN_DEVELOPMENT = "under development, sometimes it works sometimes it doesn't.";
+    public static final String IN_BETA = "This is still in beta version, sometimes it works sometimes it doesn't.";
+
     public static final String ERROR_409 = "Failed to execute Api because conflict, error code 409.";
     public static final String ERROR_200 = "Api Successfully Execute, code 200.";
     public static final String ERROR_400 = "Bad Request, error code 400.";
