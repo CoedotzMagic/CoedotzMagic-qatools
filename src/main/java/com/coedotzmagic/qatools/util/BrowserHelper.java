@@ -113,4 +113,37 @@ public class BrowserHelper {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "New Tab Browser :" + e.getMessage());
         }
     }
+
+    /**
+     * <b>createNewTab()</b>
+     * is used to navigate to site
+     * with the specified url
+     *
+     * <br><br>
+     *
+     * @param url
+     *
+     * @since 1.0
+     */
+    public static void NavigateToUrl(String url) {
+        try {
+            WebDriver driver = DriverHelper.GetWebDriver();
+            driver.navigate().to(url);
+        } catch (Exception e) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Navigate to Url :" + e.getMessage());
+        }
+    }
+
+    /**
+     * <b>createNewTab()</b>
+     * is used refresh the page
+     *
+     * <br><br>
+     *
+     * @since 1.0
+     */
+    public static void RefreshPage() {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        driver.navigate().refresh();
+    }
 }
