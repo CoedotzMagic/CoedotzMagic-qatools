@@ -115,7 +115,7 @@ public class BrowserHelper {
     }
 
     /**
-     * <b>createNewTab()</b>
+     * <b>NavigateToUrl()</b>
      * is used to navigate to site
      * with the specified url
      *
@@ -135,7 +135,7 @@ public class BrowserHelper {
     }
 
     /**
-     * <b>createNewTab()</b>
+     * <b>RefreshPage()</b>
      * is used refresh the page
      *
      * <br><br>
