@@ -1,6 +1,8 @@
 package com.coedotzmagic.qatools.failurehandling;
 
 import java.util.Map;
+
+import com.coedotzmagic.qatools.util.CaptureEvidence;
 import com.coedotzmagic.qatools.util.DateTime;
 import com.coedotzmagic.qatools.util.DriverHelper;
 import org.openqa.selenium.WebDriver;
@@ -109,6 +111,11 @@ public class TellMeWhy {
                         WebDriver driver = DriverHelper.GetWebDriver();
                         assert driver != null;
                         driver.quit();
+                    }
+                    try {
+                        CaptureEvidence.stopScreenRecording();
+                    } catch (Exception e) {
+                        //coedotzwuzzhere
                     }
                     System.exit(1);
                 } else {
