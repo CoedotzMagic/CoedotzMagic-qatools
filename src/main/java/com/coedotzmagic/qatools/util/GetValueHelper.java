@@ -16,6 +16,7 @@ import java.time.Duration;
  */
 
 public class GetValueHelper {
+    private static WebElement element;
 
     /**
      * <b>getTextElement()</b>
@@ -32,8 +33,9 @@ public class GetValueHelper {
             WebDriver driver = DriverHelper.GetWebDriver();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
-            WebElement textElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-            return textElement.getText();
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+            ElementHelper.currentElement = element;
+            return element.getText();
         } catch (Exception e) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
             return "";
@@ -55,8 +57,9 @@ public class GetValueHelper {
             WebDriver driver = DriverHelper.GetWebDriver();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
-            WebElement valueElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-            return valueElement.getDomProperty("value");
+            element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+            ElementHelper.currentElement = element;
+            return element.getDomProperty("value");
         } catch (Exception e) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
             return "";
