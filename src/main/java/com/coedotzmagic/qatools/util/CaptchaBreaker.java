@@ -57,6 +57,7 @@ public class CaptchaBreaker {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
         assert driver != null;
         WebElement captchaImage = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathCaptchaElement)));
+        ElementHelper.currentElement = captchaImage;
 
         File tessDataPath = new File("tessdata");
         String tessDataPathString = tessDataPath.getAbsolutePath();

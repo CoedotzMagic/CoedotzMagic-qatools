@@ -98,6 +98,7 @@ public class CaptureEvidence {
         WebDriver driver = DriverHelper.GetWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+        ElementHelper.currentElement = element;
         InteractionsAndKeys.ScrollToElement(element);
         TakeScreenshot(folderName);
     }

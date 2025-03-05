@@ -105,6 +105,7 @@ public class InteractionsAndKeys {
         WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         try {
+            ElementHelper.currentElement = element;
             new Actions(driver).scrollToElement(element).perform();
         } catch (Exception e) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Scroll Element.");
@@ -148,6 +149,7 @@ public class InteractionsAndKeys {
      */
     public static void MouseOverCurrentComponents(WebElement element) {
         WebDriver driver = DriverHelper.GetWebDriver();
+        ElementHelper.currentElement = element;
         Actions actions = new Actions(driver);
         actions.moveToElement(element)
                 .clickAndHold()

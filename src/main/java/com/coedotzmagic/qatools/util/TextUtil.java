@@ -125,6 +125,7 @@ public class TextUtil {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@id, '" + id + "') or contains(@name, '" + id + "') or contains(@class, '" + id + "')]")));
+            ElementHelper.currentElement = element;
             element.clear();
             element.sendKeys(text);
         } catch (Exception e) {
@@ -147,6 +148,7 @@ public class TextUtil {
             WebDriver driver = DriverHelper.GetWebDriver();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@id, '" + id + "') or contains(@name, '" + id + "') or contains(@class, '" + id + "')]")));
+            ElementHelper.currentElement = element;
             element.clear();
         } catch (Exception e) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
