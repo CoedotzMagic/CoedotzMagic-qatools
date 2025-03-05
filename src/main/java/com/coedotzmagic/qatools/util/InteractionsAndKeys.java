@@ -150,9 +150,13 @@ public class InteractionsAndKeys {
     public static void MouseOverCurrentComponents(WebElement element) {
         WebDriver driver = DriverHelper.GetWebDriver();
         ElementHelper.currentElement = element;
-        Actions actions = new Actions(driver);
-        actions.moveToElement(element)
-                .clickAndHold()
-                .perform();
+        try {
+            Actions actions = new Actions(driver);
+            actions.moveToElement(element)
+                    .clickAndHold()
+                    .perform();
+        } catch (Exception e) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Mouse Over Current Components!");
+        }
     }
 }
