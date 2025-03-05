@@ -78,19 +78,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- Maven jar -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.3.0</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <!-- Java Docs -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
