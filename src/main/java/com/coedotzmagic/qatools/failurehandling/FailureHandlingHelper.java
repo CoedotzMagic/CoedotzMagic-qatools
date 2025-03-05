@@ -53,17 +53,17 @@ public class FailureHandlingHelper {
     }
 
     /**
-     * <b>SkipFailure()</b>
+     * <b>ContinueOnError()</b>
      * Used to provide behavior if an error occurs then the automation will skip error and handling exception.
      *
      * <br><br>
      *
-     * @param skip
+     * @param skipErr
      *
      * @since 1.3
      */
-    public static void SkipFailure(boolean skip) {
-        TellMeWhy.setSkipFailure(skip);
+    public static void ContinueOnError(boolean skipErr) {
+        TellMeWhy.setContinueOnError(skipErr);
     }
 
 }

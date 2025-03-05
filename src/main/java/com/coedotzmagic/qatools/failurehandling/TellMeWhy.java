@@ -65,11 +65,11 @@ public class TellMeWhy {
         return DateTime.getDateTime();
     }
 
-    public static void setSkipFailure(boolean skip) {
-        skipFailure = skip;
+    public static void setContinueOnError(boolean skipErr) {
+        skipFailure = skipErr;
     }
 
-    private static boolean getSkipFailure() {
+    private static boolean getContinueOnError() {
         return skipFailure;
     }
 
@@ -102,7 +102,7 @@ public class TellMeWhy {
             System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + "CAUSED BY: " + messages);
 
             if ("e".equalsIgnoreCase(level)) {
-                if (!getSkipFailure()) {
+                if (!getContinueOnError()) {
                     System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + STOP_AUTOMATION);
                     System.out.println(identity + "[" + levelFormatted + "]" + "[" + timestamp + "] " + REPORT_US);
                     if (getCloseWhenError()) {
