@@ -1,5 +1,7 @@
 package com.coedotzmagic.qatools.util;
 
+import com.coedotzmagic.qatools.util.annotation.Development;
+
 import java.util.Map;
 
 /*
@@ -8,6 +10,7 @@ import java.util.Map;
  */
 
 @Deprecated(since = "1.1")
+@Development
 public class WebServices {
 
     /**
