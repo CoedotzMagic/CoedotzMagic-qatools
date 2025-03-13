@@ -1,12 +1,18 @@
 package com.coedotzmagic.qatools.util;
 
+import com.coedotzmagic.qatools.failurehandling.FailureHandlingHelper;
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.WheelInput;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.time.Duration;
 
 /*
  * write by Coedotz
@@ -14,6 +20,7 @@ import java.awt.event.*;
  */
 
 public class InteractionsAndKeys {
+    private static ThreadLocal<Boolean> hasScrolled = ThreadLocal.withInitial(() -> false);
 
     /**
      * <b>CombinationCTRLF()</b>
@@ -157,6 +164,37 @@ public class InteractionsAndKeys {
                     .perform();
         } catch (Exception e) {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Mouse Over Current Components!");
+        }
+    }
+
+    /**
+     * <b>ScrollThePage()</b>
+     * used to doing wheel scroll in all page
+     *
+     * <br><br>
+     *
+     * @param idElement
+     * @param y
+     * @param isMutipleScroll
+     *
+     * @since 1.3.2
+     */
+    public static void ScrollThePage(String idElement, int y, boolean isMutipleScroll) {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
+        try {
+            if (!hasScrolled.get()) {
+                WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id(idElement)));
+                com.coedotzmagic.qatools.util.ElementHelper.currentElement = element;
+                WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromElement(element);
+                new Actions(driver)
+                        .scrollFromOrigin(scrollOrigin, 0, y)
+                        .perform();
+
+                hasScrolled.set(!isMutipleScroll ? true : false);
+            }
+        } catch (Exception e) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Wheel Scrolling!");
         }
     }
 }
