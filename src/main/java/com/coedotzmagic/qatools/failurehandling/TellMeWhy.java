@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 public class TellMeWhy {
     private static boolean closeWhenError = false;
     private static boolean skipFailure = false;
+    private static String identity = "CoedotzMagic - QATools: ";
 
     public static final String WEBSITE_COEDOTZMAGIC = "https://coedotzmagic.com";
     public static final String REPORT_US = "contact us if show a problem & this message to reporter@coedotzmagic.com or create issue in github https://github.com/CoedotzMagic/CoedotzMagic-qatools";
@@ -59,8 +60,12 @@ public class TellMeWhy {
         log(level, getTrace, messages);
     }
 
+    public static void UseForITasoft() {
+        identity = "ITasoft Reporting Tool: ";
+    }
+
     public static String getIdentity() {
-        return "CoedotzMagic - QATools: ";
+        return identity;
     }
 
     private static String getTimestamp() {
