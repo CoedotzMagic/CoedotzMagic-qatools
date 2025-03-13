@@ -50,10 +50,10 @@ public class VerifyValueHelper {
      * @since 1.1
      */
     public static void VerifyValueElement(String xpath, String expect) {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
         String currentValue;
         try {
-            WebDriver driver = DriverHelper.GetWebDriver();
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             currentValue = element.getDomProperty("value");
@@ -81,10 +81,10 @@ public class VerifyValueHelper {
      * @since 1.1
      */
     public static void VerifyTextElement(String xpath, String expect) {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
         String currentText;
         try {
-            WebDriver driver = DriverHelper.GetWebDriver();
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
             currentText = element.getText();

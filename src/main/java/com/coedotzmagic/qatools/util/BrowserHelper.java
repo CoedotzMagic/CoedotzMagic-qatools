@@ -27,44 +27,49 @@ public class BrowserHelper {
      */
     public static boolean checkTabBrowser(String targetUrl) {
         WebDriver driver = DriverHelper.GetWebDriver();
-        String jsCodeNumberWindows = "return window.top.frames.length;";
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) DriverHelper.GetWebDriver();
-        jsExecutor.executeScript(jsCodeNumberWindows);
-        int numberOfOpenWindows = DriverHelper.GetWebDriver().getWindowHandles().size();
-        List<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
-        String tabHandle;
+        try {
+            String jsCodeNumberWindows = "return window.top.frames.length;";
+            JavascriptExecutor jsExecutor = (JavascriptExecutor) DriverHelper.GetWebDriver();
+            jsExecutor.executeScript(jsCodeNumberWindows);
+            int numberOfOpenWindows = DriverHelper.GetWebDriver().getWindowHandles().size();
+            List<String> windowHandles = new ArrayList<>(driver.getWindowHandles());
+            String tabHandle;
 
-        // jalankan javascript untuk mendapatkan url sekarang dari masing2 tab
-        boolean result = false;
-        for (int i = 0; i < numberOfOpenWindows; i++) {
-            // arahkan tab ke target
-            tabHandle = windowHandles.get(i);
+            // jalankan javascript untuk mendapatkan url sekarang dari masing2 tab
+            boolean result = false;
+            for (int i = 0; i < numberOfOpenWindows; i++) {
+                // arahkan tab ke target
+                tabHandle = windowHandles.get(i);
+                driver.switchTo().window(tabHandle);
+
+                // jalankan javascript untuk mendapatkan url root saat ini
+                String jsCode = "return window.top.location.href;";
+
+                try {
+                    String currentURL = (String) jsExecutor.executeScript(jsCode);
+
+                    // Periksa apakah URL yang diinginkan ada di URL saat ini
+                    if (currentURL != null && !currentURL.equalsIgnoreCase("")) {
+                        if (currentURL.contains(targetUrl)) {
+                            result = true;
+                        }
+                    }
+                } catch (Exception e) {
+                    new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "get site web :" + e.getMessage());
+                    System.out.println("Error Checking");
+                }
+            }
+
+            // Arahkan ke tab sebelumnya
+            tabHandle = windowHandles.iterator().next();
             driver.switchTo().window(tabHandle);
 
-            // jalankan javascript untuk mendapatkan url root saat ini
-            String jsCode = "return window.top.location.href;";
-
-            try {
-                String currentURL = (String) jsExecutor.executeScript(jsCode);
-
-                // Periksa apakah URL yang diinginkan ada di URL saat ini
-                if (currentURL != null && !currentURL.equalsIgnoreCase("")) {
-                    if (currentURL.contains(targetUrl)) {
-                        result = true;
-                    }
-                }
-            } catch (Exception e) {
-                new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "get site web :" + e.getMessage());
-                System.out.println("Error Checking");
-            }
+            // kembalikan nilai result
+            return result;
+        } catch (Exception e) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Check Tab Browser :" + e.getMessage());
+            return false;
         }
-
-        // Arahkan ke tab sebelumnya
-        tabHandle = windowHandles.iterator().next();
-        driver.switchTo().window(tabHandle);
-
-        // kembalikan nilai result
-        return result;
     }
 
     /**

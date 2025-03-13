@@ -110,8 +110,8 @@ public class InteractionsAndKeys {
      */
     public static void ScrollToElement(WebElement element) {
         WebDriver driver = DriverHelper.GetWebDriver();
-        assert driver != null;
         try {
+            assert driver != null;
             ElementHelper.currentElement = element;
             new Actions(driver).scrollToElement(element).perform();
         } catch (Exception e) {
@@ -132,8 +132,8 @@ public class InteractionsAndKeys {
      */
     public static void ScrollByDistance(int x, int y) {
         WebDriver driver = DriverHelper.GetWebDriver();
-        assert driver != null;
         try {
+            assert driver != null;
             try {
                 new Actions(driver).scrollByAmount(x, y).perform();
             } catch (Exception e1) {

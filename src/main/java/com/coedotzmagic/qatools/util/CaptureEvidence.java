@@ -79,7 +79,7 @@ public class CaptureEvidence {
                 FileUtils.copyFile(scrFile, new File("Screenshot/" + title + " - " + timestamp + ".jpg"));
             }
         } catch (Exception e) {
-            new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Screenshot this page :" + e.getMessage());
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Screenshot this page :" + e.getMessage());
         }
     }
 
@@ -97,9 +97,13 @@ public class CaptureEvidence {
     public static void TakeScreenshotSpecificPath(String folderName, String xpath) {
         WebDriver driver = DriverHelper.GetWebDriver();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
-        ElementHelper.currentElement = element;
-        InteractionsAndKeys.ScrollToElement(element);
-        TakeScreenshot(folderName);
+        try {
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+            ElementHelper.currentElement = element;
+            InteractionsAndKeys.ScrollToElement(element);
+            TakeScreenshot(folderName);
+        } catch (Exception e) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Screenshot this page :" + e.getMessage());
+        }
     }
 }

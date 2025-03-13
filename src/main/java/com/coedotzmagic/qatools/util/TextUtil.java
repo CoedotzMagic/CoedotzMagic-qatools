@@ -120,9 +120,9 @@ public class TextUtil {
      * @since 1.1
      */
     public static void InputTextField(String id, String text) {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
         try {
-            WebDriver driver = DriverHelper.GetWebDriver();
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             assert driver != null;
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@id, '" + id + "') or contains(@name, '" + id + "') or contains(@class, '" + id + "')]")));
             ElementHelper.currentElement = element;
@@ -144,9 +144,9 @@ public class TextUtil {
      * @since 1.2
      */
     public static void ClearInputfield (String id) {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
         try {
-            WebDriver driver = DriverHelper.GetWebDriver();
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
             element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[contains(@id, '" + id + "') or contains(@name, '" + id + "') or contains(@class, '" + id + "')]")));
             ElementHelper.currentElement = element;
             element.clear();
