@@ -80,4 +80,18 @@ public class GetValueHelper {
         return driver.getTitle();
     }
 
+    /**
+     * <b>getCurrentUrlPage()</b>
+     * used to get the current url page
+     *
+     * <br><br>
+     *
+     * @since 1.3.2
+     */
+    public static String getCurrentUrlPage() {
+        WebDriver driver = DriverHelper.GetWebDriver();
+        assert driver != null;
+        return driver.getCurrentUrl();
+    }
+
 }
