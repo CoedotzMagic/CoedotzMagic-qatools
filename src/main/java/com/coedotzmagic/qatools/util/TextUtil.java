@@ -154,4 +154,47 @@ public class TextUtil {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
         }
     }
+
+    /**
+     * <b>CapitalizedString()</b>
+     * used to make text capitalized
+     *
+     * <br><br>
+     *
+     * @since 1.4.0
+     */
+    public static String CapitalizedString(String value) {
+        try {
+            return value.substring(0, 1).toUpperCase() + value.substring(1);
+        } catch (Exception e) {
+            return "capitalized string: " + TellMeWhy.INVALID_VALUE;
+        }
+    }
+
+    /**
+     * <b>CamelCaseString()</b>
+     * used to make text camel case
+     *
+     * <br><br>
+     *
+     * @since 1.4.0
+     */
+    public static String CamelCaseString(String value) {
+        try {
+            String[] words = value.split(" ");
+            StringBuilder result = new StringBuilder();
+
+            for (String word : words) {
+                if (!word.isEmpty()) {
+                    result.append(Character.toUpperCase(word.charAt(0)));
+                    result.append(word.substring(1).toLowerCase());
+                }
+                result.append(" ");
+            }
+
+            return result.toString().trim();
+        } catch (Exception e) {
+            return "camelcase string: " + TellMeWhy.INVALID_VALUE;
+        }
+    }
 }
