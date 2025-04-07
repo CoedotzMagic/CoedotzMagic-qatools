@@ -20,6 +20,7 @@ public class TellMeWhy {
     public static final String WEBSITE_COEDOTZMAGIC = "https://coedotzmagic.com";
     public static final String REPORT_US = "contact us if show a problem & this message to reporter@coedotzmagic.com or create issue in github https://github.com/CoedotzMagic/CoedotzMagic-qatools";
     public static final String INVALID_NUMBER = "Please insert valid number!";
+    public static final String INVALID_VALUE = "Value cannot null or empty!";
     public static final String UNABLE_TO = "Unable to ";
     public static final String UNABLE_EXTRACT_CAPTCHA = "Failed extract captcha, use manual, we hold automation 8s before continue automation.";
     public static final String NOT_FOUND_ELEMENT = "Ahhh, unable located element what you want, sorry.";
