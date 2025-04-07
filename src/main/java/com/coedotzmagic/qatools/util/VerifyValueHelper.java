@@ -17,6 +17,7 @@ import java.time.Duration;
 
 public class VerifyValueHelper {
     private static WebElement element;
+    public static boolean resultVerify;
 
     /**
      * <b>VerifyTitlePage()</b>
@@ -32,8 +33,10 @@ public class VerifyValueHelper {
         WebDriver driver = DriverHelper.GetWebDriver();
         assert driver != null;
         if (expect != null && !expect.equalsIgnoreCase("") && !driver.getTitle().equalsIgnoreCase(expect)) {
+            resultVerify = false;
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + ", Current value/text is: " +  driver.getCurrentUrl());
         } else {
+            resultVerify = true;
             new TellMeWhy("i", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.VERIFY_OK + expect + ", Current value/text is: " +  driver.getCurrentUrl());
         }
     }
@@ -60,8 +63,10 @@ public class VerifyValueHelper {
             ElementHelper.currentElement = element;
             assert currentValue != null;
             if (!currentValue.equalsIgnoreCase(expect)) {
+                resultVerify = false;
                 new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + ", Current value/text is: " +  currentValue);
             } else {
+                resultVerify = true;
                 new TellMeWhy("i", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.VERIFY_OK + expect + ", Current value/text is: " +  currentValue);
             }
         } catch (Exception e) {
@@ -90,8 +95,10 @@ public class VerifyValueHelper {
             currentText = element.getText();
             ElementHelper.currentElement = element;
             if (!currentText.equalsIgnoreCase(expect)) {
+                resultVerify = false;
                 new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + " Current value/text is: " +  currentText);
             } else {
+                resultVerify = true;
                 new TellMeWhy("i", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.VERIFY_OK + expect + " Current value/text is: " +  currentText);
             }
         } catch (Exception e) {
@@ -109,9 +116,23 @@ public class VerifyValueHelper {
      */
     public static void VerifyMatchTextorValue(String input, String expect) {
         if (input.equalsIgnoreCase(expect)) {
+            resultVerify = true;
             new TellMeWhy("v", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.VERIFY_OK + expect + ", Current value is: " +  input);
         } else {
+            resultVerify = false;
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + ", Current value is: " +  input);
         }
+    }
+
+    /**
+     * <b>GetResultVerify()</b>
+     * used to get result verify (true/false)
+     *
+     * <br><br>
+     *
+     * @since 1.4.0
+     */
+    public static boolean GetResultVerify() {
+        return resultVerify;
     }
 }
