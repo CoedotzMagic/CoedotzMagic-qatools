@@ -98,4 +98,20 @@ public class VerifyValueHelper {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
         }
     }
+
+    /**
+     * <b>VerifyMatchTextorValue()</b>
+     * used to verify match text or value between input and expect
+     *
+     * <br><br>
+     *
+     * @since 1.4.0
+     */
+    public static void VerifyMatchTextorValue(String input, String expect) {
+        if (input.equalsIgnoreCase(expect)) {
+            new TellMeWhy("v", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.VERIFY_OK + expect + ", Current value is: " +  input);
+        } else {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_VERIFY + expect + ", Current value is: " +  input);
+        }
+    }
 }
