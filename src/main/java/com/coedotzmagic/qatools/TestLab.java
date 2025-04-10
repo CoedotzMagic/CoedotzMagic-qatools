@@ -35,7 +35,7 @@ public class TestLab {
 //        System.out.println(TextUtil.CamelCaseString("coedotz magic"));
 //        VerifyValueHelper.VerifyMatchTextorValue("coe", "coe");
 //        System.out.println(VerifyValueHelper.GetResultVerify());
-
+//
 //        // create driver
 //        WebDriver driver = new ChromeDriver();
 //
@@ -84,7 +84,7 @@ public class TestLab {
 //        BrowserHelper.CreateNewTab("http://localhost:8080/jw/web/userview/jogetdx7Components/home/_/enterprise");
 //
 //        // doing break captcha
-//        CaptchaBreaker.CapthaAutomation("//div[contains(@class, 'captchafield')]//img", "field4");
+//        CaptchaBreaker.CaptchaAutomation("//div[contains(@class, 'captchafield')]//img", "field4");
 //
 //        // take screenshot
 //        CaptureEvidence.TakeScreenshot("");
