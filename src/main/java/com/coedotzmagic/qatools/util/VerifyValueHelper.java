@@ -17,7 +17,7 @@ import java.time.Duration;
 
 public class VerifyValueHelper {
     private static WebElement element;
-    public static boolean resultVerify;
+    protected static boolean resultVerify;
 
     /**
      * <b>VerifyTitlePage()</b>
