@@ -25,12 +25,17 @@ import com.coedotzmagic.qatools.util.*;
  * @since 1.1
  */
 public class TestLab {
-
 //    public static String url = TellMeWhy.WEBSITE_COEDOTZMAGIC;
 //    static String filePath = "testingDataDriven.xlsx";
 //    static String sheetName = "Sheet1";
 //
 //    public static void main(String[] args) throws Exception {
+//        System.out.println(TextUtil.CapitalizedString("coedotzzz"));
+//        System.out.println(TextUtil.CamelCaseString("coedotzmagic"));
+//        System.out.println(TextUtil.CamelCaseString("coedotz magic"));
+//        VerifyValueHelper.VerifyMatchTextorValue("coe", "coe");
+//        System.out.println(VerifyValueHelper.GetResultVerify());
+
 //        // create driver
 //        WebDriver driver = new ChromeDriver();
 //
