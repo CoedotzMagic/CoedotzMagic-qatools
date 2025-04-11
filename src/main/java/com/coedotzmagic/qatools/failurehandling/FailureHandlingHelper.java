@@ -66,4 +66,18 @@ public class FailureHandlingHelper {
         TellMeWhy.setContinueOnError(skipErr);
     }
 
+    /**
+     * <b>ShowMsgError()</b>
+     * used to show specific error message
+     *
+     * <br><br>
+     *
+     * @param showMsg
+     *
+     * @since 1.4.1
+     */
+    public static void ShowMsgError(Boolean showMsg) {
+        TellMeWhy.setPrintMsgErrActive(showMsg);
+    }
+
 }

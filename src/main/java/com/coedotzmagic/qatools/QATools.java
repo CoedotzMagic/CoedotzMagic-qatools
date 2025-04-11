@@ -104,4 +104,18 @@ public class QATools {
     public static void ContinueOnError(boolean skipErr) {
         FailureHandlingHelper.ContinueOnError(skipErr);
     }
+
+    /**
+     * <b>ShowMsgError()</b>
+     * used to show specific error message
+     *
+     * <br><br>
+     *
+     * @param showMsg
+     *
+     * @since 1.4.1
+     */
+    public static void ShowMsgError(boolean showMsg) {
+        FailureHandlingHelper.ShowMsgError(showMsg);
+    }
 }

@@ -15,6 +15,7 @@ import org.openqa.selenium.WebDriver;
 public class TellMeWhy {
     private static boolean closeWhenError = false;
     private static boolean skipFailure = false;
+    private static boolean isMsgErrActive = false;
     private static String identity = "CoedotzMagic - QATools: ";
 
     public static final String WEBSITE_COEDOTZMAGIC = "https://coedotzmagic.com";
@@ -87,6 +88,14 @@ public class TellMeWhy {
 
     public static boolean getCloseWhenError() {
         return closeWhenError;
+    }
+
+    public static void setPrintMsgErrActive(boolean isActive) {
+        isMsgErrActive = isActive;
+    }
+
+    public static boolean getPrintMsgErrActive() {
+        return isMsgErrActive;
     }
 
     public static String getTraceInfo(StackTraceElement[] stackTrace) {
