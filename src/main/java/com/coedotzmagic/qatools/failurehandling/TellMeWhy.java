@@ -28,6 +28,7 @@ public class TellMeWhy {
     public static final String NOT_FOUND_OCR_TESSDATA = "'tessdata' folder is not in this root project! Put 'tessdata' folder into this root project and can be downloaded from: https://github.com/CoedotzMagic/tessdata";
     public static final String FAILED_READ_EXCEL = "Could not read the Excel sheet : ";
     public static final String FAILED_TO_VERIFY = "Failed to Verify, Expect value: ";
+    public static final String FAILED_TO_HITAPI = "Failed to HitApi, Please Try Again...";
     public static final String FAILED_TO_READWRITE_IMG = "Failed to Read/Write Image. ";
     public static final String FAILED_TO_KILL_PROCESS = "Failed to Kill Process WebDriver, please try again... msg: . ";
     public static final String SKIP_FAILURE = "Failed to execute this section. We skip this section...";
@@ -38,18 +39,6 @@ public class TellMeWhy {
 
     public static final String IN_DEVELOPMENT = "under development, sometimes it works sometimes it doesn't.";
     public static final String IN_BETA = "This is still in beta version, sometimes it works sometimes it doesn't.";
-
-    public static final String ERROR_409 = "Failed to execute Api because conflict, error code 409.";
-    public static final String ERROR_200 = "Api Successfully Execute, code 200.";
-    public static final String ERROR_400 = "Bad Request, error code 400.";
-    public static final String ERROR_401 = "Unauthorized, error code 401.";
-    public static final String ERROR_403 = "Forbidden, error code 403.";
-    public static final String ERROR_404 = "Not Found, error code 404.";
-    public static final String ERROR_500 = "Internal Server Error, error code 500.";
-    public static final String ERROR_502 = "Bad Gateway, error code 502.";
-    public static final String ERROR_503 = "Service Unavailable, error code 503.";
-    public static final String ERROR_504 = "Gateway Timeout, error code 504.";
-    public static final String UNKNOW_STATUSCODE = "Unknown Status Code: ";
 
     private static final Map<String, String> LEVELS = Map.of(
             "i", "INFO",
