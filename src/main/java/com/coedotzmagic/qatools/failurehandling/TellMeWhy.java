@@ -28,7 +28,7 @@ public class TellMeWhy {
     public static final String NOT_FOUND_OCR_TESSDATA = "'tessdata' folder is not in this root project! Put 'tessdata' folder into this root project and can be downloaded from: https://github.com/CoedotzMagic/tessdata";
     public static final String FAILED_READ_EXCEL = "Could not read the Excel sheet : ";
     public static final String FAILED_TO_VERIFY = "Failed to Verify, Expect value: ";
-    public static final String FAILED_TO_HITAPI = "Failed to HitApi, Please Try Again...";
+    public static final String FAILED_TO_HITAPI = "Failed to HitApi or Connection Timeout, Please Try Again...";
     public static final String FAILED_TO_READWRITE_IMG = "Failed to Read/Write Image. ";
     public static final String FAILED_TO_KILL_PROCESS = "Failed to Kill Process WebDriver, please try again... msg: . ";
     public static final String SKIP_FAILURE = "Failed to execute this section. We skip this section...";
