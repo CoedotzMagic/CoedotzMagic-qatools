@@ -21,6 +21,7 @@ public class WebServices {
     private static String setResponseMessage;
     private static int timeout = 10;
 
+    private static final String TRY_COMMUNICATE_API = "Trying to Hit API... ";
     private static final String ERROR_409 = "Failed to execute Api because conflict, error code 409.";
     private static final String ERROR_200 = "Api Successfully Execute, code 200.";
     private static final String ERROR_400 = "Bad Request, error code 400.";
@@ -48,6 +49,7 @@ public class WebServices {
      * @since 1.4.1
      */
     public static void HitApi(String urlTarget, String method, String payloadBody, String authType, String tokenOrCreds) {
+        System.out.println(TellMeWhy.getIdentity() + TRY_COMMUNICATE_API);
         HttpURLConnection conn = null;
         try {
             URL url = new URL(urlTarget);
@@ -170,6 +172,8 @@ public class WebServices {
      */
     public static String getResponseCode() {
         if (setResponseCode != null && !setResponseCode.isEmpty()) {
+            System.out.println();
+            System.out.println("------- Status Code -------");
             return setResponseCode;
         } else {
             new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_GETVALUE_HITAPI);
@@ -210,6 +214,8 @@ public class WebServices {
                         finalOutput = jsonObject.toString(4);
                     }
                 }
+                System.out.println();
+                System.out.println("------- Response Message -------");
                 return finalOutput;
             } else {
                 new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_GETVALUE_HITAPI);
