@@ -1,12 +1,15 @@
 package com.coedotzmagic.qatools.util;
 
+import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.lang.reflect.Field;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 
 /*
  * write by Coedotz
@@ -89,10 +92,19 @@ public class WebServices {
             setResponseCode = String.valueOf(responseCode);
             setResponseMessage = response.toString();
 
+            try {
+                String fieldName = "ERROR_" + setResponseCode;
+                Field field = WebServices.class.getDeclaredField(fieldName);
+                field.setAccessible(true);
+                System.out.println(field.get(null));
+            } catch (Exception e) {
+                System.out.println(UNKNOW_STATUSCODE + setResponseCode);
+            }
+
         } catch (Exception e) {
-            e.printStackTrace(); // Shows full error
+            e.printStackTrace();
             System.out.println("Error: " + e.getClass().getName() + " - " + e.getMessage());
-           // new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_HITAPI);
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_HITAPI);
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -158,17 +170,54 @@ public class WebServices {
      */
     public static String getResponseCode() {
         if (setResponseCode != null && !setResponseCode.isEmpty()) {
-            try {
-                String fieldName = "ERROR_" + setResponseCode;
-                java.lang.reflect.Field field = WebServices.class.getDeclaredField(fieldName);
-                field.setAccessible(true);
-                System.out.println(field.get(null));
-            } catch (Exception e) {
-                System.out.println(UNKNOW_STATUSCODE + setResponseCode);
-            }
             return setResponseCode;
         } else {
+            new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_GETVALUE_HITAPI);
             return "";
+        }
+    }
+
+    /**
+     * <b>getResponseMessage</b>
+     * used getResponseMessage after call HitApi with specific rootJsonObj & keyJsonObject
+     *
+     * <br><br>
+     *
+     * @param rootJsonObj
+     * @param keyJsonObj
+     *
+     * @since 1.4.1
+     */
+    public static String getResponseMessage(String rootJsonObj, String keyJsonObj) {
+        String finalOutput = "";
+        try {
+            if (setResponseMessage != null && !setResponseMessage.isEmpty()) {
+                JSONObject jsonObject = new JSONObject(setResponseMessage);
+                if (!rootJsonObj.equalsIgnoreCase("")) {
+                    if (!keyJsonObj.equalsIgnoreCase("")) {
+                        JSONObject data = jsonObject.getJSONObject(rootJsonObj);
+                        Object value = data.get(keyJsonObj);
+                        finalOutput = String.valueOf(value);
+                    } else if (keyJsonObj.equalsIgnoreCase("")) {
+                        Object value = jsonObject.get(rootJsonObj);
+                        finalOutput = String.valueOf(value);
+                    }
+                } else {
+                    if (!keyJsonObj.equalsIgnoreCase("")) {
+                        Object value = jsonObject.get(keyJsonObj);
+                        finalOutput = String.valueOf(value);
+                    } else {
+                        finalOutput = jsonObject.toString(4);
+                    }
+                }
+                return finalOutput;
+            } else {
+                new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_GETVALUE_HITAPI);
+                return finalOutput;
+            }
+        } catch (Exception e) {
+            new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_GETVALUE_HITAPI);
+            return finalOutput;
         }
     }
 
@@ -181,11 +230,21 @@ public class WebServices {
      * @since 1.4.1
      */
     public static String getResponseMessage() {
-        if (setResponseMessage != null && !setResponseMessage.isEmpty()) {
-            return setResponseMessage;
-        } else {
-            return "";
-        }
+        return getResponseMessage("", "");
+    }
+
+    /**
+     * <b>getResponseMessage</b>
+     * used getResponseMessage after call HitApi with specific keyJsonObj
+     *
+     * <br><br>
+     *
+     * @param keyJsonObj
+     *
+     * @since 1.4.1
+     */
+    public static String getResponseMessage(String keyJsonObj) {
+        return getResponseMessage("", keyJsonObj);
     }
 
     /**
@@ -194,9 +253,15 @@ public class WebServices {
      *
      * <br><br>
      *
+     * @param seconds
+     *
      * @since 1.4.1
      */
     public static void setTimeoutConnection(int seconds) {
-        timeout = seconds;
+        try {
+            timeout = seconds;
+        } catch (Exception e) {
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.INVALID_NUMBER);
+        }
     }
 }
