@@ -29,6 +29,7 @@ public class TellMeWhy {
     public static final String FAILED_READ_EXCEL = "Could not read the Excel sheet : ";
     public static final String FAILED_TO_VERIFY = "Failed to Verify, Expect value: ";
     public static final String FAILED_TO_HITAPI = "Failed to HitApi or Connection Timeout, Please Try Again...";
+    public static final String FAILED_TO_GETVALUE_HITAPI = "Failed to get Response Message / Code API or maybe null, Please Try Again...";
     public static final String FAILED_TO_READWRITE_IMG = "Failed to Read/Write Image. ";
     public static final String FAILED_TO_KILL_PROCESS = "Failed to Kill Process WebDriver, please try again... msg: . ";
     public static final String SKIP_FAILURE = "Failed to execute this section. We skip this section...";
