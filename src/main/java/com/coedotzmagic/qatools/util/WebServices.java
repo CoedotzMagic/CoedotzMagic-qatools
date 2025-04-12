@@ -7,7 +7,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 
 /*
  * write by Coedotz
@@ -17,6 +16,8 @@ import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 public class WebServices {
     private static String setResponseCode;
     private static String setResponseMessage;
+    private static int timeout = 10;
+
     private static final String ERROR_409 = "Failed to execute Api because conflict, error code 409.";
     private static final String ERROR_200 = "Api Successfully Execute, code 200.";
     private static final String ERROR_400 = "Bad Request, error code 400.";
@@ -48,6 +49,8 @@ public class WebServices {
         try {
             URL url = new URL(urlTarget);
             conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(timeout * 1000);
+            conn.setReadTimeout(timeout * 1000);
             conn.setRequestMethod(method.toUpperCase());
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
@@ -87,8 +90,9 @@ public class WebServices {
             setResponseMessage = response.toString();
 
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_HITAPI);
+            e.printStackTrace(); // Shows full error
+            System.out.println("Error: " + e.getClass().getName() + " - " + e.getMessage());
+           // new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_HITAPI);
         } finally {
             if (conn != null) {
                 conn.disconnect();
@@ -153,7 +157,7 @@ public class WebServices {
      * @since 1.4.1
      */
     public static String getResponseCode() {
-        if (!setResponseCode.equalsIgnoreCase("")) {
+        if (setResponseCode != null && !setResponseCode.isEmpty()) {
             try {
                 String fieldName = "ERROR_" + setResponseCode;
                 java.lang.reflect.Field field = WebServices.class.getDeclaredField(fieldName);
@@ -170,17 +174,29 @@ public class WebServices {
 
     /**
      * <b>getResponseMessage</b>
-     * used getResponseMessage after call HitApi or HitApiWithData
+     * used getResponseMessage after call HitApi
      *
      * <br><br>
      *
      * @since 1.4.1
      */
     public static String getResponseMessage() {
-        if (!setResponseMessage.equalsIgnoreCase("")) {
+        if (setResponseMessage != null && !setResponseMessage.isEmpty()) {
             return setResponseMessage;
         } else {
             return "";
         }
+    }
+
+    /**
+     * <b>setTimeoutConnection</b>
+     * used Set Timeout Connection when doing HitApi()
+     *
+     * <br><br>
+     *
+     * @since 1.4.1
+     */
+    public static void setTimeoutConnection(int seconds) {
+        timeout = seconds;
     }
 }
