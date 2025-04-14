@@ -70,6 +70,7 @@ public class DataDrivenWithExcel {
 
             return data;
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_READ_EXCEL + e.getMessage());
             return null;
         }

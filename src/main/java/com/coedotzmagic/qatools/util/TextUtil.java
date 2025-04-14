@@ -103,6 +103,7 @@ public class TextUtil {
                 return (String) contents.getTransferData(DataFlavor.stringFlavor);
             }
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "GetClipboardContent: " + e.getMessage());
         }
         return null;
@@ -129,6 +130,7 @@ public class TextUtil {
             element.clear();
             element.sendKeys(text);
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
         }
     }
@@ -151,6 +153,7 @@ public class TextUtil {
             ElementHelper.currentElement = element;
             element.clear();
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
         }
     }
@@ -167,6 +170,7 @@ public class TextUtil {
         try {
             return value.substring(0, 1).toUpperCase() + value.substring(1);
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             return "capitalized string: " + TellMeWhy.INVALID_VALUE;
         }
     }
@@ -194,6 +198,7 @@ public class TextUtil {
 
             return result.toString().trim();
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             return "camelcase string: " + TellMeWhy.INVALID_VALUE;
         }
     }

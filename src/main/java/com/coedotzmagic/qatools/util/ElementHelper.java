@@ -49,6 +49,7 @@ public class ElementHelper {
                 return "";
             }
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
             return "";
         }

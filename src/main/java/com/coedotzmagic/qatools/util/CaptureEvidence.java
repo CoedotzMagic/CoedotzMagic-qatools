@@ -64,6 +64,7 @@ public class CaptureEvidence {
                 new File(nameMasterTestcase).mkdirs();
             }
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             targetFolder = pathFolderScreenshot + File.separator;
         }
 
@@ -79,6 +80,7 @@ public class CaptureEvidence {
                 FileUtils.copyFile(scrFile, new File("Screenshot/" + title + " - " + timestamp + ".jpg"));
             }
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Screenshot this page :" + e.getMessage());
         }
     }
@@ -103,6 +105,7 @@ public class CaptureEvidence {
             InteractionsAndKeys.ScrollToElement(element);
             TakeScreenshot(folderName);
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Screenshot this page :" + e.getMessage());
         }
     }

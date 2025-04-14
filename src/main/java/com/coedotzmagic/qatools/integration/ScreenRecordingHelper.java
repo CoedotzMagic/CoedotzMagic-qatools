@@ -81,6 +81,7 @@ public class ScreenRecordingHelper extends ScreenRecorder {
 
             screenRecorder.start();
         } catch (final IOException e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Start Recording :" + e.getMessage());
         }
 
@@ -134,6 +135,7 @@ public class ScreenRecordingHelper extends ScreenRecorder {
         try {
             screenRecorder.stop();
         } catch (final IOException e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Stop Recording :" + e.getMessage());
         }
     }

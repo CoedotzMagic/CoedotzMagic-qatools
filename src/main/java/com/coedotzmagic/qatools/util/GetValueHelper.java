@@ -37,6 +37,7 @@ public class GetValueHelper {
             ElementHelper.currentElement = element;
             return element.getText();
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
             return "";
         }
@@ -61,6 +62,7 @@ public class GetValueHelper {
             ElementHelper.currentElement = element;
             return element.getDomProperty("value");
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.NOT_FOUND_ELEMENT);
             return "";
         }

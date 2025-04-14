@@ -115,6 +115,7 @@ public class InteractionsAndKeys {
             ElementHelper.currentElement = element;
             new Actions(driver).scrollToElement(element).perform();
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Scroll Element.");
         }
     }
@@ -137,9 +138,11 @@ public class InteractionsAndKeys {
             try {
                 new Actions(driver).scrollByAmount(x, y).perform();
             } catch (Exception e1) {
+                TellMeWhy.getPrintMsgErrActive(e1);
                 new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Scroll Element.");
             }
         } catch (Exception e2) {
+            TellMeWhy.getPrintMsgErrActive(e2);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.INVALID_NUMBER);
         }
     }
@@ -163,6 +166,7 @@ public class InteractionsAndKeys {
                     .clickAndHold()
                     .perform();
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Mouse Over Current Components!");
         }
     }
@@ -194,6 +198,7 @@ public class InteractionsAndKeys {
                 hasScrolled.set(!isMutipleScroll ? true : false);
             }
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Wheel Scrolling!");
         }
     }
