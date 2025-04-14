@@ -41,6 +41,7 @@ public class KillProcessWebDriver {
                 }
             }
         } catch (IOException e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_KILL_PROCESS + e.getMessage());
         }
     }
