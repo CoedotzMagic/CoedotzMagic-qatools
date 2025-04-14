@@ -20,19 +20,72 @@ public class WebServices {
     private static String setResponseCode;
     private static String setResponseMessage;
     private static int timeout = 10;
+    private static String authType;
+    private static String tokenBearer;
+    private static String tokenBasic;
+    private static String api_id;
+    private static String api_key;
 
     private static final String TRY_COMMUNICATE_API = "Trying to Hit API... ";
-    private static final String ERROR_409 = "Failed to execute Api because conflict, error code 409.";
     private static final String ERROR_200 = "Api Successfully Execute, code 200.";
+    private static final String ERROR_201 = "Api Successfully Created, code 201.";
     private static final String ERROR_400 = "Bad Request, error code 400.";
     private static final String ERROR_401 = "Unauthorized, error code 401.";
     private static final String ERROR_403 = "Forbidden, error code 403.";
     private static final String ERROR_404 = "Not Found, error code 404.";
+    private static final String ERROR_409 = "Failed to execute Api because conflict, error code 409.";
     private static final String ERROR_500 = "Internal Server Error, error code 500.";
     private static final String ERROR_502 = "Bad Gateway, error code 502.";
     private static final String ERROR_503 = "Service Unavailable, error code 503.";
     private static final String ERROR_504 = "Gateway Timeout, error code 504.";
     private static final String UNKNOW_STATUSCODE = "Unknown Status Code: ";
+
+    /**
+     * <b>SetAuthBaerer</b>
+     * used to set Auth Baerer
+     *
+     * <br><br>
+     *
+     * @param value
+     *
+     * @since 1.4.1
+     */
+    public static void SetAuthBaerer(String value) {
+        authType = "Bearer";
+        tokenBearer = value;
+    }
+
+    /**
+     * <b>SetAuthBasic</b>
+     * used to set Auth Basic
+     *
+     * <br><br>
+     *
+     * @param value
+     *
+     * @since 1.4.1
+     */
+    public static void SetAuthBasic(String value) {
+        authType = "Basic";
+        tokenBasic = value;
+    }
+
+    /**
+     * <b>SetAuthApiIdKey</b>
+     * used to set Auth Api ID & Api Key
+     *
+     * <br><br>
+     *
+     * @param valueId
+     * @param valueKey
+     *
+     * @since 1.4.1
+     */
+    public static void SetAuthApiIdKey(String valueId, String valueKey) {
+        authType = "API_ID_KEY";
+        api_id = valueId;
+        api_key = valueKey;
+    }
 
     /**
      * <b>HitApi</b>
@@ -43,12 +96,10 @@ public class WebServices {
      * @param urlTarget
      * @param method
      * @param payloadBody
-     * @param authType
-     * @param tokenOrCreds
      *
      * @since 1.4.1
      */
-    public static void HitApi(String urlTarget, String method, String payloadBody, String authType, String tokenOrCreds) {
+    public static void HitApi(String urlTarget, String method, String payloadBody) {
         System.out.println(TellMeWhy.getIdentity() + TRY_COMMUNICATE_API);
         HttpURLConnection conn = null;
         try {
@@ -60,12 +111,21 @@ public class WebServices {
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
 
-            if (authType != null && tokenOrCreds != null) {
+            if (authType != null && !authType.equalsIgnoreCase("")) {
                 if (authType.equalsIgnoreCase("Bearer")) {
-                    conn.setRequestProperty("Authorization", "Bearer " + tokenOrCreds);
+                    if (tokenBearer != null && !tokenBearer.equalsIgnoreCase("")) {
+                        conn.setRequestProperty("Authorization", "Bearer " + tokenBearer);
+                    }
                 } else if (authType.equalsIgnoreCase("Basic")) {
-                    String basicAuth = Base64.getEncoder().encodeToString(tokenOrCreds.getBytes());
-                    conn.setRequestProperty("Authorization", "Basic " + basicAuth);
+                    if (tokenBasic != null && !tokenBasic.equalsIgnoreCase("")) {
+                        String basicAuth = Base64.getEncoder().encodeToString(tokenBasic.getBytes());
+                        conn.setRequestProperty("Authorization", "Basic " + basicAuth);
+                    }
+                } else if (authType.equalsIgnoreCase("API_ID_KEY")) {
+                    if ((api_id != null && !api_id.equalsIgnoreCase("")) && (api_key != null && !api_key.equalsIgnoreCase(""))) {
+                        conn.setRequestProperty("api_id", api_id);
+                        conn.setRequestProperty("api_key", api_key);
+                    }
                 }
             }
 
@@ -116,22 +176,6 @@ public class WebServices {
 
     /**
      * <b>HitApi</b>
-     * used to make API calls with payload and without auth
-     *
-     * <br><br>
-     *
-     * @param urlTarget
-     * @param method
-     * @param payloadBody
-     *
-     * @since 1.4.1
-     */
-    public static void HitApi(String urlTarget, String method, String payloadBody) {
-        HitApi(urlTarget, method, payloadBody, null, null);
-    }
-
-    /**
-     * <b>HitApi</b>
      * used to make API calls without data
      *
      * <br><br>
@@ -142,24 +186,7 @@ public class WebServices {
      * @since 1.4.1
      */
     public static void HitApi(String urlTarget, String method) {
-        HitApi(urlTarget, method, null, null, null);
-    }
-
-    /**
-     * <b>HitApi</b>
-     * used to make API calls with auth and without data
-     *
-     * <br><br>
-     *
-     * @param urlTarget
-     * @param method
-     * @param authType
-     * @param tokenOrCreds
-     *
-     * @since 1.4.1
-     */
-    public static void HitApi(String urlTarget, String method, String authType, String tokenOrCreds) {
-        HitApi(urlTarget, method, null, authType, tokenOrCreds);
+        HitApi(urlTarget, method, null);
     }
 
     /**
