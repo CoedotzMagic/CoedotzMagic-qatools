@@ -112,20 +112,14 @@ public class WebServices {
             conn.setDoOutput(true);
 
             if (authType != null && !authType.equalsIgnoreCase("")) {
-                if (authType.equalsIgnoreCase("Bearer")) {
-                    if (tokenBearer != null && !tokenBearer.equalsIgnoreCase("")) {
-                        conn.setRequestProperty("Authorization", "Bearer " + tokenBearer);
-                    }
-                } else if (authType.equalsIgnoreCase("Basic")) {
-                    if (tokenBasic != null && !tokenBasic.equalsIgnoreCase("")) {
-                        String basicAuth = Base64.getEncoder().encodeToString(tokenBasic.getBytes());
-                        conn.setRequestProperty("Authorization", "Basic " + basicAuth);
-                    }
-                } else if (authType.equalsIgnoreCase("API_ID_KEY")) {
-                    if ((api_id != null && !api_id.equalsIgnoreCase("")) && (api_key != null && !api_key.equalsIgnoreCase(""))) {
+                if ("Bearer".equalsIgnoreCase(authType) && tokenBearer != null && !tokenBearer.equalsIgnoreCase("")) {
+                    conn.setRequestProperty("Authorization", "Bearer " + tokenBearer);
+                } else if ("Basic".equalsIgnoreCase(authType) && tokenBasic != null && !tokenBasic.equalsIgnoreCase("")) {
+                    String basicAuth = Base64.getEncoder().encodeToString(tokenBasic.getBytes());
+                    conn.setRequestProperty("Authorization", "Basic " + basicAuth);
+                } else if ("API_ID_KEY".equalsIgnoreCase(authType) && api_id != null && !api_id.equalsIgnoreCase("") && api_key != null && !api_key.equalsIgnoreCase("")) {
                         conn.setRequestProperty("api_id", api_id);
                         conn.setRequestProperty("api_key", api_key);
-                    }
                 }
             }
 
@@ -164,8 +158,7 @@ public class WebServices {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Error: " + e.getClass().getName() + " - " + e.getMessage());
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_HITAPI);
         } finally {
             if (conn != null) {
@@ -249,6 +242,7 @@ public class WebServices {
                 return finalOutput;
             }
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("w", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.FAILED_TO_GETVALUE_HITAPI);
             return finalOutput;
         }
@@ -294,6 +288,7 @@ public class WebServices {
         try {
             timeout = seconds;
         } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.INVALID_NUMBER);
         }
     }
