@@ -80,12 +80,15 @@ public class TellMeWhy {
         return closeWhenError;
     }
 
-    public static void setPrintMsgErrActive(boolean isActive) {
-        isMsgErrActive = isActive;
+    public static void setPrintMsgErrActive() {
+        isMsgErrActive = true;
     }
 
-    public static boolean getPrintMsgErrActive() {
-        return isMsgErrActive;
+    public static void getPrintMsgErrActive(Exception e) {
+        if(isMsgErrActive && e != null) {
+            e.printStackTrace();
+            System.out.println("Error: " + e.getClass().getName() + " - " + e.getMessage());
+        }
     }
 
     public static String getTraceInfo(StackTraceElement[] stackTrace) {

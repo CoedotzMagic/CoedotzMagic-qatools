@@ -111,11 +111,9 @@ public class QATools {
      *
      * <br><br>
      *
-     * @param showMsg
-     *
      * @since 1.4.1
      */
-    public static void ShowMsgError(boolean showMsg) {
-        FailureHandlingHelper.ShowMsgError(showMsg);
+    public static void ShowMsgError() {
+        FailureHandlingHelper.ShowMsgError();
     }
 }
