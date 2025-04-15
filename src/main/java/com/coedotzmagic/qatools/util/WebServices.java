@@ -101,12 +101,13 @@ public class WebServices {
      */
     public static void HitApi(String urlTarget, String method, String payloadBody) {
         System.out.println(TellMeWhy.getIdentity() + TRY_COMMUNICATE_API);
+        int effectiveTimeout = (timeout <= 0) ? 30 * 1000 : timeout * 1000;
         HttpURLConnection conn = null;
         try {
             URL url = new URL(urlTarget);
             conn = (HttpURLConnection) url.openConnection();
-            conn.setConnectTimeout(timeout * 1000);
-            conn.setReadTimeout(timeout * 1000);
+            conn.setConnectTimeout(effectiveTimeout);
+            conn.setReadTimeout(effectiveTimeout);
             conn.setRequestMethod(method.toUpperCase());
             conn.setRequestProperty("Content-Type", "application/json");
             conn.setDoOutput(true);
