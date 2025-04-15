@@ -1,6 +1,7 @@
 package com.coedotzmagic.qatools;
 
 import com.coedotzmagic.qatools.failurehandling.KillProcessWebDriver;
+import com.coedotzmagic.qatools.util.WebServices;
 import org.openqa.selenium.WebDriver;
 import com.coedotzmagic.qatools.failurehandling.FailureHandlingHelper;
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
@@ -115,5 +116,19 @@ public class QATools {
      */
     public static void ShowMsgError() {
         FailureHandlingHelper.ShowMsgError();
+    }
+
+    /**
+     * <b>setTimeoutConnectionAPI</b>
+     * used Set Timeout Connection when doing HitApi()
+     *
+     * <br><br>
+     *
+     * @param seconds
+     *
+     * @since 1.4.1
+     */
+    public static void setTimeoutConnectionAPI(int seconds) {
+        WebServices.setTimeoutConnection(seconds);
     }
 }
