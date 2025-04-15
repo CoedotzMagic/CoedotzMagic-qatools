@@ -72,7 +72,7 @@ public class WebServices {
 
     /**
      * <b>SetAuthApiIdKey</b>
-     * used to set Auth Api ID & Api Key
+     * used to set Auth Api ID and Api Key
      *
      * <br><br>
      *
@@ -204,7 +204,7 @@ public class WebServices {
 
     /**
      * <b>getResponseMessage</b>
-     * used getResponseMessage after call HitApi with specific rootJsonObj & keyJsonObject
+     * used getResponseMessage after call HitApi with specific rootJsonObj and keyJsonObject
      *
      * <br><br>
      *
