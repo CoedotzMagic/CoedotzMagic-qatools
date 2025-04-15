@@ -19,7 +19,7 @@ import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 public class WebServices {
     private static String setResponseCode;
     private static String setResponseMessage;
-    private static int timeout = 10;
+    private static int timeout = 30;
     private static String authType;
     private static String tokenBearer;
     private static String tokenBasic;
