@@ -45,7 +45,7 @@ public class TellMeWhy {
             "i", "INFO",
             "w", "WARNING",
             "e", "ERROR",
-            "v", "VALIDATION_ERROR"
+            "v", "VERIFY_AND_VALIDATION"
     );
 
     public TellMeWhy(String level, String getTrace, String messages) {
