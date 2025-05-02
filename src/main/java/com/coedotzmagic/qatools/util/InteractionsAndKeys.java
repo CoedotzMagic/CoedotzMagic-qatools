@@ -202,4 +202,25 @@ public class InteractionsAndKeys {
             new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Wheel Scrolling!");
         }
     }
+
+    /**
+     * <b>ScrollToElementXPath()</b>
+     * used to direct to the desired component
+     *
+     * @param xpath
+     *
+     * @since 1.5.0
+     */
+    public static void ScrollToElementXPath(String xpath) {
+        try {
+            WebDriverWait wait = new WebDriverWait(DriverHelper.GetWebDriver(), Duration.ofSeconds(FailureHandlingHelper.GetTimeoutWait()));
+            WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+            new Actions(DriverHelper.GetWebDriver())
+                    .scrollToElement(element)
+                    .perform();
+        } catch (Exception e) {
+            TellMeWhy.getPrintMsgErrActive(e);
+            new TellMeWhy("e", TellMeWhy.getTraceInfo(Thread.currentThread().getStackTrace()), TellMeWhy.UNABLE_TO + "Scroll To Element.");
+        }
+    }
 }
