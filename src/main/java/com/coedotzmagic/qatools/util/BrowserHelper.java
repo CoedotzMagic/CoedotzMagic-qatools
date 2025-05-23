@@ -1,5 +1,6 @@
 package com.coedotzmagic.qatools.util;
 
+import com.coedotzmagic.qatools.QATools;
 import com.coedotzmagic.qatools.failurehandling.TellMeWhy;
 import org.openqa.selenium.*;
 
@@ -150,5 +151,16 @@ public class BrowserHelper {
     public static void RefreshPage() {
         WebDriver driver = DriverHelper.GetWebDriver();
         driver.navigate().refresh();
+    }
+
+    /**
+     * <b>CloseBrowser()</b>
+     * is used close the browser
+     *
+     * @since 1.5.0
+     */
+    public static void CloseBrowser() {
+        DriverHelper.GetWebDriver().quit();
+        QATools.KillAllWebDriverProcess();
     }
 }
