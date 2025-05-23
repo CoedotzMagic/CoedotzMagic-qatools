@@ -14,8 +14,6 @@ public class QATools {
      * <b>CoedotzMagic()</b>
      * Everyones can be Magician!
      *
-     * <br><br>
-     *
      * @since 1.0
      */
     public static void CoedotzMagic() {
@@ -27,9 +25,7 @@ public class QATools {
      * <b>SetWebDriver()</b>
      * Used to set WebDriver on components that will be used in QA Tools.
      *
-     * <br><br>
-     *
-     * @param driver
+     * @param driver webdriver
      *
      * @since 1.1
      */
@@ -41,9 +37,7 @@ public class QATools {
      * <b>SetCloseBrowserWhenError()</b>
      * Used to provide behavior if an error occurs then the browser will exit.
      *
-     * <br><br>
-     *
-     * @param close
+     * @param close If true then the browser will exit automatically if an error occurs, if false then no error occurs.
      *
      * @since 1.1
      */
@@ -55,10 +49,8 @@ public class QATools {
      * <b>SetCallBrowserFromUs()</b>
      * Used to provide browser calling behavior from QA Tools
      *
-     * <br><br>
-     *
-     * @param isActive
-     * @param browser
+     * @param isActive if true/yes then it will use a custom browser, if false/no then the opposite
+     * @param browser is the choice of browser you want to use (ie, chrome, firefox, safari)
      *
      * @since 1.1
      */
@@ -70,8 +62,6 @@ public class QATools {
      * <b>KillAllWebDriverProcess()</b>
      * Used to stop the webdriver process that is still running in task manager (windows) / activity monitor (macos/unix)
      *
-     * <br><br>
-     *
      * @since 1.1
      */
     public static void KillAllWebDriverProcess() {
@@ -82,9 +72,7 @@ public class QATools {
      * <b>SetTimeoutWait()</b>
      * Used to set timeout when waiting time for get the element visible
      *
-     * <br><br>
-     *
-     * @param seconds
+     * @param seconds desired time (in seconds) for automation timeout
      *
      * @since 1.2
      */
@@ -98,7 +86,7 @@ public class QATools {
      *
      * <br><br>
      *
-     * @param skipErr
+     * @param skipErr If true then when there is an error the automation will continue running, if false then it will not.
      *
      * @since 1.3
      */
@@ -110,8 +98,6 @@ public class QATools {
      * <b>ShowMsgError()</b>
      * used to show specific error message
      *
-     * <br><br>
-     *
      * @since 1.4.1
      */
     public static void ShowMsgError() {
@@ -122,9 +108,7 @@ public class QATools {
      * <b>setTimeoutConnectionAPI</b>
      * used Set Timeout Connection when doing HitApi()
      *
-     * <br><br>
-     *
-     * @param seconds
+     * @param seconds desired time (in seconds) for api hit response timeout
      *
      * @since 1.4.1
      */
